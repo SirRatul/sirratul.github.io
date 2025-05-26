@@ -10,7 +10,6 @@ export const Banner = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [text, setText] = useState('');
   const [delta, setDelta] = useState(300 - Math.random() * 100);
-  const [index, setIndex] = useState(1);
   const toRotate = ["Full Stack Developer", "Machine Learning Engineer", "Software Engineer"];
   const period = 2000;
 
@@ -20,6 +19,7 @@ export const Banner = () => {
     }, delta);
 
     return () => { clearInterval(ticker) };
+    // eslint-disable-next-line
   }, [text])
 
   const tick = () => {
@@ -35,15 +35,11 @@ export const Banner = () => {
 
     if (!isDeleting && updatedText === fullText) {
       setIsDeleting(true);
-      setIndex(prevIndex => prevIndex - 1);
       setDelta(period);
     } else if (isDeleting && updatedText === '') {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
-      setIndex(1);
       setDelta(500);
-    } else {
-      setIndex(prevIndex => prevIndex + 1);
     }
   }
 
@@ -56,7 +52,7 @@ export const Banner = () => {
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                   <span className="tagline">Welcome to my Portfolio</span>
-                  <h1>{`Hi! I'm Samsul Islam`} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ "Full Stack Developer", "Machine Learning Engineer", "Software Engineer" ]'><span className="wrap">{text}</span></span></h1>
+                  <h1>{`Hi! I'm Samsul Islam`} <span className="txt-rotate" data-period="1000" data-rotate='[ "Full Stack Developer", "Machine Learning Engineer", "Software Engineer" ]'><span className="wrap">{text}</span></span></h1>
                   <p>I am a passionate software engineer with expertise in full-stack development and machine learning. Take a tour around to know more about me!</p>
                   <button onClick={() => console.log('connect')}>Take a tour around to know more about me! <ArrowRightCircle size={25} /></button>
                 </div>}
