@@ -8,10 +8,10 @@ export const Footer = () => {
     <footer className="footer">
       <Container>
         <Row className="align-items-center footer-content">
-          <Col size={12} sm={6}>
+          <Col xs={12} md={6} className="ps-md-0">
             <h2 className="footer-logo">Samsul Islam</h2>
           </Col>
-          <Col size={12} sm={6} className="text-center text-sm-end">
+          <Col xs={12} md={6} className="text-center text-md-end">
             <div className="social-icon footer-social">
               <a href="https://www.linkedin.com/in/samsulislam/" target="_blank" rel="noopener noreferrer"><FaLinkedin size={24} /></a>
               <a href="https://github.com/SirRatul" target="_blank" rel="noopener noreferrer"><FaGithub size={24} /></a>

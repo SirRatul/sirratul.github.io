@@ -1,0 +1,39 @@
+.skill {
+  padding: 40px 0;
+  position: relative;
+}
+
+.skill-bx {
+  background: #112240;
+  border-radius: 32px;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.skill h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #64ffda;
+}
+
+.skill p {
+  color: #8892b0;
+  font-size: 16px;
+  line-height: 1.5em;
+  margin: 10px 0 40px 0;
+}
+
+.skill-slider .item img {
+  width: 40%;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .skill-bx {
+    padding: 25px 15px;
+  }
+
+  .skill h2 {
+    font-size: 28px;
+  }
+}
