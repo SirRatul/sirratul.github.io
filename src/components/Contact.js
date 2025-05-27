@@ -5,7 +5,7 @@ import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import emailjs from '@emailjs/browser';
 
-export const Contact = () => {
+const Contact = () => {
   const [buttonText, setButtonText] = useState('Send');
   const [status, setStatus] = useState({});
 
@@ -80,3 +80,5 @@ export const Contact = () => {
     </section>
   )
 }
+
+export default Contact;

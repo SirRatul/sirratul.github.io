@@ -5,7 +5,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import colorSharp from "../assets/img/color-sharp.png"
 
-export const Skills = () => {
+const Skills = () => {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -37,18 +37,18 @@ export const Skills = () => {
               <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
                 <div className="item">
                   <img src={meter1} alt="meter1" />
-                  <h5>Programming Languages</h5>
-                  <p>C++, Java, C#, JavaScript, Python, HTML, CSS, JQuery, MySQL, Oracle</p>
+                  <h5>Frontend & Backend</h5>
+                  <p>React.js, Next.js, Redux, Vue.js, Nuxt.js, Node.js, Express.js, GraphQL, REST APIs</p>
                 </div>
                 <div className="item">
                   <img src={meter2} alt="meter2" />
-                  <h5>Frameworks & Operating System</h5>
-                  <p>Django, Bootstrap, Node, Express, React, React Native, MongoDB, PyTorch, Scikit-Learn</p>
+                  <h5>Languages & Databases</h5>
+                  <p>JavaScript, TypeScript, Python, C++, Java, C#<br />SQL, PostgreSQL, NoSQL, MongoDB</p>
                 </div>
                 <div className="item">
                   <img src={meter3} alt="meter3" />
-                  <h5>Documentation & Project Management</h5>
-                  <p>Microsoft Office, LaTex, VsCode, Visual Studio, GitHub, Trello, Slack</p>
+                  <h5>Tools & Workflow</h5>
+                  <p>Git, Agile, Postman, GitHub Actions, Visual Studio Code, Google Analytics</p>
                 </div>
               </Carousel>
             </div>
@@ -59,3 +59,5 @@ export const Skills = () => {
     </section>
   )
 }
+
+export default Skills;
