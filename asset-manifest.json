@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "./static/css/main.c8e1fc9b.css",
+    "main.css": "./static/css/main.cdf0bf78.css",
     "main.js": "./static/js/main.e17ac18a.js",
     "static/js/27.d5549e00.chunk.js": "./static/js/27.d5549e00.chunk.js",
     "static/media/depression.png": "./static/media/depression.e47eca5d6acf2016f4a2.png",
@@ -35,7 +35,7 @@
     "index.html": "./index.html"
   },
   "entrypoints": [
-    "static/css/main.c8e1fc9b.css",
+    "static/css/main.cdf0bf78.css",
     "static/js/main.e17ac18a.js"
   ]
 }
