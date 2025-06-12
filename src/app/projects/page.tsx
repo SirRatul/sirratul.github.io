@@ -1,41 +1,48 @@
-'use client';
+import type { Metadata } from 'next';
+import ProjectList from '../components/Project/ProjectList';
 
-import { projects } from '@/contents/projects';
-import { motion } from 'framer-motion';
-import { staggerContainer } from '@/utils/animations';
-import ProjectCard from '../components/ProjectCard';
+export const metadata: Metadata = {
+    title: 'Samsul Islam | Frontend Developer Portfolio',
+    description:
+        'Portfolio of Samsul Islam, a frontend developer skilled in React, NextJS, JavaScript, TypeScript, HTML, and CSS. Crafting responsive and modern user interfaces.',
+    icons: {
+        icon: '/favicon.ico',
+    },
+    metadataBase: new URL('https://sirratul.github.io'),
+    openGraph: {
+        title: 'Samsul Islam | Frontend Developer Portfolio',
+        description:
+            'Portfolio of Samsul Islam, a frontend developer skilled in React, NextJS, JavaScript, TypeScript, HTML, and CSS. Crafting responsive and modern user interfaces.',
+        images: [
+            {
+                url: '/meta.jpg',
+                alt: 'Samsul Islam Portfolio Image',
+                width: 1200,
+                height: 630,
+            },
+        ],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Samsul Islam | Frontend Developer Portfolio',
+        description:
+            'Portfolio of Samsul Islam, a frontend developer skilled in React, NextJS, JavaScript, TypeScript, HTML, and CSS. Crafting responsive and modern user interfaces.',
+        images: [
+            {
+                url: '/meta.jpg',
+                alt: 'Samsul Islam Portfolio Image',
+                width: 1200,
+                height: 630,
+            },
+        ],
+    },
+};
 
 export default function Projects() {
     return (
-        <div className='container max-w-7xl mx-auto py-12'>
-            <motion.h1
-                className='text-4xl font-bold mb-4 text-center'
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-            >
-                My Projects
-            </motion.h1>
-            <motion.p
-                className='text-lg text-secondary mb-24 text-center'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-            >
-                Here are some of my recent projects. Click on the links to view the code or live
-                demo.
-            </motion.p>
-
-            <motion.div
-                className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8'
-                variants={staggerContainer}
-                initial='initial'
-                animate='animate'
-            >
-                {projects.map((project) => (
-                    <ProjectCard key={project.title} project={project} />
-                ))}
-            </motion.div>
-        </div>
+        <main>
+            <ProjectList />
+        </main>
     );
 }

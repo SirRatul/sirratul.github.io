@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { projects } from '@/contents/projects';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/utils/animations';
-import ProjectCard from './ProjectCard';
+import ProjectCard from '../ProjectCard';
 
 export default function Projects() {
     return (

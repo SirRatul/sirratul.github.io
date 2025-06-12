@@ -6,9 +6,7 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint && prettier --write .",
-        "predeploy": "npm run build",
-        "deploy": "gh-pages -d out"
+        "lint": "next lint && prettier --write ."
     },
     "dependencies": {
         "@emailjs/browser": "^4.4.1",
@@ -30,7 +28,6 @@
         "@types/react-dom": "^19",
         "eslint": "^9",
         "eslint-config-next": "15.3.1",
-        "gh-pages": "^6.3.0",
         "tailwindcss": "^4",
         "typescript": "^5"
     }

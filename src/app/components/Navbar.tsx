@@ -92,21 +92,7 @@ export default function Navbar() {
                                         <Link
                                             href={item.href}
                                             className='block py-2 hover:text-primary transition-colors'
-                                            onClick={() => {
-                                                // e.preventDefault(); // Stop the default instant jump
-                                                setIsMobileMenuOpen(false); // Close the menu first
-                                                // setTimeout(() => {
-                                                //     console.log('setTimeout', item.label);
-                                                //     const target = document.querySelector(
-                                                //         item.href,
-                                                //     );
-                                                //     if (target) {
-                                                //         target.scrollIntoView({
-                                                //             behavior: 'smooth',
-                                                //         });
-                                                //     }
-                                                // }, 200); // Delay to ensure menu has visually closed
-                                            }}
+                                            onClick={() => setIsMobileMenuOpen(false)}
                                         >
                                             {item.label}
                                         </Link>
