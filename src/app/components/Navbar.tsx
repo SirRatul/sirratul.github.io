@@ -34,13 +34,13 @@ export default function Navbar() {
                     {/* Desktop Menu */}
                     <div className='hidden md:flex items-center space-x-8'>
                         {menuItems.map((item) => (
-                            <a
+                            <Link
                                 key={item.href}
                                 href={item.href}
                                 className='hover:text-primary transition-colors'
                             >
                                 {item.label}
-                            </a>
+                            </Link>
                         ))}
                         <motion.button
                             onClick={toggleTheme}
@@ -89,13 +89,27 @@ export default function Navbar() {
                                         animate={{ opacity: 1, x: 0 }}
                                         transition={{ delay: index * 0.1 }}
                                     >
-                                        <a
+                                        <Link
                                             href={item.href}
                                             className='block py-2 hover:text-primary transition-colors'
-                                            onClick={() => setIsMobileMenuOpen(false)}
+                                            onClick={() => {
+                                                // e.preventDefault(); // Stop the default instant jump
+                                                setIsMobileMenuOpen(false); // Close the menu first
+                                                // setTimeout(() => {
+                                                //     console.log('setTimeout', item.label);
+                                                //     const target = document.querySelector(
+                                                //         item.href,
+                                                //     );
+                                                //     if (target) {
+                                                //         target.scrollIntoView({
+                                                //             behavior: 'smooth',
+                                                //         });
+                                                //     }
+                                                // }, 200); // Delay to ensure menu has visually closed
+                                            }}
                                         >
                                             {item.label}
-                                        </a>
+                                        </Link>
                                     </motion.div>
                                 ))}
                                 <motion.div

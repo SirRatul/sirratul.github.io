@@ -11,18 +11,25 @@ import Contact from './components/Contact';
 
 export default function Home() {
     useEffect(() => {
-        if (typeof window !== 'undefined') {
+        const scrollToHash = () => {
             const hash = window.location.hash;
-            if (hash) {
-                const id = hash.replace('#', '');
-                const el = document.getElementById(id);
-                if (el) {
-                    setTimeout(() => {
-                        el.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                }
+            if (!hash) return;
+
+            const el = document.querySelector(hash);
+            if (el) {
+                el.scrollIntoView({ behavior: 'instant' });
             }
-        }
+        };
+
+        // Scroll on initial load
+        scrollToHash();
+
+        // Scroll on hash change (user clicks a hash link)
+        window.addEventListener('hashchange', scrollToHash);
+
+        return () => {
+            window.removeEventListener('hashchange', scrollToHash);
+        };
     }, []);
 
     return (
