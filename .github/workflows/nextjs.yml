@@ -14,26 +14,27 @@ on:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-    contents: read
-    pages: write
-    id-token: write
+    contents: read # Permission to read repository contents
+    pages: write # Permission to deploy to GitHub Pages
+    id-token: write # Allows actions to create identity tokens
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
     group: 'pages'
-    cancel-in-progress: false
+    cancel-in-progress: false # Ensure no concurrent deployments
 
 jobs:
     # Build job
     build:
-        runs-on: ubuntu-latest
+        runs-on: ubuntu-latest # Use an Ubuntu runner for the job
+
         steps:
-            # Step to checkout the repository
+            # Step 1: Checkout the repository
             - name: Checkout
               uses: actions/checkout@v4
 
-            # Detect package manager (npm or yarn)
+            # Step 2: Detect package manager (npm or yarn)
             - name: Detect package manager
               id: detect-package-manager
               run: |
@@ -52,63 +53,63 @@ jobs:
                     exit 1
                   fi
 
-            # Set up Node.js environment
+            # Step 3: Set up Node.js environment (with caching)
             - name: Setup Node
               uses: actions/setup-node@v4
               with:
-                  node-version: '20'
-                  cache: ${{ steps.detect-package-manager.outputs.manager }}
+                  node-version: '20' # Specify Node.js version
+                  cache: ${{ steps.detect-package-manager.outputs.manager }} # Use caching based on package manager
 
-            # Set up GitHub Pages configuration (Next.js static site generator)
+            # Step 4: Set up GitHub Pages configuration (Next.js static site generator)
             - name: Setup Pages
               uses: actions/configure-pages@v5
               with:
                   static_site_generator: next
 
-            # Restore cache for dependencies
+            # Step 5: Restore cache to speed up installation
             - name: Restore cache
               uses: actions/cache@v4
               with:
                   path: |
-                      .next/cache
+                      .next/cache  # Cache Next.js build output
                   key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
                   restore-keys: |
                       ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
 
-            # Install dependencies (npm or yarn)
+            # Step 6: Install dependencies (npm or yarn)
             - name: Install dependencies
               run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
-            # Step to inject environment variables dynamically
-            - name: Set environment variables dynamically
+            # Step 7: Manually inject environment variables from GitHub Secrets
+            - name: Inject environment variables from GitHub Secrets
               run: |
-                  # Create and assign all necessary secrets dynamically as environment variables
-                  for SECRET_NAME in $(printenv | grep -oP 'NEXT_PUBLIC_\S+' | sort | uniq); do
-                      echo "Setting environment variable $SECRET_NAME"
-                      echo "$SECRET_NAME=${{ secrets[$SECRET_NAME] }}" >> $GITHUB_ENV
-                  done
-                  # Optional: Displaying the current environment variables for debugging purposes (removes sensitive data from logs)
+                  # Define each environment variable manually and inject it
+                  echo "Injecting environment variables..."
+                  echo "NEXT_PUBLIC_CLARITY_ID=${{ secrets.NEXT_PUBLIC_CLARITY_ID }}" >> $GITHUB_ENV
+                  echo "NEXT_PUBLIC_EMAIL_JS_SERVICE_ID=${{ secrets.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID }}" >> $GITHUB_ENV
+                  echo "NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID=${{ secrets.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID }}" >> $GITHUB_ENV
+                  echo "NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY=${{ secrets.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY }}" >> $GITHUB_ENV
                   echo "Environment variables injected"
 
-            # Build the Next.js app with the injected environment variables
+            # Step 8: Build the Next.js app with the injected environment variables
             - name: Build with Next.js
               run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
-            # Upload the build artifact to be deployed on GitHub Pages
+            # Step 9: Upload the build artifact to be deployed on GitHub Pages
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
-                  path: ./out
+                  path: ./out # Upload the build output for deployment
 
     # Deployment job
     deploy:
         environment:
             name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
+            url: ${{ steps.deployment.outputs.page_url }} # The URL of the deployed site
         runs-on: ubuntu-latest
-        needs: build
+        needs: build # This step will only run after the build job is complete
         steps:
-            # Step to deploy to GitHub Pages
+            # Step 10: Deploy to GitHub Pages
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4
