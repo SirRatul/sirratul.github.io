@@ -29,8 +29,11 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
+            # Step to checkout the repository
             - name: Checkout
               uses: actions/checkout@v4
+
+            # Detect package manager (npm or yarn)
             - name: Detect package manager
               id: detect-package-manager
               run: |
@@ -48,33 +51,50 @@ jobs:
                     echo "Unable to determine package manager"
                     exit 1
                   fi
+
+            # Set up Node.js environment
             - name: Setup Node
               uses: actions/setup-node@v4
               with:
                   node-version: '20'
                   cache: ${{ steps.detect-package-manager.outputs.manager }}
+
+            # Set up GitHub Pages configuration (Next.js static site generator)
             - name: Setup Pages
               uses: actions/configure-pages@v5
               with:
-                  # Automatically inject basePath in your Next.js configuration file and disable
-                  # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-                  #
-                  # You may remove this line if you want to manage the configuration yourself.
                   static_site_generator: next
+
+            # Restore cache for dependencies
             - name: Restore cache
               uses: actions/cache@v4
               with:
                   path: |
                       .next/cache
-                  # Generate a new cache whenever packages or source files change.
                   key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
-                  # If source files changed but packages didn't, rebuild from a prior cache.
                   restore-keys: |
                       ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
+
+            # Install dependencies (npm or yarn)
             - name: Install dependencies
               run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+
+            # Step to inject environment variables dynamically
+            - name: Set environment variables dynamically
+              run: |
+                  # Create and assign all necessary secrets dynamically as environment variables
+                  for SECRET_NAME in $(printenv | grep -oP 'NEXT_PUBLIC_\S+' | sort | uniq); do
+                      echo "Setting environment variable $SECRET_NAME"
+                      echo "$SECRET_NAME=${{ secrets[$SECRET_NAME] }}" >> $GITHUB_ENV
+                  done
+                  # Optional: Displaying the current environment variables for debugging purposes (removes sensitive data from logs)
+                  echo "Environment variables injected"
+
+            # Build the Next.js app with the injected environment variables
             - name: Build with Next.js
               run: ${{ steps.detect-package-manager.outputs.runner }} next build
+
+            # Upload the build artifact to be deployed on GitHub Pages
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v3
               with:
@@ -88,6 +108,7 @@ jobs:
         runs-on: ubuntu-latest
         needs: build
         steps:
+            # Step to deploy to GitHub Pages
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4
