@@ -89,6 +89,7 @@ export default function Contact() {
                                 <a
                                     href='mailto:samsulratul98@gmail.com'
                                     className='text-secondary hover:text-primary'
+                                    aria-label='Send an email to samsulratul98@gmail.com'
                                 >
                                     samsulratul98@gmail.com
                                 </a>
@@ -107,6 +108,7 @@ export default function Contact() {
                                 <a
                                     href='tel:+8801521431231'
                                     className='text-secondary hover:text-primary'
+                                    aria-label='Call +8801521431231'
                                 >
                                     +8801521431231
                                 </a>

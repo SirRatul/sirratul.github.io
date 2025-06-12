@@ -72,6 +72,8 @@ export default function ProjectCard({ project }: Props) {
                     className='flex items-center gap-2 text-secondary hover:text-primary transition-colors'
                     whileHover={{ x: 5 }}
                     whileTap={{ scale: 0.95 }}
+                    aria-label={`View source code of ${project.title}`}
+                    title={`${project.title} Code`}
                 >
                     <FaGithub className='h-5 w-5' />
                     <span>Code</span>
@@ -83,6 +85,8 @@ export default function ProjectCard({ project }: Props) {
                     className='flex items-center gap-2 text-secondary hover:text-primary transition-colors'
                     whileHover={{ x: 5 }}
                     whileTap={{ scale: 0.95 }}
+                    aria-label={`View live demo of ${project.title}`}
+                    title={`${project.title} Live Demo`}
                 >
                     <FaExternalLinkAlt className='h-5 w-5' />
                     <span>Live Demo</span>

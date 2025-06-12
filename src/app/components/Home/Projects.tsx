@@ -35,7 +35,7 @@ export default function Projects() {
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Link
                             href='/projects'
-                            className='bg-primary inline-block px-8 py-3 text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors'
+                            className='bg-primary inline-block px-8 py-3 text-white text-base font-semibold rounded-lg hover:bg-primary/90 transition-colors shadow-sm'
                         >
                             View All Projects
                         </Link>

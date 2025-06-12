@@ -32,6 +32,8 @@ export default function Footer() {
                             target='_blank'
                             rel='noopener noreferrer'
                             className='text-secondary hover:text-primary transition-colors'
+                            aria-label='Visit my GitHub profile'
+                            title='GitHub'
                         >
                             <FaGithub className='h-6 w-6' />
                         </a>
@@ -40,6 +42,8 @@ export default function Footer() {
                             target='_blank'
                             rel='noopener noreferrer'
                             className='text-secondary hover:text-primary transition-colors'
+                            aria-label='Visit my Facebook profile'
+                            title='Facebook'
                         >
                             <FaFacebook className='h-6 w-6' />
                         </a>
@@ -48,6 +52,8 @@ export default function Footer() {
                             target='_blank'
                             rel='noopener noreferrer'
                             className='text-secondary hover:text-primary transition-colors'
+                            aria-label='Visit my LinkedIn profile'
+                            title='LinkedIn'
                         >
                             <FaLinkedin className='h-6 w-6' />
                         </a>

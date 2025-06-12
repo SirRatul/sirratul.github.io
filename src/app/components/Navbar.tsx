@@ -47,6 +47,9 @@ export default function Navbar() {
                             className='p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors'
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
+                            aria-label={
+                                theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
+                            }
                         >
                             {theme === 'dark' ? (
                                 <SunIcon className='h-5 w-5' />
