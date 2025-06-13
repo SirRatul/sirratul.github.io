@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { HiOutlineEnvelope, HiOutlinePhone, HiOutlineMapPin } from 'react-icons/hi2';
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeIn, slideInLeft, slideInRight } from '@/utils/animations';
-import emailjs from '@emailjs/browser';
 
 interface FormData {
     name: string;
@@ -20,38 +19,106 @@ export default function Contact() {
         email: '',
         message: '',
     });
+
+    const [errors, setErrors] = useState<Partial<FormData>>({});
+    const [touched, setTouched] = useState<Record<keyof FormData, boolean>>({
+        name: false,
+        email: false,
+        message: false,
+    });
+
     const [status, setStatus] = useState<FormStatus>('idle');
 
+    const validateField = (field: keyof FormData, value: string): string => {
+        switch (field) {
+            case 'name':
+                if (!value.trim()) return 'Name is required.';
+                if (!/^[a-zA-Z\s]+$/.test(value))
+                    return 'Name must contain only letters and spaces.';
+                break;
+            case 'email':
+                if (!value.trim()) return 'Email is required.';
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Invalid email address.';
+                break;
+            case 'message':
+                if (!value.trim()) return 'Message is required.';
+                if (value.length < 10) return 'Message must be at least 10 characters.';
+                break;
+        }
+        return '';
+    };
+
+    const validateForm = (): boolean => {
+        const newErrors: Partial<FormData> = {};
+        (['name', 'email', 'message'] as (keyof FormData)[]).forEach((field) => {
+            const error = validateField(field, formData[field]);
+            if (error) newErrors[field] = error;
+        });
+
+        setErrors(newErrors);
+        setTouched({ name: true, email: true, message: true });
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+
+        if (touched[name as keyof FormData]) {
+            const error = validateField(name as keyof FormData, value);
+            setErrors((prev) => ({
+                ...prev,
+                [name]: error,
+            }));
+        }
+    };
+
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+
+        setTouched((prev) => ({
+            ...prev,
+            [name]: true,
+        }));
+
+        const error = validateField(name as keyof FormData, value);
+        setErrors((prev) => ({
+            ...prev,
+            [name]: error,
+        }));
+    };
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!validateForm()) return;
+
+        const emailjs = await import('@emailjs/browser');
         const serviceID = process.env.NEXT_PUBLIC_EMAIL_JS_SERVICE_ID;
         const templateID = process.env.NEXT_PUBLIC_EMAIL_JS_TEMPLATE_ID;
         const publicKey = process.env.NEXT_PUBLIC_EMAIL_JS_PUBLIC_KEY;
 
-        const form = e.target as HTMLFormElement;
-
         if (!serviceID || !templateID || !publicKey) {
             setStatus('error');
-            throw new Error('Missing required EmailJS environment variables.');
+            console.error('Missing EmailJS environment variables.');
+            return;
         }
 
-        e.preventDefault();
         setStatus('loading');
 
         try {
-            await emailjs.sendForm(serviceID, templateID, form, publicKey);
-
+            await emailjs.sendForm(serviceID, templateID, e.target as HTMLFormElement, publicKey);
             setStatus('success');
             setFormData({ name: '', email: '', message: '' });
+            setErrors({});
+            setTouched({ name: false, email: false, message: false });
         } catch {
             setStatus('error');
         }
-    };
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value,
-        }));
     };
 
     return (
@@ -83,7 +150,7 @@ export default function Contact() {
                             whileHover={{ x: 10 }}
                             transition={{ type: 'spring', stiffness: 300 }}
                         >
-                            <FaEnvelope className='h-6 w-6 text-primary' />
+                            <HiOutlineEnvelope className='h-6 w-6 text-primary' />
                             <div>
                                 <h3 className='font-semibold'>Email</h3>
                                 <a
@@ -102,7 +169,7 @@ export default function Contact() {
                             whileHover={{ x: 10 }}
                             transition={{ type: 'spring', stiffness: 300 }}
                         >
-                            <FaPhone className='h-6 w-6 text-primary' />
+                            <HiOutlinePhone className='h-6 w-6 text-primary' />
                             <div>
                                 <h3 className='font-semibold'>Phone</h3>
                                 <a
@@ -121,7 +188,7 @@ export default function Contact() {
                             whileHover={{ x: 10 }}
                             transition={{ type: 'spring', stiffness: 300 }}
                         >
-                            <FaMapMarkerAlt className='h-6 w-6 text-primary' />
+                            <HiOutlineMapPin className='h-6 w-6 text-primary' />
                             <div>
                                 <h3 className='font-semibold'>Location</h3>
                                 <p className='text-secondary'>Dhaka, Bangladesh</p>
@@ -142,6 +209,7 @@ export default function Contact() {
                         initial='initial'
                         animate='animate'
                     >
+                        {/* Name */}
                         <motion.div variants={fadeInUp}>
                             <label htmlFor='name' className='block text-sm font-medium mb-2'>
                                 Name
@@ -152,11 +220,16 @@ export default function Contact() {
                                 name='name'
                                 value={formData.name}
                                 onChange={handleChange}
+                                onBlur={handleBlur}
                                 required
                                 className='w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark focus:ring-2 focus:ring-primary focus:border-transparent'
                             />
+                            {errors.name && (
+                                <p className='text-red-500 text-sm mt-1'>{errors.name}</p>
+                            )}
                         </motion.div>
 
+                        {/* Email */}
                         <motion.div variants={fadeInUp}>
                             <label htmlFor='email' className='block text-sm font-medium mb-2'>
                                 Email
@@ -167,11 +240,16 @@ export default function Contact() {
                                 name='email'
                                 value={formData.email}
                                 onChange={handleChange}
+                                onBlur={handleBlur}
                                 required
                                 className='w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark focus:ring-2 focus:ring-primary focus:border-transparent'
                             />
+                            {errors.email && (
+                                <p className='text-red-500 text-sm mt-1'>{errors.email}</p>
+                            )}
                         </motion.div>
 
+                        {/* Message */}
                         <motion.div variants={fadeInUp}>
                             <label htmlFor='message' className='block text-sm font-medium mb-2'>
                                 Message
@@ -181,12 +259,17 @@ export default function Contact() {
                                 name='message'
                                 value={formData.message}
                                 onChange={handleChange}
+                                onBlur={handleBlur}
                                 required
                                 rows={4}
                                 className='w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark focus:ring-2 focus:ring-primary focus:border-transparent'
                             />
+                            {errors.message && (
+                                <p className='text-red-500 text-sm mt-1'>{errors.message}</p>
+                            )}
                         </motion.div>
 
+                        {/* Submit Button */}
                         <motion.button
                             type='submit'
                             disabled={status === 'loading'}
@@ -197,6 +280,7 @@ export default function Contact() {
                             {status === 'loading' ? 'Sending...' : 'Send Message'}
                         </motion.button>
 
+                        {/* Feedback Messages */}
                         {status === 'success' && (
                             <motion.p
                                 className='text-green-500 text-center'

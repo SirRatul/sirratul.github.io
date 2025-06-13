@@ -27,13 +27,20 @@ export default function ProjectList() {
             </motion.p>
 
             <motion.div
-                className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8'
+                className='flex flex-wrap justify-center gap-8 items-stretch'
                 variants={staggerContainer}
                 initial='initial'
                 animate='animate'
             >
                 {projects.map((project) => (
-                    <ProjectCard key={project.title} project={project} />
+                    <div
+                        key={project.title}
+                        className='w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-32px*2)/3)]'
+                    >
+                        <div className='h-full flex flex-col'>
+                            <ProjectCard project={project} />
+                        </div>
+                    </div>
                 ))}
             </motion.div>
         </div>

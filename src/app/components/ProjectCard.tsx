@@ -14,7 +14,7 @@ interface Props {
 export default function ProjectCard({ project }: Props) {
     return (
         <motion.article
-            className='bg-white dark:bg-dark/50 rounded-lg shadow-md p-6'
+            className='h-full flex flex-col bg-white dark:bg-dark/50 rounded-lg shadow-md p-6'
             variants={fadeInUp}
             {...cardHoverSmall}
         >
@@ -60,7 +60,7 @@ export default function ProjectCard({ project }: Props) {
                 ))}
             </motion.div>
             <motion.div
-                className='flex gap-4'
+                className='flex gap-4 mt-auto'
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}

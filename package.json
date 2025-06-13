@@ -5,13 +5,14 @@
     "scripts": {
         "dev": "next dev --turbopack",
         "build": "next build",
+        "analyze": "cross-env ANALYZE=true next build",
         "start": "next start",
         "lint": "next lint && prettier --write ."
     },
     "dependencies": {
         "@emailjs/browser": "^4.4.1",
-        "@heroicons/react": "^2.2.0",
         "@microsoft/clarity": "^1.0.0",
+        "@next/bundle-analyzer": "^15.3.3",
         "framer-motion": "^12.9.7",
         "geist": "^1.4.2",
         "next": "15.3.1",
@@ -39,6 +40,7 @@
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
+        "cross-env": "^7.0.3",
         "eslint": "^9",
         "eslint-config-next": "15.3.1",
         "tailwindcss": "^4",

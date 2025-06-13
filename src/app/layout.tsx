@@ -1,10 +1,24 @@
+import dynamic from 'next/dynamic';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import './globals.css';
 import { ThemeProvider } from './context/ThemeContext';
 import ClarityInit from './components/ClarityInit';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+
+const Navbar = dynamic(() => import('./components/Navbar'), {
+    loading: () => (
+        <div className='flex justify-center items-center py-10'>
+            <div className='w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin'></div>
+        </div>
+    ),
+});
+const Footer = dynamic(() => import('./components/Footer'), {
+    loading: () => (
+        <div className='flex justify-center items-center py-10'>
+            <div className='w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin'></div>
+        </div>
+    ),
+});
 
 export default function RootLayout({
     children,

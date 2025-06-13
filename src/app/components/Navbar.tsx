@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { HiOutlineMoon, HiMenuAlt3, HiX } from 'react-icons/hi';
+import { HiOutlineSun } from 'react-icons/hi2';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -52,9 +53,9 @@ export default function Navbar() {
                             }
                         >
                             {theme === 'dark' ? (
-                                <SunIcon className='h-5 w-5' />
+                                <HiOutlineSun className='h-5 w-5' />
                             ) : (
-                                <MoonIcon className='h-5 w-5' />
+                                <HiOutlineMoon className='h-5 w-5' />
                             )}
                         </motion.button>
                     </div>
@@ -68,9 +69,9 @@ export default function Navbar() {
                         aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                     >
                         {isMobileMenuOpen ? (
-                            <XMarkIcon className='h-6 w-6' />
+                            <HiX className='h-6 w-6' />
                         ) : (
-                            <Bars3Icon className='h-6 w-6' />
+                            <HiMenuAlt3 className='h-6 w-6' />
                         )}
                     </motion.button>
                 </div>
@@ -116,12 +117,12 @@ export default function Navbar() {
                                     >
                                         {theme === 'dark' ? (
                                             <>
-                                                <SunIcon className='h-5 w-5 mr-2' />
+                                                <HiOutlineSun className='h-5 w-5 mr-2' />
                                                 Light Mode
                                             </>
                                         ) : (
                                             <>
-                                                <MoonIcon className='h-5 w-5 mr-2' />
+                                                <HiOutlineMoon className='h-5 w-5 mr-2' />
                                                 Dark Mode
                                             </>
                                         )}
