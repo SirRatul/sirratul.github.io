@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from './context/ThemeContext';
 import ClarityInit from './components/ClarityInit';
@@ -18,6 +17,11 @@ const Footer = dynamic(() => import('./components/Footer'), {
             <div className='w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin'></div>
         </div>
     ),
+});
+
+const inter = Inter({
+    subsets: ['latin'],
+    display: 'swap',
 });
 
 export default function RootLayout({
@@ -57,7 +61,7 @@ export default function RootLayout({
                 <meta name='twitter:image' content='https://sirratul.github.io/meta.jpg' />
             </head>
             <body
-                className={`bg-white scroll-smooth transition-colors dark:bg-gray-900 dark:text-white ${GeistSans.variable} ${GeistMono.variable}`}
+                className={`bg-white scroll-smooth transition-colors dark:bg-gray-900 dark:text-white ${inter.className}`}
             >
                 <ClarityInit />
                 <ThemeProvider>
