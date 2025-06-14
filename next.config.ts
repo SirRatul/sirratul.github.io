@@ -17,6 +17,9 @@ const nextConfig: NextConfig = {
     experimental: {
         optimizePackageImports: ['react-icons'],
     },
+    compiler: {
+        removeConsole: true,
+    },
 };
 
 export default withBundleAnalyzer({

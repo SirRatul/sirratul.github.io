@@ -17,7 +17,7 @@ export default function Hero() {
                         transition={{ delay: 0.2 }}
                     >
                         <Image
-                            src='/profile.avif'
+                            src='/profile.webp'
                             alt='Profile'
                             width={128}
                             height={128}

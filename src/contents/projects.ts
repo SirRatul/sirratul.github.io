@@ -7,7 +7,7 @@ export const projects: Project[] = [
         technologies: ['React', 'Redux', 'Bootstrap'],
         githubLink: '',
         demoLink: 'https://sneakerlah.com/',
-        image: '/projects/sneakerlah.png',
+        image: '/projects/sneakerlah.webp',
         featured: true,
     },
     {
@@ -16,7 +16,7 @@ export const projects: Project[] = [
         technologies: ['React', 'Redux', 'Bootstrap', 'GraphQL'],
         githubLink: '',
         demoLink: 'https://www.flipbizz.com/',
-        image: '/projects/flipbizz.png',
+        image: '/projects/flipbizz.webp',
         featured: true,
     },
     {
@@ -25,7 +25,7 @@ export const projects: Project[] = [
         technologies: ['React', 'Redux', 'Bootstrap'],
         githubLink: '',
         demoLink: 'https://assessment.esghub.my/login',
-        image: '/projects/un_questionnaire.png',
+        image: '/projects/un_questionnaire.webp',
         featured: true,
     },
     {
@@ -34,7 +34,7 @@ export const projects: Project[] = [
         technologies: ['React', 'Redux', 'Bootstrap', 'GraphQL', 'PostgreSQL'],
         githubLink: '',
         demoLink: 'https://adignis.com/',
-        image: '/projects/adignis.png',
+        image: '/projects/adignis.webp',
         featured: true,
     },
     {
@@ -43,7 +43,7 @@ export const projects: Project[] = [
         technologies: ['React', 'Redux', 'Bootstrap'],
         githubLink: '',
         demoLink: 'https://tournament.afa-sports.com/',
-        image: '/projects/afa_tournament.png',
+        image: '/projects/afa_tournament.webp',
     },
     {
         title: 'AFA Kiosk',
@@ -51,7 +51,7 @@ export const projects: Project[] = [
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://book.afa-sports.com/',
-        image: '/projects/afa_kiosk.png',
+        image: '/projects/afa_kiosk.webp',
     },
     {
         title: 'AFA Coaching',
@@ -59,7 +59,7 @@ export const projects: Project[] = [
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://staging.coaching-website.afa-sports.com/',
-        image: '/projects/afa_coaching.png',
+        image: '/projects/afa_coaching.webp',
     },
     {
         title: 'Idenfic',
@@ -67,7 +67,7 @@ export const projects: Project[] = [
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://play.google.com/store/apps/details?id=com.onesoftlab.idenfic&hl=en',
-        image: '/projects/idenfic.png',
+        image: '/projects/idenfic.webp',
         featured: true,
     },
     {
@@ -84,7 +84,7 @@ export const projects: Project[] = [
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://www.tlb-group.com/',
-        image: '/projects/tlb.png',
+        image: '/projects/tlb.webp',
     },
     {
         title: 'Pcoins',
@@ -92,7 +92,7 @@ export const projects: Project[] = [
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://pineapple.my/',
-        image: '/projects/pcoins.png',
+        image: '/projects/pcoins.webp',
     },
     {
         title: 'Rezo',
@@ -108,7 +108,7 @@ export const projects: Project[] = [
         technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
         githubLink: '',
         demoLink: '',
-        image: '/projects/smart nurse.jpg',
+        image: '/projects/smart nurse.webp',
         featured: true,
     },
     {
@@ -117,7 +117,7 @@ export const projects: Project[] = [
         technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
         githubLink: '',
         demoLink: '',
-        image: '/projects/teresa.jpg',
+        image: '/projects/teresa.webp',
         featured: true,
     },
     {
@@ -126,7 +126,7 @@ export const projects: Project[] = [
         technologies: ['React Native'],
         githubLink: '',
         demoLink: '',
-        image: '/projects/teresa.jpg',
+        image: '/projects/teresa.webp',
         featured: true,
     },
     {
@@ -135,7 +135,7 @@ export const projects: Project[] = [
         technologies: ['Python', 'NumPy', 'Pandas', 'Sklearn'],
         githubLink: '',
         demoLink: '',
-        image: '/projects/bangla digit.png',
+        image: '/projects/bangla digit.webp',
     },
     {
         title: 'Predict Suicidal Thought',
@@ -143,7 +143,7 @@ export const projects: Project[] = [
         technologies: ['Python', 'Machine Learning'],
         githubLink: '',
         demoLink: '',
-        image: '/projects/depression.png',
+        image: '/projects/depression.webp',
     },
     {
         title: 'Detect Mask Person',
@@ -151,7 +151,7 @@ export const projects: Project[] = [
         technologies: ['TensorFlow', 'Keras', 'Python'],
         githubLink: '',
         demoLink: '',
-        image: '/projects/mask.png',
+        image: '/projects/mask.webp',
     },
     {
         title: 'Chef Zilla',
@@ -159,7 +159,7 @@ export const projects: Project[] = [
         technologies: ['.NET', 'C#', 'MVC'],
         githubLink: '',
         demoLink: '',
-        image: '/projects/chef zilla.jpg',
+        image: '/projects/chef zilla.webp',
     },
     {
         title: 'Cineplex Management System',
@@ -167,7 +167,7 @@ export const projects: Project[] = [
         technologies: ['Java Swing', 'SQL'],
         githubLink: '',
         demoLink: '',
-        image: '/projects/cineplex.jpg',
+        image: '/projects/cineplex.webp',
     },
     {
         title: 'Coffee House',
@@ -175,6 +175,6 @@ export const projects: Project[] = [
         technologies: ['HTML', 'CSS', 'Bootstrap', 'PHP'],
         githubLink: '',
         demoLink: '',
-        image: '/projects/coffe.jpg',
+        image: '/projects/coffe.webp',
     },
 ];
