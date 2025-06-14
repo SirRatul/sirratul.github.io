@@ -76,7 +76,7 @@ export const projects: Project[] = [
         technologies: ['React', 'Vue'],
         githubLink: '',
         demoLink: 'https://www.reskills.com/',
-        image: '/projects/reskills.png',
+        image: '/projects/reskills.webp',
     },
     {
         title: 'TLB',
@@ -100,7 +100,7 @@ export const projects: Project[] = [
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://www.rezo.com.my/',
-        image: '/projects/rezo.png',
+        image: '/projects/rezo.webp',
     },
     {
         title: 'Smart Nurse',

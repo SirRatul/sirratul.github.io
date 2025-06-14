@@ -1,12 +1,20 @@
 'use client';
 
 import { useEffect } from 'react';
-import clarity from '@microsoft/clarity';
 
 export default function ClarityInit() {
     useEffect(() => {
-        if (process.env.NODE_ENV === 'production' && process.env.NEXT_PUBLIC_CLARITY_ID) {
-            clarity.init(process.env.NEXT_PUBLIC_CLARITY_ID);
+        const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
+
+        if (
+            typeof window !== 'undefined' &&
+            process.env.NODE_ENV === 'production' &&
+            typeof clarityId === 'string' &&
+            clarityId.trim() !== ''
+        ) {
+            import('@microsoft/clarity').then((clarity) => {
+                clarity.default.init(clarityId);
+            });
         }
     }, []);
 

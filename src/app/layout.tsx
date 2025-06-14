@@ -48,7 +48,7 @@ export default function RootLayout({
                     property='og:description'
                     content='Portfolio of Samsul Islam, a frontend developer skilled in React, NextJS, JavaScript, TypeScript, HTML, and CSS. Crafting responsive and modern user interfaces.'
                 />
-                <meta property='og:image' content='https://sirratul.github.io/meta.jpg' />
+                <meta property='og:image' content='https://sirratul.github.io/meta.webp' />
                 <meta property='og:site_name' content='sirratul.github.io' />
 
                 <meta name='twitter:card' content='summary_large_image' />
@@ -58,7 +58,7 @@ export default function RootLayout({
                     name='twitter:description'
                     content='Portfolio of Samsul Islam, a frontend developer skilled in React, NextJS, JavaScript, TypeScript, HTML, and CSS. Crafting responsive and modern user interfaces.'
                 />
-                <meta name='twitter:image' content='https://sirratul.github.io/meta.jpg' />
+                <meta name='twitter:image' content='https://sirratul.github.io/meta.webp' />
             </head>
             <body
                 className={`bg-white scroll-smooth transition-colors dark:bg-gray-900 dark:text-white ${inter.className}`}
