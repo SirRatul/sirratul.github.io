@@ -16,6 +16,9 @@ export default function ProjectCard({ project }: Props) {
         <motion.article
             className='h-full flex flex-col bg-white dark:bg-dark/50 rounded-lg shadow-md p-6'
             variants={fadeInUp}
+            initial='initial'
+            whileInView='animate'
+            viewport={{ once: true }}
             {...cardHoverSmall}
         >
             <div className='relative aspect-video mb-4 rounded-lg overflow-hidden'>
@@ -25,6 +28,7 @@ export default function ProjectCard({ project }: Props) {
                     fill
                     className='object-cover'
                     sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                    loading='lazy'
                 />
             </div>
             <motion.h3
@@ -34,14 +38,7 @@ export default function ProjectCard({ project }: Props) {
             >
                 {project.title}
             </motion.h3>
-            <motion.p
-                className='text-gray-600 dark:text-gray-300 mb-4'
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-            >
-                {project.description}
-            </motion.p>
+            <p className='text-gray-600 dark:text-gray-300 mb-4'>{project.description}</p>
             <motion.div
                 className='flex flex-wrap gap-2 mb-4'
                 initial={{ opacity: 0 }}
