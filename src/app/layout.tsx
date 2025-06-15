@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import Script from 'next/script';
 import { ThemeProvider } from './context/ThemeContext';
-import ClarityInit from './components/ClarityInit';
 
 const Navbar = dynamic(() => import('./components/Navbar'), {
     loading: () => (
@@ -22,6 +22,7 @@ const Footer = dynamic(() => import('./components/Footer'), {
 const inter = Inter({
     subsets: ['latin'],
     display: 'swap',
+    preload: true,
 });
 
 export default function RootLayout({
@@ -63,12 +64,26 @@ export default function RootLayout({
             <body
                 className={`bg-white scroll-smooth transition-colors dark:bg-gray-900 dark:text-white ${inter.className}`}
             >
-                <ClarityInit />
                 <ThemeProvider>
                     <Navbar />
                     <main className='min-h-screen pt-24'>{children}</main>
                     <Footer />
                 </ThemeProvider>
+                {process.env.NODE_ENV === 'production' && (
+                    <Script
+                        strategy='lazyOnload'
+                        id='clarity-script'
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                            (function(c,l,a,r,i,t,y){
+                                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/${process.env.NEXT_PUBLIC_CLARITY_ID}";
+                                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                            })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_ID}");
+                        `,
+                        }}
+                    />
+                )}
             </body>
         </html>
     );
