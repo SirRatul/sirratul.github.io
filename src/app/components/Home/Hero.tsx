@@ -14,7 +14,7 @@ export default function Hero() {
                     <motion.div
                         className='flex justify-center items-center mb-4'
                         {...scaleIn}
-                        transition={{ delay: 0.2 }}
+                        transition={{ delay: 0.1 }}
                     >
                         <Image
                             src='/profile.webp'
@@ -28,13 +28,13 @@ export default function Hero() {
                     <motion.h1
                         className='text-4xl md:text-6xl font-bold mb-6'
                         {...fadeInUp}
-                        transition={{ delay: 0.3 }}
+                        transition={{ delay: 0.15 }}
                     >
                         Hi, I&apos;m{' '}
                         <motion.span
                             className='text-primary'
                             {...fadeIn}
-                            transition={{ delay: 0.8 }}
+                            transition={{ delay: 0.3 }}
                         >
                             Samsul Islam
                         </motion.span>
@@ -42,7 +42,7 @@ export default function Hero() {
                     <motion.p
                         className='text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8'
                         {...fadeInUp}
-                        transition={{ delay: 0.4 }}
+                        transition={{ duration: 0.6 }}
                     >
                         Frontend Developer | React & Next.js Expert | UI/UX Focused |
                         Performance-Driven Engineer
@@ -50,7 +50,7 @@ export default function Hero() {
                     <motion.div
                         className='flex justify-center space-x-4 mb-8'
                         {...fadeInUp}
-                        transition={{ delay: 0.5 }}
+                        transition={{ delay: 0.1 }}
                     >
                         <motion.a
                             href='https://github.com/SirRatul'
@@ -92,7 +92,7 @@ export default function Hero() {
                     <motion.div
                         className='flex flex-col md:flex-row justify-center gap-4'
                         {...fadeInUp}
-                        transition={{ delay: 0.6 }}
+                        transition={{ delay: 0.1 }}
                     >
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Link
