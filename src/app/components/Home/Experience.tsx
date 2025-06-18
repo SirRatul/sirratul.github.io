@@ -18,9 +18,9 @@ export default function Experience() {
                     initial='initial'
                     animate='animate'
                 >
-                    {experiences.map((exp, index) => (
+                    {experiences.map((exp) => (
                         <motion.div
-                            key={index}
+                            key={`${exp.title}-${exp.company}`}
                             className='bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md'
                             variants={fadeInUp}
                             {...cardHoverSmall}
@@ -31,7 +31,7 @@ export default function Experience() {
                             </p>
                             <ul className='text-secondary list-disc list-inside space-y-2'>
                                 {exp.responsibilities.map((item, i) => (
-                                    <li key={i}>{item}</li>
+                                    <li key={`${exp.title}-resp-${i}`}>{item}</li>
                                 ))}
                             </ul>
                         </motion.div>

@@ -18,9 +18,9 @@ export default function Education() {
                     initial='initial'
                     animate='animate'
                 >
-                    {educations.map((edu, index) => (
+                    {educations.map((edu) => (
                         <motion.div
-                            key={index}
+                            key={`${edu.degree}-${edu.institution}`}
                             className='bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md'
                             variants={fadeInUp}
                             {...cardHoverSmall}

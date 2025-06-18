@@ -45,9 +45,9 @@ export default function ProjectCard({ project }: Props) {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
             >
-                {project.technologies.map((tech) => (
+                {project.technologies.map((tech, i) => (
                     <motion.span
-                        key={tech}
+                        key={`${project.title}-tech-${i}`}
                         className='px-3 py-1 bg-primary/10 text-primary rounded-full text-sm'
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}

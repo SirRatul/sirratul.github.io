@@ -42,7 +42,6 @@ export default function Hero() {
                     <motion.p
                         className='text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8'
                         {...fadeInUp}
-                        // transition={{ delay: 0.4 }}
                         transition={{ duration: 0.6 }}
                     >
                         Frontend Developer | React & Next.js Expert | UI/UX Focused |
