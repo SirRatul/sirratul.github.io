@@ -12,6 +12,24 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+/** Avoid Node's experimental/broken global `localStorage` when `--localstorage-file` is invalid. */
+function getBrowserStorage(): Storage | null {
+    if (typeof window === 'undefined') return null;
+    try {
+        const ls = window.localStorage;
+        if (
+            ls &&
+            typeof ls.getItem === 'function' &&
+            typeof ls.setItem === 'function'
+        ) {
+            return ls;
+        }
+    } catch {
+        /* private mode / quota */
+    }
+    return null;
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setThemeState] = useState<Theme>('light');
     const [mounted, setMounted] = useState(false);
@@ -19,8 +37,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Update theme
     const setTheme = (newTheme: Theme) => {
         setThemeState(newTheme);
-        localStorage.setItem('theme', newTheme);
-        document.documentElement.classList.toggle('dark', newTheme === 'dark');
+        const storage = getBrowserStorage();
+        if (storage) {
+            storage.setItem('theme', newTheme);
+        }
+        if (typeof document !== 'undefined') {
+            document.documentElement.classList.toggle('dark', newTheme === 'dark');
+        }
     };
 
     // Toggle theme
@@ -30,7 +53,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     // Initialize theme
     useEffect(() => {
-        const savedTheme = localStorage.getItem('theme') as Theme | null;
+        const storage = getBrowserStorage();
+        if (!storage) {
+            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+            setThemeState(systemTheme);
+            document.documentElement.classList.toggle('dark', systemTheme === 'dark');
+            setMounted(true);
+            return;
+        }
+        const savedTheme = storage.getItem('theme') as Theme | null;
         const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
             ? 'dark'
             : 'light';

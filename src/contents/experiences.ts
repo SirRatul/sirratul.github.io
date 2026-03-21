@@ -2,9 +2,20 @@ import { Experience } from '@/types';
 
 export const experiences: Experience[] = [
     {
+        title: 'Software Engineer',
+        company: 'Credability Systems',
+        period: 'Jul 2025 – Present',
+        responsibilities: [
+            'Architecting and developing full-stack features using React.js, Next.js, and Node.js with TypeScript',
+            'Optimizing application performance and implementing best practices for code quality and maintainability',
+            'Leading frontend development initiatives and collaborating with cross-functional teams on product roadmaps',
+            'Implementing robust testing strategies and maintaining CI/CD pipelines for seamless deployments',
+        ],
+    },
+    {
         title: 'React JS Developer',
         company: 'Segwitz',
-        period: 'Dec 2022 – Present',
+        period: 'Dec 2022 – Jun 2025',
         responsibilities: [
             'Built scalable UI components using React.js and Next.js, improving page load speed by 70%',
             'Created reusable modules in TypeScript, reducing frontend code duplication by 35%',

@@ -1,6 +1,41 @@
 import { Project } from '@/types';
 
 export const projects: Project[] = [
+    // Shopify Projects
+    {
+        title: 'Edubily',
+        description: 'German-developed dietary supplements with top quality and no fuss. Focused on health and wellness products.',
+        technologies: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
+        githubLink: '',
+        demoLink: 'https://edubily.de/',
+        image: '/projects/edubily.webp',
+        featured: true,
+        category: 'Shopify',
+        role: 'Shopify Developer',
+    },
+    {
+        title: 'Neona Store',
+        description: 'Innovative lamps designed to help everyone live a positive, productive, and healthy life. Features minimalist, modern, and sustainable lighting solutions.',
+        technologies: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
+        githubLink: '',
+        demoLink: 'https://www.neona.store/en',
+        image: '/projects/neona_store.webp',
+        featured: true,
+        category: 'Shopify',
+        role: 'Shopify Developer',
+    },
+    {
+        title: 'Von Heesen',
+        description: 'High-quality handcrafted leather products including wallets, credit card holders, passport covers, umbrellas, briefcases, travel bags, and backpacks. Reliable business and lifestyle accessories.',
+        technologies: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
+        githubLink: '',
+        demoLink: 'https://www.von-heesen.com/',
+        image: '/projects/von_heesen.webp',
+        featured: true,
+        category: 'Shopify',
+        role: 'Shopify Developer',
+    },
+    // Web Applications
     {
         title: 'Sneakerlah',
         description: 'Discover curated local fashion brands that blend style and exclusivity.',
@@ -9,6 +44,8 @@ export const projects: Project[] = [
         demoLink: 'https://sneakerlah.com/',
         image: '/projects/sneakerlah.webp',
         featured: true,
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'FlipBizz',
@@ -18,6 +55,8 @@ export const projects: Project[] = [
         demoLink: 'https://www.flipbizz.com/',
         image: '/projects/flipbizz.webp',
         featured: true,
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'UN Questionnaire',
@@ -26,7 +65,9 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: 'https://assessment.esghub.my/login',
         image: '/projects/un_questionnaire.webp',
-        featured: true,
+        featured: false,
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'Adignis',
@@ -35,7 +76,9 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: 'https://adignis.com/',
         image: '/projects/adignis.webp',
-        featured: true,
+        featured: false,
+        category: 'Web Apps',
+        role: 'Full-Stack Developer',
     },
     {
         title: 'AFA Tournament',
@@ -44,6 +87,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: 'https://tournament.afa-sports.com/',
         image: '/projects/afa_tournament.webp',
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'AFA Kiosk',
@@ -52,6 +97,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: 'https://book.afa-sports.com/',
         image: '/projects/afa_kiosk.webp',
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'AFA Coaching',
@@ -60,6 +107,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: 'https://staging.coaching-website.afa-sports.com/',
         image: '/projects/afa_coaching.webp',
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'Idenfic',
@@ -68,7 +117,9 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: 'https://play.google.com/store/apps/details?id=com.onesoftlab.idenfic&hl=en',
         image: '/projects/idenfic.webp',
-        featured: true,
+        featured: false,
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'Reskills',
@@ -77,6 +128,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: 'https://www.reskills.com/',
         image: '/projects/reskills.webp',
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'TLB',
@@ -85,6 +138,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: 'https://www.tlb-group.com/',
         image: '/projects/tlb.webp',
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'Pcoins',
@@ -93,6 +148,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: 'https://pineapple.my/',
         image: '/projects/pcoins.webp',
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'Rezo',
@@ -101,6 +158,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: 'https://www.rezo.com.my/',
         image: '/projects/rezo.webp',
+        category: 'Web Apps',
+        role: 'Frontend Developer',
     },
     {
         title: 'Smart Nurse',
@@ -109,7 +168,9 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: '',
         image: '/projects/smart nurse.webp',
-        featured: true,
+        featured: false,
+        category: 'Web Apps',
+        role: 'Full-Stack Developer',
     },
     {
         title: 'Teresa',
@@ -118,7 +179,9 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: '',
         image: '/projects/teresa.webp',
-        featured: true,
+        featured: false,
+        category: 'Web Apps',
+        role: 'Full-Stack Developer',
     },
     {
         title: 'Teresa App',
@@ -127,8 +190,11 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: '',
         image: '/projects/teresa.webp',
-        featured: true,
+        featured: false,
+        category: 'Web Apps',
+        role: 'Mobile Developer',
     },
+    // Machine Learning Projects
     {
         title: 'Bangla Digit Recognition',
         description: 'ML model trained on NumtaDB dataset for digit recognition.',
@@ -136,6 +202,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: '',
         image: '/projects/bangla digit.webp',
+        category: 'Machine Learning',
+        role: 'ML Engineer',
     },
     {
         title: 'Predict Suicidal Thought',
@@ -144,6 +212,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: '',
         image: '/projects/depression.webp',
+        category: 'Machine Learning',
+        role: 'ML Engineer',
     },
     {
         title: 'Detect Mask Person',
@@ -152,7 +222,10 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: '',
         image: '/projects/mask.webp',
+        category: 'Machine Learning',
+        role: 'ML Engineer',
     },
+    // Other Projects
     {
         title: 'Chef Zilla',
         description: 'Restaurant ordering system developed using .NET & C# (MVC).',
@@ -160,6 +233,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: '',
         image: '/projects/chef zilla.webp',
+        category: 'Other',
+        role: 'Full-Stack Developer',
     },
     {
         title: 'Cineplex Management System',
@@ -168,6 +243,8 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: '',
         image: '/projects/cineplex.webp',
+        category: 'Other',
+        role: 'Desktop Developer',
     },
     {
         title: 'Coffee House',
@@ -176,5 +253,7 @@ export const projects: Project[] = [
         githubLink: '',
         demoLink: '',
         image: '/projects/coffe.webp',
+        category: 'Other',
+        role: 'Web Developer',
     },
 ];

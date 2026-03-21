@@ -8,14 +8,23 @@ import ProjectCard from '../ProjectCard';
 
 export default function Projects() {
     return (
-        <section id='projects' className='py-20 scroll-mt-16'>
-            <div className='container max-w-7xl mx-auto px-4'>
-                <motion.h2 className='text-3xl font-bold mb-12 text-center' {...fadeInUp}>
+        <section className='relative py-20 md:py-24 overflow-hidden'>
+            {/* Section divider */}
+            <div className='section-divider-gradient'></div>
+            
+            {/* Gradient Background */}
+            <div className='absolute inset-0 -z-10'>
+                <div className='absolute inset-0 bg-gradient-to-br from-transparent via-white to-transparent dark:from-gray-900 dark:via-slate-900 dark:to-blue-950'></div>
+                <div className='absolute top-1/3 left-1/4 w-96 h-96 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl'></div>
+            </div>
+
+            <div id='projects' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
+                <motion.h2 className='text-3xl md:text-4xl font-bold mb-12 text-center section-header-glow' {...fadeInUp}>
                     Featured Projects
                 </motion.h2>
 
                 <motion.div
-                    className='flex flex-wrap justify-center gap-8 items-stretch'
+                    className='flex flex-wrap justify-center gap-6 md:gap-8 items-stretch'
                     variants={staggerContainer}
                     initial='initial'
                     animate='animate'
@@ -35,14 +44,14 @@ export default function Projects() {
                 </motion.div>
 
                 <motion.div
-                    className='flex justify-center mt-10'
+                    className='flex justify-center mt-12'
                     {...fadeInUp}
                     transition={{ delay: 0.6 }}
                 >
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95}}>
                         <Link
                             href='/projects'
-                            className='bg-primary inline-block px-8 py-3 text-white text-base font-semibold rounded-lg hover:bg-primary/90 transition-colors shadow-sm'
+                            className='cta-primary inline-block'
                         >
                             View All Projects
                         </Link>

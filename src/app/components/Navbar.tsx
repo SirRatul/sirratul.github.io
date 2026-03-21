@@ -21,11 +21,12 @@ export default function Navbar() {
         { href: '/#experience', label: 'Experience' },
         { href: '/#education', label: 'Education' },
         { href: '/#projects', label: 'Projects' },
+        { href: '/#publications', label: 'Publications' },
         { href: '/#contact', label: 'Contact' },
     ];
 
     return (
-        <nav className='fixed w-full bg-white/80 dark:bg-dark/80 backdrop-blur-sm z-50'>
+        <nav className='fixed w-full glass z-50 border-b border-gray-200/20 dark:border-gray-700/30'>
             <div className='container max-w-7xl mx-auto px-4'>
                 <div className='flex items-center justify-between h-16'>
                     <Link href='/' className='text-xl font-bold text-primary'>
@@ -38,7 +39,7 @@ export default function Navbar() {
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className='hover:text-primary transition-colors'
+                                className='hover-underline hover:text-primary transition-colors text-sm font-medium'
                             >
                                 {item.label}
                             </Link>
@@ -96,7 +97,7 @@ export default function Navbar() {
                                     >
                                         <Link
                                             href={item.href}
-                                            className='block py-2 hover:text-primary transition-colors'
+                                            className='block py-2 hover:text-primary transition-colors font-medium'
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
                                             {item.label}
@@ -113,7 +114,7 @@ export default function Navbar() {
                                             toggleTheme();
                                             setIsMobileMenuOpen(false);
                                         }}
-                                        className='flex items-center py-2 hover:text-primary transition-colors'
+                                        className='flex items-center py-2 hover:text-primary transition-colors font-medium'
                                     >
                                         {theme === 'dark' ? (
                                             <>

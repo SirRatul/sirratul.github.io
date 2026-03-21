@@ -122,17 +122,19 @@ export default function Contact() {
     };
 
     return (
-        <div id='contact' className='container max-w-7xl mx-auto py-12 scroll-mt-16'>
-            <motion.h1 className='text-4xl font-bold mb-8 text-center' {...fadeInUp}>
-                Contact Me
+        <section className='relative py-16 md:py-20 overflow-hidden'>
+
+            <div id='contact' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
+            <motion.h1 className='text-3xl md:text-4xl font-bold mb-12 text-center' {...fadeInUp}>
+                Get In Touch
             </motion.h1>
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
                 {/* Contact Information */}
                 <motion.div className='space-y-8' {...slideInLeft}>
                     <motion.div {...fadeInUp}>
-                        <h2 className='text-2xl font-semibold mb-4'>Get in Touch</h2>
-                        <p className='text-secondary'>
+                        <h2 className='text-xl md:text-2xl font-bold mb-4 text-gray-900 dark:text-white'>Let&apos;s Connect</h2>
+                        <p className='text-gray-800 dark:text-gray-200 text-base'>
                             I&apos;m always open to discussing new projects, creative ideas, or
                             opportunities to be part of your visions.
                         </p>
@@ -152,10 +154,10 @@ export default function Contact() {
                         >
                             <HiOutlineEnvelope className='h-6 w-6 text-primary' />
                             <div>
-                                <h3 className='font-semibold'>Email</h3>
+                                <h3 className='font-semibold text-gray-900 dark:text-white'>Email</h3>
                                 <a
                                     href='mailto:samsulratul98@gmail.com'
-                                    className='text-secondary hover:text-primary'
+                                    className='text-gray-800 dark:text-gray-200 hover:text-primary'
                                     aria-label='Send an email to samsulratul98@gmail.com'
                                 >
                                     samsulratul98@gmail.com
@@ -171,10 +173,10 @@ export default function Contact() {
                         >
                             <HiOutlinePhone className='h-6 w-6 text-primary' />
                             <div>
-                                <h3 className='font-semibold'>Phone</h3>
+                                <h3 className='font-semibold text-gray-900 dark:text-white'>Phone</h3>
                                 <a
                                     href='tel:+8801521431231'
-                                    className='text-secondary hover:text-primary'
+                                    className='text-gray-800 dark:text-gray-200 hover:text-primary'
                                     aria-label='Call +8801521431231'
                                 >
                                     +8801521431231
@@ -190,8 +192,8 @@ export default function Contact() {
                         >
                             <HiOutlineMapPin className='h-6 w-6 text-primary' />
                             <div>
-                                <h3 className='font-semibold'>Location</h3>
-                                <p className='text-secondary'>Dhaka, Bangladesh</p>
+                                <h3 className='font-semibold text-gray-900 dark:text-white'>Location</h3>
+                                <p className='text-gray-800 dark:text-gray-200'>Dhaka, Bangladesh</p>
                             </div>
                         </motion.div>
                     </motion.div>
@@ -199,7 +201,7 @@ export default function Contact() {
 
                 {/* Contact Form */}
                 <motion.div
-                    className='bg-white dark:bg-dark/50 p-6 rounded-lg shadow-md'
+                    className='bg-white dark:bg-gray-800/50 p-6 md:p-8 rounded-xl card-shadow-light dark:card-shadow-dark'
                     {...slideInRight}
                 >
                     <motion.form
@@ -211,7 +213,7 @@ export default function Contact() {
                     >
                         {/* Name */}
                         <motion.div variants={fadeInUp}>
-                            <label htmlFor='name' className='block text-sm font-medium mb-2'>
+                            <label htmlFor='name' className='block text-sm font-medium mb-2 text-gray-900 dark:text-gray-200'>
                                 Name
                             </label>
                             <input
@@ -223,7 +225,7 @@ export default function Contact() {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 required
-                                className='w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark focus:ring-2 focus:ring-primary focus:border-transparent'
+                                className='w-full px-4 py-3 rounded-lg border border-[#D8DFE6] dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors'
                             />
                             {errors.name && (
                                 <p className='text-red-500 text-sm mt-1'>{errors.name}</p>
@@ -232,7 +234,7 @@ export default function Contact() {
 
                         {/* Email */}
                         <motion.div variants={fadeInUp}>
-                            <label htmlFor='email' className='block text-sm font-medium mb-2'>
+                            <label htmlFor='email' className='block text-sm font-medium mb-2 text-gray-900 dark:text-gray-200'>
                                 Email
                             </label>
                             <input
@@ -244,7 +246,7 @@ export default function Contact() {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 required
-                                className='w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark focus:ring-2 focus:ring-primary focus:border-transparent'
+                                className='w-full px-4 py-3 rounded-lg border border-[#D8DFE6] dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors'
                             />
                             {errors.email && (
                                 <p className='text-red-500 text-sm mt-1'>{errors.email}</p>
@@ -253,7 +255,7 @@ export default function Contact() {
 
                         {/* Message */}
                         <motion.div variants={fadeInUp}>
-                            <label htmlFor='message' className='block text-sm font-medium mb-2'>
+                            <label htmlFor='message' className='block text-sm font-medium mb-2 text-gray-900 dark:text-gray-200'>
                                 Message
                             </label>
                             <textarea
@@ -263,8 +265,8 @@ export default function Contact() {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 required
-                                rows={4}
-                                className='w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-dark focus:ring-2 focus:ring-primary focus:border-transparent'
+                                rows={5}
+                                className='w-full px-4 py-3 rounded-lg border border-[#D8DFE6] dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none'
                             />
                             {errors.message && (
                                 <p className='text-red-500 text-sm mt-1'>{errors.message}</p>
@@ -305,6 +307,7 @@ export default function Contact() {
                     </motion.form>
                 </motion.div>
             </div>
-        </div>
+            </div>
+        </section>
     );
 }

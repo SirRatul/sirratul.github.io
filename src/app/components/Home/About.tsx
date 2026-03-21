@@ -5,22 +5,31 @@ import { fadeInUp, fadeInDown } from '@/utils/animations';
 
 export default function About() {
     return (
-        <div id='about' className='container max-w-7xl mx-auto py-12 scroll-mt-16'>
-            <motion.h1 className='text-4xl font-bold mb-8 text-center' {...fadeInDown}>
-                About Me
-            </motion.h1>
+        <section className='relative py-16 md:py-20 overflow-hidden bg-gray-50/50 dark:bg-transparent'>
+            {/* Gradient Background */}
+            <div className='absolute inset-0 -z-10'>
+                <div className='absolute inset-0 bg-gradient-to-br from-transparent via-gray-50/50 to-transparent dark:from-gray-900 dark:via-slate-900 dark:to-blue-950'></div>
+                <div className='absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl'></div>
+            </div>
 
-            {/* Bio Section */}
-            <motion.section className='mb-16' {...fadeInUp}>
-                <p className='text-lg text-secondary max-w-3xl mx-auto text-center'>
-                    I&apos;m a dedicated Frontend Developer with 4+ years of experience building
-                    high-performance web applications using React.js, Next.js, JavaScript and
-                    TypeScript. I specialize in creating clean, responsive user interfaces and
-                    integrating scalable backend services with Node.js and Express. With a strong
-                    eye for UI/UX and a passion for writing clean, maintainable code, I thrive in
-                    agile, remote environments where collaboration and performance matter.
-                </p>
-            </motion.section>
-        </div>
+            <div id='about' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
+                <motion.h1 className='text-3xl md:text-4xl font-bold mb-12 text-center' {...fadeInDown}>
+                    About Me
+                </motion.h1>
+
+                {/* Bio Section */}
+                <motion.section className='mb-16' {...fadeInUp}>
+                    <p className='text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto text-center leading-relaxed'>
+                        I&apos;m a Senior Frontend Developer with 4+ years of experience building
+                        high-performance web applications using React.js, Next.js, JavaScript, and
+                        TypeScript. I specialize in creating clean, responsive user interfaces and have
+                        extensive expertise in Shopify development. With proven success in improving page
+                        load speeds by up to 70% and mentoring junior developers, I excel at writing
+                        maintainable code and delivering scalable solutions. I thrive in agile, remote
+                        environments where collaboration and performance excellence matter.
+                    </p>
+                </motion.section>
+            </div>
+        </section>
     );
 }

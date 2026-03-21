@@ -1,9 +1,8 @@
 import dynamic from 'next/dynamic';
-import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Script from 'next/script';
-import { ThemeProvider } from './context/ThemeContext';
+import { ClientThemeProvider } from './context/ClientThemeProvider';
 
 const Navbar = dynamic(() => import('./components/Navbar'), {
     loading: () => (
@@ -19,6 +18,7 @@ const Footer = dynamic(() => import('./components/Footer'), {
         </div>
     ),
 });
+const SignatureGradientLine = dynamic(() => import('./components/SignatureGradientLine'));
 
 const inter = Inter({
     subsets: ['latin'],
@@ -32,15 +32,31 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     const descriptionText =
-        'Portfolio of Samsul Islam, a frontend developer skilled in React, NextJS, JavaScript, TypeScript, HTML, and CSS. Crafting responsive and modern user interfaces.';
-    const titleText = 'Samsul Islam | Frontend Developer Portfolio';
+        'Samsul Islam - Senior Frontend Developer with 4+ years of experience specializing in React, Next.js, TypeScript, and Shopify development. Building high-performance, scalable web applications with modern UI/UX practices.';
+    const titleText = 'Samsul Islam | Senior Frontend Developer | React & Next.js Specialist';
     const imageUrl = 'https://sirratul.github.io/meta.webp';
     const siteUrl = 'https://sirratul.github.io/';
 
     return (
         <html lang='en' className='scroll-smooth'>
-            <Head>
+            <head>
                 <meta name='viewport' content='width=device-width, initial-scale=1' />
+
+                {/* Favicon */}
+                <link rel='icon' href='/favicon.ico' />
+                
+                {/* Apple Touch Icon */}
+                <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+                
+                {/* Android Chrome Icons */}
+                <link rel='icon' type='image/png' sizes='192x192' href='/android-chrome-192x192.png' />
+                <link rel='icon' type='image/png' sizes='512x512' href='/android-chrome-512x512.png' />
+                
+                {/* Web App Manifest */}
+                <link rel='manifest' href='/site.webmanifest' />
+                
+                {/* Theme Color */}
+                <meta name='theme-color' content='#ffffff' />
 
                 <title>{titleText}</title>
                 <meta name='title' content={titleText} />
@@ -58,15 +74,16 @@ export default function RootLayout({
                 <meta name='twitter:title' content={titleText} />
                 <meta name='twitter:description' content={descriptionText} />
                 <meta name='twitter:image' content={imageUrl} />
-            </Head>
+            </head>
             <body
                 className={`bg-white scroll-smooth transition-colors dark:bg-gray-900 dark:text-white ${inter.className}`}
             >
-                <ThemeProvider>
+                <ClientThemeProvider>
+                    <SignatureGradientLine />
                     <Navbar />
-                    <main className='min-h-screen pt-24'>{children}</main>
+                    <main className='min-h-screen'>{children}</main>
                     <Footer />
-                </ThemeProvider>
+                </ClientThemeProvider>
                 {process.env.NODE_ENV === 'production' && (
                     <Script
                         strategy='lazyOnload'

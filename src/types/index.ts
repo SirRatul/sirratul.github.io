@@ -20,4 +20,18 @@ export interface Project {
     demoLink: string;
     image: string;
     featured?: boolean;
+    category?: string;
+    role?: string; // e.g., "Frontend Lead", "Full-Stack Developer", "Shopify Developer"
+}
+
+export interface Publication {
+    title: string;
+    authors: string;
+    venue: string;
+    year: number;
+    link: string;
+    type: 'journal' | 'conference' | 'workshop' | 'preprint';
+    citations?: number;
+    peerReviewed?: boolean;
+    role?: string; // e.g., "First Author", "Co-author", "Contributor"
 }
