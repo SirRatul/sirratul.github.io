@@ -15,6 +15,8 @@ export interface Education {
 export interface Project {
     title: string;
     description: string;
+    /** One line: problem solved, outcome, or business impact (shown on featured cards). */
+    impact?: string;
     technologies: string[];
     githubLink: string;
     demoLink: string;

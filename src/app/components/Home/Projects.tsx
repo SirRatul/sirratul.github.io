@@ -19,9 +19,14 @@ export default function Projects() {
             </div>
 
             <div id='projects' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
-                <motion.h2 className='text-3xl md:text-4xl font-bold mb-12 text-center section-header-glow' {...fadeInUp}>
-                    Featured Projects
-                </motion.h2>
+                <div className='section-head'>
+                    <motion.h2 className='section-title section-header-glow' {...fadeInUp}>
+                        Featured Projects
+                    </motion.h2>
+                    <p className='section-lead text-muted-on-dark'>
+                        Selected work with clear outcomes—live sites and products shipped to real users.
+                    </p>
+                </div>
 
                 <motion.div
                     className='flex flex-wrap justify-center gap-6 md:gap-8 items-stretch'
@@ -51,7 +56,7 @@ export default function Projects() {
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95}}>
                         <Link
                             href='/projects'
-                            className='cta-primary inline-block'
+                            className='cta-primary'
                         >
                             View All Projects
                         </Link>

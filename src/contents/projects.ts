@@ -5,6 +5,7 @@ export const projects: Project[] = [
     {
         title: 'Edubily',
         description: 'German-developed dietary supplements with top quality and no fuss. Focused on health and wellness products.',
+        impact: 'High-converting Shopify storefront for a health brand in the DACH market.',
         technologies: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
         githubLink: '',
         demoLink: 'https://edubily.de/',
@@ -16,6 +17,7 @@ export const projects: Project[] = [
     {
         title: 'Neona Store',
         description: 'Innovative lamps designed to help everyone live a positive, productive, and healthy life. Features minimalist, modern, and sustainable lighting solutions.',
+        impact: 'Premium product storytelling and checkout tuned for international shoppers.',
         technologies: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
         githubLink: '',
         demoLink: 'https://www.neona.store/en',
@@ -27,6 +29,7 @@ export const projects: Project[] = [
     {
         title: 'Von Heesen',
         description: 'High-quality handcrafted leather products including wallets, credit card holders, passport covers, umbrellas, briefcases, travel bags, and backpacks. Reliable business and lifestyle accessories.',
+        impact: 'Craft brand site with rich catalog UX and trustworthy purchase flow.',
         technologies: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
         githubLink: '',
         demoLink: 'https://www.von-heesen.com/',
@@ -39,6 +42,7 @@ export const projects: Project[] = [
     {
         title: 'Sneakerlah',
         description: 'Discover curated local fashion brands that blend style and exclusivity.',
+        impact: 'Content-heavy discovery experience with responsive layouts for mobile-first users.',
         technologies: ['React', 'Redux', 'Bootstrap'],
         githubLink: '',
         demoLink: 'https://sneakerlah.com/',
@@ -50,6 +54,7 @@ export const projects: Project[] = [
     {
         title: 'FlipBizz',
         description: 'Platform for enhancing professional networking.',
+        impact: 'GraphQL-backed profiles and feeds built for engagement at scale.',
         technologies: ['React', 'Redux', 'Bootstrap', 'GraphQL'],
         githubLink: '',
         demoLink: 'https://www.flipbizz.com/',
@@ -61,6 +66,7 @@ export const projects: Project[] = [
     {
         title: 'UN Questionnaire',
         description: 'Tool to assess progress towards the Sustainable Development Goals (SDGs).',
+        impact: 'SDG assessment flows for organizations tracking sustainability progress.',
         technologies: ['React', 'Redux', 'Bootstrap'],
         githubLink: '',
         demoLink: 'https://assessment.esghub.my/login',
@@ -72,6 +78,7 @@ export const projects: Project[] = [
     {
         title: 'Adignis',
         description: 'Interactive review platform delivering transparent feedback.',
+        impact: 'Transparent reviews and ratings with GraphQL-backed data.',
         technologies: ['React', 'Redux', 'Bootstrap', 'GraphQL', 'PostgreSQL'],
         githubLink: '',
         demoLink: 'https://adignis.com/',
@@ -83,6 +90,7 @@ export const projects: Project[] = [
     {
         title: 'AFA Tournament',
         description: 'Platform for organizing and engaging in tournaments.',
+        impact: 'Tournament registration and engagement for sports communities.',
         technologies: ['React', 'Redux', 'Bootstrap'],
         githubLink: '',
         demoLink: 'https://tournament.afa-sports.com/',
@@ -93,6 +101,7 @@ export const projects: Project[] = [
     {
         title: 'AFA Kiosk',
         description: 'Online court booking platform to promote active lifestyles.',
+        impact: 'Streamlined court booking to drive facility usage.',
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://book.afa-sports.com/',
@@ -103,6 +112,7 @@ export const projects: Project[] = [
     {
         title: 'AFA Coaching',
         description: 'Platform connecting users with seasoned coaches for development.',
+        impact: 'Coach discovery and booking for athlete development programs.',
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://staging.coaching-website.afa-sports.com/',
@@ -113,6 +123,7 @@ export const projects: Project[] = [
     {
         title: 'Idenfic',
         description: 'Mobile app for verifying online sellers via bank accounts.',
+        impact: 'Seller verification UX linked to banking data for safer marketplaces.',
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://play.google.com/store/apps/details?id=com.onesoftlab.idenfic&hl=en',
@@ -124,6 +135,7 @@ export const projects: Project[] = [
     {
         title: 'Reskills',
         description: 'Online learning platform with flexible global access.',
+        impact: 'Multi-framework learning experience with global reach.',
         technologies: ['React', 'Vue'],
         githubLink: '',
         demoLink: 'https://www.reskills.com/',
@@ -134,6 +146,7 @@ export const projects: Project[] = [
     {
         title: 'TLB',
         description: 'Plastic packaging solutions by TLB Industry Sdn. Bhd.',
+        impact: 'Corporate site presenting industrial packaging capabilities.',
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://www.tlb-group.com/',
@@ -144,6 +157,7 @@ export const projects: Project[] = [
     {
         title: 'Pcoins',
         description: 'Malaysian tech company providing hardware & software solutions.',
+        impact: 'Product and services positioning for a regional tech brand.',
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://pineapple.my/',
@@ -154,6 +168,7 @@ export const projects: Project[] = [
     {
         title: 'Rezo',
         description: 'Tech and digital solutions company in Malaysia.',
+        impact: 'Services-focused marketing site for digital solutions.',
         technologies: ['React'],
         githubLink: '',
         demoLink: 'https://www.rezo.com.my/',
@@ -164,6 +179,7 @@ export const projects: Project[] = [
     {
         title: 'Smart Nurse',
         description: 'MERN stack web application for healthcare services.',
+        impact: 'End-to-end MERN prototype for healthcare workflows.',
         technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
         githubLink: '',
         demoLink: '',
@@ -175,6 +191,7 @@ export const projects: Project[] = [
     {
         title: 'Teresa',
         description: 'MERN stack project for managing health services.',
+        impact: 'Health services admin and patient-facing flows on the MERN stack.',
         technologies: ['MongoDB', 'Express', 'React', 'Node.js'],
         githubLink: '',
         demoLink: '',
@@ -186,6 +203,7 @@ export const projects: Project[] = [
     {
         title: 'Teresa App',
         description: 'React Native app for medication management.',
+        impact: 'Mobile medication tracking and reminders for patients.',
         technologies: ['React Native'],
         githubLink: '',
         demoLink: '',
@@ -198,6 +216,7 @@ export const projects: Project[] = [
     {
         title: 'Bangla Digit Recognition',
         description: 'ML model trained on NumtaDB dataset for digit recognition.',
+        impact: 'Digit classification pipeline on real-world Bangla numeral data.',
         technologies: ['Python', 'NumPy', 'Pandas', 'Sklearn'],
         githubLink: '',
         demoLink: '',
@@ -208,6 +227,7 @@ export const projects: Project[] = [
     {
         title: 'Predict Suicidal Thought',
         description: 'ML project to predict suicidal tendencies based on input data.',
+        impact: 'Experimental risk scoring from structured behavioral inputs.',
         technologies: ['Python', 'Machine Learning'],
         githubLink: '',
         demoLink: '',
@@ -218,6 +238,7 @@ export const projects: Project[] = [
     {
         title: 'Detect Mask Person',
         description: 'CNN model to detect if a person is wearing a mask.',
+        impact: 'CNN-based mask detection for safety screening scenarios.',
         technologies: ['TensorFlow', 'Keras', 'Python'],
         githubLink: '',
         demoLink: '',
@@ -229,6 +250,7 @@ export const projects: Project[] = [
     {
         title: 'Chef Zilla',
         description: 'Restaurant ordering system developed using .NET & C# (MVC).',
+        impact: 'Full ordering flow for restaurant operations on .NET MVC.',
         technologies: ['.NET', 'C#', 'MVC'],
         githubLink: '',
         demoLink: '',
@@ -249,6 +271,7 @@ export const projects: Project[] = [
     {
         title: 'Coffee House',
         description: 'PHP-based website with HTML, CSS, and Bootstrap for a cafe.',
+        impact: 'Simple cafe web presence with menu and contact on LAMP stack.',
         technologies: ['HTML', 'CSS', 'Bootstrap', 'PHP'],
         githubLink: '',
         demoLink: '',

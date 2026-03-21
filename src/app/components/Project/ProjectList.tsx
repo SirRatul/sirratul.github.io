@@ -28,23 +28,25 @@ export default function ProjectList() {
             </div>
 
             <div className='container max-w-7xl mx-auto px-4'>
-            <motion.h1
-                className='text-4xl font-bold mb-4 text-center'
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-            >
-                My Projects
-            </motion.h1>
-            <motion.p
-                className='text-lg text-secondary mb-12 text-center max-w-2xl mx-auto'
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-            >
-                Explore my portfolio of {projects.length}+ projects across web development, Shopify
-                stores, machine learning, and more. Filter by category to find what interests you.
-            </motion.p>
+            <div className='section-head'>
+                <motion.h1
+                    className='section-title'
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    My Projects
+                </motion.h1>
+                <motion.p
+                    className='section-lead text-secondary'
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                    Explore my portfolio of {projects.length}+ projects across web development, Shopify
+                    stores, machine learning, and more. Filter by category to find what interests you.
+                </motion.p>
+            </div>
 
             {/* Tab Navigation */}
             <motion.div

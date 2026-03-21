@@ -11,9 +11,11 @@ export default function Education() {
             <div id='education' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
                 {/* Education Section */}
                 <motion.section {...fadeIn} transition={{ delay: 0.6 }}>
-                    <motion.h2 className='text-3xl md:text-4xl font-bold mb-12 text-center' {...fadeInUp}>
-                        Education
-                    </motion.h2>
+                    <div className='section-head'>
+                        <motion.h2 className='section-title section-header-glow' {...fadeInUp}>
+                            Education
+                        </motion.h2>
+                    </div>
                     <motion.div
                         className='max-w-4xl mx-auto space-y-6'
                         variants={staggerContainer}
@@ -23,7 +25,7 @@ export default function Education() {
                         {educations.map((edu) => (
                             <motion.div
                                 key={`${edu.degree}-${edu.institution}`}
-                                className='bg-[#FCFCFF] dark:bg-gray-800/50 p-6 md:p-8 rounded-xl card-shadow-light dark:card-shadow-dark transition-all duration-300'
+                                className='card-surface'
                                 variants={fadeInUp}
                                 {...cardHoverSmall}
                             >

@@ -13,13 +13,15 @@ export default function About() {
             </div>
 
             <div id='about' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
-                <motion.h1 className='text-3xl md:text-4xl font-bold mb-12 text-center' {...fadeInDown}>
-                    About Me
-                </motion.h1>
+                <div className='section-head'>
+                    <motion.h2 className='section-title' {...fadeInDown}>
+                        About Me
+                    </motion.h2>
+                </div>
 
                 {/* Bio Section */}
                 <motion.section className='mb-16' {...fadeInUp}>
-                    <p className='text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto text-center leading-relaxed'>
+                    <p className='prose-body max-w-3xl mx-auto text-center'>
                         I&apos;m a Senior Frontend Developer with 4+ years of experience building
                         high-performance web applications using React.js, Next.js, JavaScript, and
                         TypeScript. I specialize in creating clean, responsive user interfaces and have

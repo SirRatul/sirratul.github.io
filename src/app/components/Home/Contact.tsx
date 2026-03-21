@@ -125,16 +125,23 @@ export default function Contact() {
         <section className='relative py-16 md:py-20 overflow-hidden'>
 
             <div id='contact' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
-            <motion.h1 className='text-3xl md:text-4xl font-bold mb-12 text-center' {...fadeInUp}>
-                Get In Touch
-            </motion.h1>
+                <div className='section-head'>
+                    <motion.h2 className='section-title section-header-glow' {...fadeInUp}>
+                        Get in touch
+                    </motion.h2>
+                    <p className='section-lead text-muted-on-dark'>
+                        Tell me about your role or project—I&apos;ll reply as soon as I can.
+                    </p>
+                </div>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16'>
                 {/* Contact Information */}
                 <motion.div className='space-y-8' {...slideInLeft}>
                     <motion.div {...fadeInUp}>
-                        <h2 className='text-xl md:text-2xl font-bold mb-4 text-gray-900 dark:text-white'>Let&apos;s Connect</h2>
-                        <p className='text-gray-800 dark:text-gray-200 text-base'>
+                        <h3 className='text-xl md:text-2xl font-bold mb-3 text-gray-900 dark:text-white tracking-tight'>
+                            Let&apos;s connect
+                        </h3>
+                        <p className='prose-body text-left max-w-lg'>
                             I&apos;m always open to discussing new projects, creative ideas, or
                             opportunities to be part of your visions.
                         </p>
@@ -201,7 +208,7 @@ export default function Contact() {
 
                 {/* Contact Form */}
                 <motion.div
-                    className='bg-white dark:bg-gray-800/50 p-6 md:p-8 rounded-xl card-shadow-light dark:card-shadow-dark'
+                    className='bg-white dark:bg-slate-900/80 border border-gray-200/90 dark:border-white/10 p-6 md:p-8 rounded-2xl shadow-md dark:card-shadow-dark'
                     {...slideInRight}
                 >
                     <motion.form
@@ -225,7 +232,7 @@ export default function Contact() {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 required
-                                className='w-full px-4 py-3 rounded-lg border border-[#D8DFE6] dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors'
+                                className='input-premium'
                             />
                             {errors.name && (
                                 <p className='text-red-500 text-sm mt-1'>{errors.name}</p>
@@ -246,7 +253,7 @@ export default function Contact() {
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 required
-                                className='w-full px-4 py-3 rounded-lg border border-[#D8DFE6] dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors'
+                                className='input-premium'
                             />
                             {errors.email && (
                                 <p className='text-red-500 text-sm mt-1'>{errors.email}</p>
@@ -266,7 +273,7 @@ export default function Contact() {
                                 onBlur={handleBlur}
                                 required
                                 rows={5}
-                                className='w-full px-4 py-3 rounded-lg border border-[#D8DFE6] dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-colors resize-none'
+                                className='input-premium resize-none min-h-[140px]'
                             />
                             {errors.message && (
                                 <p className='text-red-500 text-sm mt-1'>{errors.message}</p>
@@ -277,9 +284,9 @@ export default function Contact() {
                         <motion.button
                             type='submit'
                             disabled={status === 'loading'}
-                            className='w-full btn btn-primary'
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
+                            className='w-full rounded-lg bg-gradient-to-r from-primary to-blue-600 text-white font-semibold py-3.5 px-4 shadow-lg hover:shadow-xl hover:brightness-[1.03] disabled:opacity-60 disabled:pointer-events-none transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
+                            whileHover={{ scale: status === 'loading' ? 1 : 1.01 }}
+                            whileTap={{ scale: status === 'loading' ? 1 : 0.99 }}
                         >
                             {status === 'loading' ? 'Sending...' : 'Send Message'}
                         </motion.button>

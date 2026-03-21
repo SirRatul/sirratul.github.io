@@ -39,9 +39,11 @@ export default function Experience() {
             <div id='experience' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
                 {/* Experience Section */}
                 <motion.section className='mb-16' {...fadeIn} transition={{ delay: 0.4 }}>
-                    <motion.h2 className='text-3xl md:text-4xl font-bold mb-12 text-center section-header-glow' {...fadeInUp}>
-                        Work Experience
-                    </motion.h2>
+                    <div className='section-head'>
+                        <motion.h2 className='section-title section-header-glow' {...fadeInUp}>
+                            Work Experience
+                        </motion.h2>
+                    </div>
                     <motion.div
                         className='max-w-4xl mx-auto space-y-8 relative'
                         variants={staggerContainer}
@@ -61,7 +63,7 @@ export default function Experience() {
                                 <div className='hidden md:dark:flex absolute left-6 top-6 w-5 h-5 rounded-full bg-primary ring-4 ring-gray-900 timeline-dot-glow z-10 transition-all duration-300 hover:scale-125 hover:shadow-lg hover:shadow-primary/50 cursor-pointer'></div>
 
                                 <motion.div
-                                    className='bg-[#FCFCFF] dark:bg-gray-800/50 p-6 md:p-8 rounded-xl card-shadow-light dark:card-shadow-dark md:dark:ml-16 transition-all duration-300'
+                                    className='card-surface md:dark:ml-16'
                                     {...cardHoverSmall}
                                 >
                                     {/* Badge for current role */}

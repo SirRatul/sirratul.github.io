@@ -2,7 +2,7 @@
 
 import { publications } from '@/contents/publications';
 import { motion } from 'framer-motion';
-import { fadeInUp, fadeIn, staggerContainer } from '@/utils/animations';
+import { fadeInUp, fadeIn, staggerContainer, cardHoverSmall } from '@/utils/animations';
 import { FaExternalLinkAlt, FaBook, FaFileAlt, FaUser } from 'react-icons/fa';
 
 const getPublicationIcon = (type: string) => {
@@ -46,9 +46,11 @@ export default function Publications() {
 
             <div id='publications' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
                 <motion.section {...fadeIn} transition={{ delay: 0.2 }}>
-                    <motion.h2 className='text-3xl md:text-4xl font-bold mb-12 text-center section-header-glow' {...fadeInUp}>
-                        Publications
-                    </motion.h2>
+                    <div className='section-head'>
+                        <motion.h2 className='section-title section-header-glow' {...fadeInUp}>
+                            Publications
+                        </motion.h2>
+                    </div>
 
                     <motion.div
                         className='max-w-5xl mx-auto space-y-6'
@@ -59,8 +61,9 @@ export default function Publications() {
                         {publications.map((pub, index) => (
                             <motion.div
                                 key={`${pub.title}-${index}`}
-                                className='bg-[#FCFCFF] dark:bg-gray-800/50 p-6 md:p-8 rounded-xl card-shadow-light dark:card-shadow-dark transition-all duration-300 hover:shadow-xl'
+                                className='card-surface'
                                 variants={fadeInUp}
+                                {...cardHoverSmall}
                             >
                                 <div className='flex flex-col md:flex-row md:items-start gap-4'>
                                     {/* Icon */}

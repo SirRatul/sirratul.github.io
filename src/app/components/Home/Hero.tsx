@@ -67,13 +67,13 @@ export default function Hero() {
                             {...fadeInUp}
                             transition={{ duration: 0.6 }}
                         >
-                            <p className='text-xl md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-6'>
+                            <p className='text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-slate-200 font-semibold mb-6'>
                                 Senior Frontend Developer | 4+ Years of Excellence
                             </p>
-                            <p className='text-base md:text-lg text-gray-500 dark:text-gray-400 mb-4'>
+                            <p className='text-sm sm:text-base md:text-lg text-gray-500 dark:text-slate-400 mb-4'>
                                 React & Next.js Specialist | Shopify Expert | Performance Optimizer
                             </p>
-                            <p className='text-base md:text-lg text-gray-700 dark:text-gray-200 font-medium max-w-2xl mx-auto'>
+                            <p className='text-sm sm:text-base md:text-lg text-gray-700 dark:text-slate-200 font-medium max-w-2xl mx-auto leading-relaxed'>
                                 I build scalable, performance-focused web applications used by thousands.
                             </p>
                             
@@ -135,13 +135,13 @@ export default function Hero() {
                         </motion.div>
                     ) : (
                         <div className='mb-8'>
-                            <p className='text-xl md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-6'>
+                            <p className='text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-slate-200 font-semibold mb-6'>
                                 Senior Frontend Developer | 4+ Years of Excellence
                             </p>
-                            <p className='text-base md:text-lg text-gray-500 dark:text-gray-400 mb-4'>
+                            <p className='text-sm sm:text-base md:text-lg text-gray-500 dark:text-slate-400 mb-4'>
                                 React & Next.js Specialist | Shopify Expert | Performance Optimizer
                             </p>
-                            <p className='text-base md:text-lg text-gray-700 dark:text-gray-200 font-medium max-w-2xl mx-auto'>
+                            <p className='text-sm sm:text-base md:text-lg text-gray-700 dark:text-slate-200 font-medium max-w-2xl mx-auto leading-relaxed'>
                                 I build scalable, performance-focused web applications used by thousands.
                             </p>
                         </div>
@@ -155,15 +155,15 @@ export default function Hero() {
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Link
                                 href='/#projects'
-                                className='cta-primary inline-block w-full md:w-auto'
+                                className='cta-primary w-full md:w-auto md:min-w-[200px]'
                             >
                                 View Projects
                             </Link>
                         </motion.div>
-                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Link
                                 href='/#contact'
-                                className='cta-secondary inline-block w-full md:w-auto'
+                                className='cta-secondary w-full md:w-auto md:min-w-[200px]'
                             >
                                 Contact Me
                             </Link>

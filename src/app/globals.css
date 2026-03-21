@@ -7,6 +7,10 @@
 	--color-light: #f9fafb;
 	--color-text: #000000;
 	--color-bg: #ffffff;
+	/* Dark mode layered surfaces (subtle depth without heavy effects) */
+	--color-surface-dark-base: #020617;
+	--color-surface-dark-raised: #0f172a;
+	--color-surface-dark-card: #111c2f;
 
 	--animation-fade-in: fadeIn 0.5s ease-in-out;
 	--animation-slide-up: slideUp 0.5s ease-in-out;
@@ -35,14 +39,7 @@ a {
 	/* Dark mode background with enhanced gradient and depth */
 	body.dark {
 		background: radial-gradient(ellipse at top, #1e3a5f 0%, #0f172a 50%, #020617 100%);
-		color: #eeeff1; /* +8% brightness for better readability */
-	}
-	
-	/* Enhanced body text in dark mode for better hierarchy */
-	body.dark p,
-	body.dark li,
-	body.dark span:not(.bg-primary):not([class*="text-primary"]) {
-		color: #eeeff1; /* +8% brightness from original */
+		color: #e8eaed;
 	}
 	
 	/* Pure white headings for maximum impact */
@@ -56,10 +53,12 @@ a {
 		font-weight: 700;
 	}
 	
-	/* Helper text with reduced opacity */
+	/* Secondary / muted copy: readable but clearly below headings */
+	body.dark .text-muted-on-dark,
 	body.dark .text-gray-400,
 	body.dark .text-gray-500 {
-		opacity: 0.6;
+		color: #94a3b8 !important;
+		opacity: 1;
 	}
 }
 
@@ -80,8 +79,35 @@ a {
 		@apply bg-secondary text-white hover:bg-secondary/90;
 	}
 
+	/* Section headings: size + weight only; wrap with .section-head for spacing */
 	.section-title {
-		@apply text-3xl font-bold mb-8 text-center;
+		@apply text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center text-gray-900 dark:text-white;
+	}
+
+	.section-head {
+		@apply mb-12 md:mb-16 lg:mb-20 text-center;
+	}
+
+	.section-head .section-title + .section-lead {
+		@apply mt-4 md:mt-5;
+	}
+
+	.section-lead {
+		@apply text-center text-sm sm:text-base text-gray-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-normal;
+	}
+
+	/* Body copy rhythm */
+	.prose-body {
+		@apply text-[15px] sm:text-base md:text-lg leading-relaxed text-gray-700 dark:text-slate-300/95;
+	}
+
+	/* Contact / form fields */
+	.input-premium {
+		@apply w-full px-4 py-3 rounded-lg border border-[#D8DFE6] dark:border-slate-600/80;
+		@apply bg-white dark:bg-slate-900/60 text-gray-900 dark:text-slate-100;
+		@apply transition-[box-shadow,border-color] duration-200;
+		@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:border-primary/60;
+		@apply dark:focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900;
 	}
 
 	/* Glass morphism effect */
@@ -110,14 +136,32 @@ a {
 	}
 
 	.card-shadow-dark {
-		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
-		border: 1px solid rgba(255, 255, 255, 0.05);
+		box-shadow:
+			0 1px 0 rgba(255, 255, 255, 0.04) inset,
+			0 8px 24px rgba(0, 0, 0, 0.45);
+		border: 1px solid rgba(255, 255, 255, 0.08);
 	}
 
 	.card-shadow-dark:hover {
-		box-shadow: 0 12px 32px rgba(0, 91, 181, 0.35), 0 0 0 1px rgba(0, 91, 181, 0.2);
-		border-color: rgba(0, 91, 181, 0.15);
-		transform: translateY(-4px);
+		box-shadow:
+			0 1px 0 rgba(255, 255, 255, 0.06) inset,
+			0 8px 28px rgba(0, 0, 0, 0.5),
+			0 0 0 1px rgba(0, 91, 181, 0.22);
+		border-color: rgba(0, 91, 181, 0.2);
+		transform: translateY(-3px);
+	}
+
+	/* Shared card shell (Skills, Experience, Education, Publications) — matches ProjectCard-style depth */
+	.card-surface {
+		@apply rounded-2xl border border-gray-200/90 bg-[#FCFCFF] p-6 md:p-8 shadow-md transition-shadow duration-300;
+		@apply dark:border-white/10 dark:bg-slate-900/80;
+	}
+
+	body.dark .card-surface {
+		box-shadow:
+			0 1px 0 rgba(255, 255, 255, 0.04) inset,
+			0 8px 24px rgba(0, 0, 0, 0.45);
+		border-color: rgba(255, 255, 255, 0.08);
 	}
 
 	/* Hover underline animation - IMPROVED */
@@ -192,11 +236,12 @@ a {
 	
 	/* Section background alternation for scroll rhythm */
 	.section-bg-white {
-		@apply bg-white dark:bg-gray-900;
+		@apply bg-white dark:bg-[var(--color-surface-dark-base)];
 	}
-	
+
 	.section-bg-light {
-		@apply bg-gray-50 dark:bg-slate-900;
+		@apply bg-gray-50 dark:bg-[var(--color-surface-dark-raised)];
+		@apply dark:border-y dark:border-white/[0.06];
 	}
 	
 	.section-bg-gradient {
@@ -204,7 +249,7 @@ a {
 	}
 	
 	body.dark .section-bg-gradient {
-		background: #0f172a;
+		background: linear-gradient(180deg, #020617 0%, #0f172a 45%, #020617 100%);
 	}
 	
 	/* Enhanced card shadows for better depth */
@@ -240,7 +285,9 @@ a {
 	}
 	
 	/* CTA hierarchy */
+	/* Hero / paired CTAs: primary + secondary share the same tap target size */
 	.cta-primary {
+		@apply inline-flex items-center justify-center;
 		@apply bg-gradient-to-r from-primary to-blue-600 text-white;
 		@apply px-10 py-4 rounded-lg text-lg font-bold;
 		@apply shadow-lg hover:shadow-xl;
@@ -258,7 +305,8 @@ a {
 	}
 	
 	.cta-secondary {
-		@apply px-8 py-3 rounded-lg text-base font-semibold;
+		@apply inline-flex items-center justify-center;
+		@apply px-10 py-4 rounded-lg text-lg font-semibold;
 		@apply border-2 border-gray-300 dark:border-gray-500;
 		@apply text-gray-700 dark:text-gray-200;
 		@apply hover:bg-gray-50 dark:hover:bg-gray-800;
