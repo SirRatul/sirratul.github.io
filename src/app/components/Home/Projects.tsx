@@ -9,9 +9,6 @@ import ProjectCard from '../ProjectCard';
 export default function Projects() {
     return (
         <section className='relative py-20 md:py-24 overflow-hidden'>
-            {/* Section divider */}
-            <div className='section-divider-gradient'></div>
-            
             {/* Gradient Background */}
             <div className='absolute inset-0 -z-10'>
                 <div className='absolute inset-0 bg-gradient-to-br from-transparent via-white to-transparent dark:from-gray-900 dark:via-slate-900 dark:to-blue-950'></div>

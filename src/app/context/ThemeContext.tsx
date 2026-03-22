@@ -1,12 +1,29 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useState,
+} from 'react';
+import type { MouseEvent } from 'react';
+import ThemeCircleTransition from '../components/ThemeCircleTransition';
 
 type Theme = 'light' | 'dark';
 
+type TransitionPayload = {
+    x: number;
+    y: number;
+    to: Theme;
+    /** Theme before toggle — overlay uses this color while shrinking away. */
+    from: Theme;
+};
+
 interface ThemeContextType {
     theme: Theme;
-    toggleTheme: () => void;
+    /** Pass the click event from the toggle control for a circular reveal; omit for instant switch. */
+    toggleTheme: (event?: MouseEvent<HTMLElement>) => void;
     setTheme: (theme: Theme) => void;
 }
 
@@ -30,12 +47,19 @@ function getBrowserStorage(): Storage | null {
     return null;
 }
 
+function prefersReducedMotion(): boolean {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setThemeState] = useState<Theme>('light');
     const [mounted, setMounted] = useState(false);
+    const [transition, setTransition] = useState<TransitionPayload | null>(
+        null,
+    );
 
-    // Update theme
-    const setTheme = (newTheme: Theme) => {
+    const setTheme = useCallback((newTheme: Theme) => {
         setThemeState(newTheme);
         const storage = getBrowserStorage();
         if (storage) {
@@ -44,18 +68,41 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         if (typeof document !== 'undefined') {
             document.documentElement.classList.toggle('dark', newTheme === 'dark');
         }
-    };
+    }, []);
 
-    // Toggle theme
-    const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
+    const endThemeTransition = useCallback(() => {
+        setTransition(null);
+    }, []);
 
-    // Initialize theme
+    const toggleTheme = useCallback(
+        (event?: MouseEvent<HTMLElement>) => {
+            if (transition) return;
+
+            const fromTheme = theme;
+            const nextTheme: Theme = theme === 'light' ? 'dark' : 'light';
+
+            if (!event || prefersReducedMotion()) {
+                setTheme(nextTheme);
+                return;
+            }
+
+            const target = event.currentTarget;
+            const rect = target.getBoundingClientRect();
+            const x = rect.left + rect.width / 2;
+            const y = rect.top + rect.height / 2;
+
+            /* New theme applies immediately so real UI is under the overlay; overlay shrinks away. */
+            setTheme(nextTheme);
+            setTransition({ x, y, to: nextTheme, from: fromTheme });
+        },
+        [theme, setTheme, transition],
+    );
+
     useEffect(() => {
         const storage = getBrowserStorage();
         if (!storage) {
-            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+                .matches
                 ? 'dark'
                 : 'light';
             setThemeState(systemTheme);
@@ -64,7 +111,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
             return;
         }
         const savedTheme = storage.getItem('theme') as Theme | null;
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
+            .matches
             ? 'dark'
             : 'light';
         const initialTheme = savedTheme || systemTheme;
@@ -74,7 +122,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         setMounted(true);
     }, []);
 
-    // Prevent flash of wrong theme
     if (!mounted) {
         return null;
     }
@@ -82,6 +129,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
             {children}
+            {transition && (
+                <ThemeCircleTransition
+                    key={`${transition.x}-${transition.y}-${transition.from}-${transition.to}`}
+                    x={transition.x}
+                    y={transition.y}
+                    from={transition.from}
+                    onComplete={endThemeTransition}
+                />
+            )}
         </ThemeContext.Provider>
     );
 }

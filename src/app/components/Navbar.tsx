@@ -20,8 +20,8 @@ export default function Navbar() {
         { href: '/#skills', label: 'Skills' },
         { href: '/#experience', label: 'Experience' },
         { href: '/#education', label: 'Education' },
-        { href: '/#projects', label: 'Projects' },
         { href: '/#publications', label: 'Publications' },
+        { href: '/#projects', label: 'Projects' },
         { href: '/#contact', label: 'Contact' },
     ];
 
@@ -45,7 +45,8 @@ export default function Navbar() {
                             </Link>
                         ))}
                         <motion.button
-                            onClick={toggleTheme}
+                            type='button'
+                            onClick={(e) => toggleTheme(e)}
                             className='p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors'
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
@@ -110,8 +111,9 @@ export default function Navbar() {
                                     transition={{ delay: menuItems.length * 0.1 }}
                                 >
                                     <button
-                                        onClick={() => {
-                                            toggleTheme();
+                                        type='button'
+                                        onClick={(e) => {
+                                            toggleTheme(e);
                                             setIsMobileMenuOpen(false);
                                         }}
                                         className='flex items-center py-2 hover:text-primary transition-colors font-medium'
