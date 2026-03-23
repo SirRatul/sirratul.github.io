@@ -20,7 +20,7 @@ export default function NotFoundScreen({ variant = 'global' }: Props) {
 
     return (
         <section
-            className='relative flex min-h-[calc(100dvh-6rem)] items-center justify-center overflow-hidden px-4 py-16 md:py-24'
+            className='relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50/90 via-white to-purple-50/70 px-4 py-16 pt-20 dark:from-slate-950 dark:via-slate-900 dark:to-[#0c1428] md:py-24 md:pt-24'
             aria-labelledby='not-found-heading'
         >
             <div className='pointer-events-none absolute inset-0 -z-10'>

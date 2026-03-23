@@ -81,7 +81,7 @@ export default function RootLayout({
                 <ClientThemeProvider>
                     <SignatureGradientLine />
                     <Navbar />
-                    <main className='min-h-screen'>{children}</main>
+                    <main className='min-h-screen w-full'>{children}</main>
                     <Footer />
                 </ClientThemeProvider>
                 {process.env.NODE_ENV === 'production' && (
