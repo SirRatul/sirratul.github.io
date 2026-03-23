@@ -1,8 +1,21 @@
 import dynamic from 'next/dynamic';
 import HashScroll from './components/Home/HashScroll';
 import Hero from './components/Home/Hero';
-import About from './components/Home/About';
-import Skills from './components/Home/Skills';
+
+const About = dynamic(() => import('./components/Home/About'), {
+    loading: () => (
+        <div className='flex min-h-[12rem] justify-center items-center py-10' aria-hidden>
+            <div className='h-6 w-6 border-4 border-primary border-t-transparent rounded-full animate-spin' />
+        </div>
+    ),
+});
+const Skills = dynamic(() => import('./components/Home/Skills'), {
+    loading: () => (
+        <div className='flex min-h-[14rem] justify-center items-center py-10' aria-hidden>
+            <div className='h-6 w-6 border-4 border-primary border-t-transparent rounded-full animate-spin' />
+        </div>
+    ),
+});
 const Experience = dynamic(() => import('./components/Home/Experience'), {
     loading: () => (
         <div className='flex justify-center items-center py-10'>

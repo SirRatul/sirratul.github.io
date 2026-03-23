@@ -42,6 +42,9 @@ export default function RootLayout({
             <head>
                 <meta name='viewport' content='width=device-width, initial-scale=1' />
 
+                {/* LCP (home hero): start fetch before CSS/layout paint — helps GTmetrix/Lighthouse chain */}
+                <link rel='preload' href='/profile.webp' as='image' type='image/webp' />
+
                 {/* Favicon */}
                 <link rel='icon' href='/favicon.ico' />
                 

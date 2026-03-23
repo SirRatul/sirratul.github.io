@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
         ],
     },
     experimental: {
-        optimizePackageImports: ['react-icons'],
+        optimizePackageImports: ['react-icons', 'framer-motion'],
         /** Requires `critters` — inlines critical CSS to reduce render-blocking (see Lighthouse). */
         optimizeCss: true,
     },
