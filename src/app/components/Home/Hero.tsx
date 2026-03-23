@@ -15,12 +15,14 @@ export default function Hero() {
     }, []);
 
     return (
-        <section className='relative py-32 overflow-hidden'>
-            {/* Gradient Background with enhanced contrast */}
+        <section className='relative py-20 sm:py-24 md:py-32 lg:py-36 overflow-hidden'>
+            {/* Gradient Background — extra depth in dark mode */}
             <div className='absolute inset-0 -z-10'>
-                <div className='absolute inset-0 bg-gradient-to-br from-blue-100/80 via-white to-purple-100/80 dark:from-gray-900 dark:via-slate-900 dark:to-blue-950'></div>
-                <div className='absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl'></div>
-                <div className='absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl'></div>
+                <div className='absolute inset-0 bg-gradient-to-br from-blue-100/80 via-white to-purple-100/80 dark:from-slate-950 dark:via-slate-900 dark:to-[#0c1428]'></div>
+                <div className='absolute inset-0 dark:bg-[radial-gradient(ellipse_90%_50%_at_50%_-20%,rgba(59,130,246,0.14),transparent_50%)]' aria-hidden />
+                <div className='absolute top-0 left-1/4 w-96 h-96 bg-primary/20 dark:bg-primary/25 rounded-full blur-3xl'></div>
+                <div className='absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 dark:bg-indigo-500/15 rounded-full blur-3xl'></div>
+                <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(720px,95vw)] h-[min(420px,45vh)] rounded-full bg-primary/5 dark:bg-blue-500/10 blur-3xl pointer-events-none' aria-hidden />
                 {/* Enhanced animated noise texture */}
                 <div className='absolute inset-0 opacity-[0.02] dark:opacity-[0.03]' style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")', animation: 'noiseTexture 8s steps(10) infinite' }}></div>
             </div>

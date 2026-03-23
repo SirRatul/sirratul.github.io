@@ -122,7 +122,7 @@ export default function Contact() {
     };
 
     return (
-        <section className='relative py-16 md:py-20 overflow-hidden'>
+        <section className='relative overflow-hidden'>
 
             <div id='contact' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
                 <div className='section-head'>
@@ -134,7 +134,7 @@ export default function Contact() {
                     </p>
                 </div>
 
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 lg:gap-16'>
                 {/* Contact Information */}
                 <motion.div className='space-y-8' {...slideInLeft}>
                     <motion.div {...fadeInUp}>
@@ -220,7 +220,7 @@ export default function Contact() {
                     >
                         {/* Name */}
                         <motion.div variants={fadeInUp}>
-                            <label htmlFor='name' className='block text-sm font-medium mb-2 text-gray-900 dark:text-gray-200'>
+                            <label htmlFor='name' className='block text-sm font-medium mb-2 text-gray-700 dark:text-slate-300'>
                                 Name
                             </label>
                             <input
@@ -262,7 +262,7 @@ export default function Contact() {
 
                         {/* Message */}
                         <motion.div variants={fadeInUp}>
-                            <label htmlFor='message' className='block text-sm font-medium mb-2 text-gray-900 dark:text-gray-200'>
+                            <label htmlFor='message' className='block text-sm font-medium mb-2 text-gray-700 dark:text-slate-300'>
                                 Message
                             </label>
                             <textarea
@@ -284,7 +284,7 @@ export default function Contact() {
                         <motion.button
                             type='submit'
                             disabled={status === 'loading'}
-                            className='w-full rounded-lg bg-gradient-to-r from-primary to-blue-600 text-white font-semibold py-3.5 px-4 shadow-lg hover:shadow-xl hover:brightness-[1.03] disabled:opacity-60 disabled:pointer-events-none transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
+                            className='w-full rounded-xl bg-gradient-to-r from-primary to-blue-600 text-white font-bold text-base py-4 px-4 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:brightness-[1.02] disabled:opacity-60 disabled:pointer-events-none transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
                             whileHover={{ scale: status === 'loading' ? 1 : 1.01 }}
                             whileTap={{ scale: status === 'loading' ? 1 : 0.99 }}
                         >

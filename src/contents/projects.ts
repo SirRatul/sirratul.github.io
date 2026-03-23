@@ -3,9 +3,16 @@ import { Project } from '@/types';
 export const projects: Project[] = [
     // Shopify Projects
     {
+        slug: 'edubily',
         title: 'Edubily',
         description: 'German-developed dietary supplements with top quality and no fuss. Focused on health and wellness products.',
+        summary: 'Dietary supplement Shopify storefront for the DACH health and wellness market.',
         impact: 'High-converting Shopify storefront for a health brand in the DACH market.',
+        impactHighlights: [
+            'Optimized storefront UX and PDP structure for supplement buyers in Germany',
+            'Liquid + theme customization for compliance-heavy product content',
+            'Performance-minded assets and layout for mobile-heavy traffic',
+        ],
         technologies: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
         githubLink: '',
         demoLink: 'https://edubily.de/',
@@ -13,11 +20,24 @@ export const projects: Project[] = [
         featured: true,
         category: 'Shopify',
         role: 'Shopify Developer',
+        detail: {
+            problem:
+                'Supplement buyers expect fast, trustworthy product education and compliance-friendly content on mobile-first journeys.',
+            solution:
+                'Custom Liquid and theme work, structured PDPs, and performance-minded assets aligned with how DACH shoppers research and buy.',
+        },
     },
     {
+        slug: 'neona-store',
         title: 'Neona Store',
         description: 'Innovative lamps designed to help everyone live a positive, productive, and healthy life. Features minimalist, modern, and sustainable lighting solutions.',
+        summary: 'Premium lighting Shopify store with story-led PDPs and international-ready checkout.',
         impact: 'Premium product storytelling and checkout tuned for international shoppers.',
+        impactHighlights: [
+            'Story-led PDPs and collections for a premium lighting brand',
+            'Multi-currency / international-ready shopping experience',
+            'Checkout and merchandising tuned for higher AOV categories',
+        ],
         technologies: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
         githubLink: '',
         demoLink: 'https://www.neona.store/en',
@@ -27,9 +47,16 @@ export const projects: Project[] = [
         role: 'Shopify Developer',
     },
     {
+        slug: 'von-heesen',
         title: 'Von Heesen',
         description: 'High-quality handcrafted leather products including wallets, credit card holders, passport covers, umbrellas, briefcases, travel bags, and backpacks. Reliable business and lifestyle accessories.',
+        summary: 'Handcrafted leather goods Shopify site with large-catalog navigation and trust-led PDPs.',
         impact: 'Craft brand site with rich catalog UX and trustworthy purchase flow.',
+        impactHighlights: [
+            'Large catalog navigation with clear category and variant UX',
+            'Trust-focused product detail and policy content for leather goods',
+            'Streamlined path to purchase for B2C and gift buyers',
+        ],
         technologies: ['Shopify', 'Liquid', 'JavaScript', 'CSS'],
         githubLink: '',
         demoLink: 'https://www.von-heesen.com/',
@@ -40,9 +67,16 @@ export const projects: Project[] = [
     },
     // Web Applications
     {
+        slug: 'sneakerlah',
         title: 'Sneakerlah',
         description: 'Discover curated local fashion brands that blend style and exclusivity.',
+        summary: 'Fashion discovery experience with Redux-driven catalog flows and mobile-first layouts.',
         impact: 'Content-heavy discovery experience with responsive layouts for mobile-first users.',
+        impactHighlights: [
+            'Discovery-first UI for fashion drops and brand storytelling',
+            'Responsive layouts prioritized for mobile social traffic',
+            'State-driven flows with Redux for catalog and filters',
+        ],
         technologies: ['React', 'Redux', 'Bootstrap'],
         githubLink: '',
         demoLink: 'https://sneakerlah.com/',
@@ -52,9 +86,16 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'flipbizz',
         title: 'FlipBizz',
         description: 'Platform for enhancing professional networking.',
+        summary: 'Professional networking platform with GraphQL feeds and engagement-focused UI.',
         impact: 'GraphQL-backed profiles and feeds built for engagement at scale.',
+        impactHighlights: [
+            'GraphQL API layer for profile and feed data with efficient queries',
+            'Interactive networking flows built for repeat engagement',
+            'Production UI patterns for authenticated, data-heavy screens',
+        ],
         technologies: ['React', 'Redux', 'Bootstrap', 'GraphQL'],
         githubLink: '',
         demoLink: 'https://www.flipbizz.com/',
@@ -64,9 +105,14 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'un-questionnaire',
         title: 'UN Questionnaire',
         description: 'Tool to assess progress towards the Sustainable Development Goals (SDGs).',
         impact: 'SDG assessment flows for organizations tracking sustainability progress.',
+        impactHighlights: [
+            'Multi-step questionnaire UX for institutional reporting',
+            'Role-appropriate flows for assessment data entry',
+        ],
         technologies: ['React', 'Redux', 'Bootstrap'],
         githubLink: '',
         demoLink: 'https://assessment.esghub.my/login',
@@ -76,9 +122,14 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'adignis',
         title: 'Adignis',
         description: 'Interactive review platform delivering transparent feedback.',
         impact: 'Transparent reviews and ratings with GraphQL-backed data.',
+        impactHighlights: [
+            'GraphQL + PostgreSQL for review data and transparency',
+            'UI for trust and moderation-friendly feedback loops',
+        ],
         technologies: ['React', 'Redux', 'Bootstrap', 'GraphQL', 'PostgreSQL'],
         githubLink: '',
         demoLink: 'https://adignis.com/',
@@ -88,6 +139,7 @@ export const projects: Project[] = [
         role: 'Full-Stack Developer',
     },
     {
+        slug: 'afa-tournament',
         title: 'AFA Tournament',
         description: 'Platform for organizing and engaging in tournaments.',
         impact: 'Tournament registration and engagement for sports communities.',
@@ -99,6 +151,7 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'afa-kiosk',
         title: 'AFA Kiosk',
         description: 'Online court booking platform to promote active lifestyles.',
         impact: 'Streamlined court booking to drive facility usage.',
@@ -110,6 +163,7 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'afa-coaching',
         title: 'AFA Coaching',
         description: 'Platform connecting users with seasoned coaches for development.',
         impact: 'Coach discovery and booking for athlete development programs.',
@@ -121,6 +175,7 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'idenfic',
         title: 'Idenfic',
         description: 'Mobile app for verifying online sellers via bank accounts.',
         impact: 'Seller verification UX linked to banking data for safer marketplaces.',
@@ -133,6 +188,7 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'reskills',
         title: 'Reskills',
         description: 'Online learning platform with flexible global access.',
         impact: 'Multi-framework learning experience with global reach.',
@@ -144,6 +200,7 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'tlb',
         title: 'TLB',
         description: 'Plastic packaging solutions by TLB Industry Sdn. Bhd.',
         impact: 'Corporate site presenting industrial packaging capabilities.',
@@ -155,6 +212,7 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'pcoins',
         title: 'Pcoins',
         description: 'Malaysian tech company providing hardware & software solutions.',
         impact: 'Product and services positioning for a regional tech brand.',
@@ -166,6 +224,7 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'rezo',
         title: 'Rezo',
         description: 'Tech and digital solutions company in Malaysia.',
         impact: 'Services-focused marketing site for digital solutions.',
@@ -177,6 +236,7 @@ export const projects: Project[] = [
         role: 'Frontend Developer',
     },
     {
+        slug: 'smart-nurse',
         title: 'Smart Nurse',
         description: 'MERN stack web application for healthcare services.',
         impact: 'End-to-end MERN prototype for healthcare workflows.',
@@ -189,6 +249,7 @@ export const projects: Project[] = [
         role: 'Full-Stack Developer',
     },
     {
+        slug: 'teresa',
         title: 'Teresa',
         description: 'MERN stack project for managing health services.',
         impact: 'Health services admin and patient-facing flows on the MERN stack.',
@@ -201,6 +262,7 @@ export const projects: Project[] = [
         role: 'Full-Stack Developer',
     },
     {
+        slug: 'teresa-app',
         title: 'Teresa App',
         description: 'React Native app for medication management.',
         impact: 'Mobile medication tracking and reminders for patients.',
@@ -214,6 +276,7 @@ export const projects: Project[] = [
     },
     // Machine Learning Projects
     {
+        slug: 'bangla-digit-recognition',
         title: 'Bangla Digit Recognition',
         description: 'ML model trained on NumtaDB dataset for digit recognition.',
         impact: 'Digit classification pipeline on real-world Bangla numeral data.',
@@ -225,6 +288,7 @@ export const projects: Project[] = [
         role: 'ML Engineer',
     },
     {
+        slug: 'predict-suicidal-thought',
         title: 'Predict Suicidal Thought',
         description: 'ML project to predict suicidal tendencies based on input data.',
         impact: 'Experimental risk scoring from structured behavioral inputs.',
@@ -236,6 +300,7 @@ export const projects: Project[] = [
         role: 'ML Engineer',
     },
     {
+        slug: 'detect-mask-person',
         title: 'Detect Mask Person',
         description: 'CNN model to detect if a person is wearing a mask.',
         impact: 'CNN-based mask detection for safety screening scenarios.',
@@ -248,6 +313,7 @@ export const projects: Project[] = [
     },
     // Other Projects
     {
+        slug: 'chef-zilla',
         title: 'Chef Zilla',
         description: 'Restaurant ordering system developed using .NET & C# (MVC).',
         impact: 'Full ordering flow for restaurant operations on .NET MVC.',
@@ -259,8 +325,14 @@ export const projects: Project[] = [
         role: 'Full-Stack Developer',
     },
     {
+        slug: 'cineplex-management-system',
         title: 'Cineplex Management System',
         description: 'Desktop Java Swing application for cineplex operations.',
+        impact: 'Desktop tooling for scheduling and operations at a cineplex.',
+        impactHighlights: [
+            'CRUD operations for shows, seats, and bookings',
+            'SQL-backed persistence for operational data',
+        ],
         technologies: ['Java Swing', 'SQL'],
         githubLink: '',
         demoLink: '',
@@ -269,6 +341,7 @@ export const projects: Project[] = [
         role: 'Desktop Developer',
     },
     {
+        slug: 'coffee-house',
         title: 'Coffee House',
         description: 'PHP-based website with HTML, CSS, and Bootstrap for a cafe.',
         impact: 'Simple cafe web presence with menu and contact on LAMP stack.',
@@ -280,3 +353,11 @@ export const projects: Project[] = [
         role: 'Web Developer',
     },
 ];
+
+export function getProjectBySlug(slug: string): Project | undefined {
+    return projects.find((p) => p.slug === slug);
+}
+
+export function getAllProjectSlugs(): string[] {
+    return projects.map((p) => p.slug);
+}

@@ -31,9 +31,11 @@ a {
 		@apply transition-colors duration-300;
 	}
 
-	/* Light mode background - Enhanced contrast */
+	/* Light mode: soft tint bands — less flat white wall-to-wall */
 	body:not(.dark) {
-		background: linear-gradient(135deg, #eef1f5 0%, #ffffff 50%, #eef1f5 100%);
+		background:
+			radial-gradient(ellipse 120% 80% at 50% -20%, rgba(0, 91, 181, 0.06), transparent 50%),
+			linear-gradient(180deg, #f1f5f9 0%, #f8fafc 35%, #eef2f7 100%);
 	}
 
 	/* Dark mode background with enhanced gradient and depth */
@@ -79,41 +81,70 @@ a {
 		@apply bg-secondary text-white hover:bg-secondary/90;
 	}
 
-	/* Section headings: size + weight only; wrap with .section-head for spacing */
+	/* Section headings: dominant title vs calmer lead */
 	.section-title {
-		@apply text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-center text-gray-900 dark:text-white;
+		@apply text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-center text-gray-900 dark:text-white;
+		letter-spacing: -0.02em;
 	}
 
 	.section-head {
-		@apply mb-12 md:mb-16 lg:mb-20 text-center;
+		@apply mb-10 md:mb-14 lg:mb-20 text-center;
 	}
 
 	.section-head .section-title + .section-lead {
-		@apply mt-4 md:mt-5;
+		@apply mt-5 md:mt-6;
 	}
 
 	.section-lead {
-		@apply text-center text-sm sm:text-base text-gray-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed font-normal;
+		@apply text-center text-[15px] sm:text-base text-gray-500 dark:text-slate-500 max-w-2xl mx-auto leading-relaxed font-normal;
 	}
 
-	/* Body copy rhythm */
+	/* Body copy rhythm — mobile slightly smaller to scan */
 	.prose-body {
-		@apply text-[15px] sm:text-base md:text-lg leading-relaxed text-gray-700 dark:text-slate-300/95;
+		@apply text-[14px] sm:text-[15px] md:text-base leading-relaxed text-gray-600 dark:text-slate-400;
+	}
+
+	/* Vertical rhythm: tighter on small screens */
+	.section-py {
+		@apply py-12 sm:py-16 md:py-20 lg:py-24;
 	}
 
 	/* Contact / form fields */
 	.input-premium {
-		@apply w-full px-4 py-3 rounded-lg border border-[#D8DFE6] dark:border-slate-600/80;
-		@apply bg-white dark:bg-slate-900/60 text-gray-900 dark:text-slate-100;
-		@apply transition-[box-shadow,border-color] duration-200;
-		@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:border-primary/60;
-		@apply dark:focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900;
+		@apply w-full px-4 py-3 rounded-xl border border-gray-200/90 dark:border-slate-600/80;
+		@apply bg-slate-50/90 dark:bg-slate-900/70 text-gray-900 dark:text-slate-100;
+		@apply shadow-sm;
+		@apply transition-[box-shadow,border-color,background-color] duration-200;
+		@apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:border-primary/50 focus-visible:bg-white;
+		@apply dark:focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 dark:focus-visible:bg-slate-900;
 	}
 
 	/* Glass morphism effect */
 	.glass {
 		@apply backdrop-blur-md bg-white/70 dark:bg-gray-900/70;
 		border: 1px solid rgba(255, 255, 255, 0.18);
+	}
+
+	/* Navbar: stronger glass when scrolled (dark + light) */
+	.nav-shell {
+		@apply backdrop-blur-md transition-[background-color,box-shadow,border-color] duration-300;
+		@apply bg-white/75 dark:bg-slate-950/65;
+		border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+	}
+
+	body.dark .nav-shell {
+		border-bottom-color: rgba(255, 255, 255, 0.08);
+	}
+
+	.nav-shell-scrolled {
+		@apply backdrop-blur-xl shadow-md;
+		@apply bg-white/88 dark:bg-slate-950/82;
+		border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+	}
+
+	body.dark .nav-shell-scrolled {
+		border-bottom-color: rgba(255, 255, 255, 0.12);
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 	}
 
 	.glass-dark {
@@ -151,10 +182,13 @@ a {
 		transform: translateY(-3px);
 	}
 
-	/* Shared card shell (Skills, Experience, Education, Publications) — matches ProjectCard-style depth */
+	/* Shared card shell — light depth + dark depth */
 	.card-surface {
-		@apply rounded-2xl border border-gray-200/90 bg-[#FCFCFF] p-6 md:p-8 shadow-md transition-shadow duration-300;
+		@apply rounded-2xl border border-gray-200/80 bg-white p-6 md:p-8 transition-shadow duration-300;
 		@apply dark:border-white/10 dark:bg-slate-900/80;
+		box-shadow:
+			0 1px 0 rgba(255, 255, 255, 0.9) inset,
+			0 8px 24px rgba(15, 23, 42, 0.06);
 	}
 
 	body.dark .card-surface {
@@ -234,14 +268,18 @@ a {
 		box-shadow: 0 0 8px rgba(0, 128, 255, 0.6);
 	}
 	
-	/* Section background alternation for scroll rhythm */
+	/* Section backgrounds — light: tinted bands, not flat white */
 	.section-bg-white {
-		@apply bg-white dark:bg-[var(--color-surface-dark-base)];
+		@apply bg-slate-50/90 dark:bg-[var(--color-surface-dark-base)];
 	}
 
 	.section-bg-light {
-		@apply bg-gray-50 dark:bg-[var(--color-surface-dark-raised)];
+		@apply bg-slate-100/85 dark:bg-[var(--color-surface-dark-raised)];
 		@apply dark:border-y dark:border-white/[0.06];
+	}
+
+	body:not(.dark) .section-bg-light {
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
 	}
 	
 	.section-bg-gradient {

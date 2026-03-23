@@ -29,7 +29,7 @@ const highlightMetrics = (text: string) => {
 
 export default function Experience() {
     return (
-        <section className='relative py-20 md:py-24 overflow-hidden bg-gray-50/50 dark:bg-transparent'>
+        <section className='relative overflow-hidden bg-gray-50/50 dark:bg-transparent'>
             {/* Gradient Background */}
             <div className='absolute inset-0 -z-10'>
                 <div className='absolute inset-0 bg-gradient-to-br from-transparent via-white to-transparent dark:from-blue-950 dark:via-slate-900 dark:to-gray-900'></div>

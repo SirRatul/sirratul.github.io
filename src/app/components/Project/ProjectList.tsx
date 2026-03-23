@@ -91,7 +91,7 @@ export default function ProjectList() {
                 >
                     {filteredProjects.map((project) => (
                         <motion.div
-                            key={project.title}
+                            key={project.slug}
                             className='w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-32px*2)/3)]'
                             layout
                             initial={{ opacity: 0, scale: 0.9 }}

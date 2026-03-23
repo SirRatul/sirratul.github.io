@@ -46,35 +46,30 @@ export default function Home() {
             {/* Hero - No background wrapper needed, has its own */}
             <Hero />
             
-            {/* About & Skills - White/Default background */}
-            <div className='section-bg-white'>
+            {/* About & Skills */}
+            <div className='section-bg-white section-py'>
                 <About />
                 <div className='section-divider-gradient'></div>
                 <Skills />
             </div>
-            
-            {/* Experience - Light background for contrast */}
-            <div className='section-bg-light'>
+
+            <div className='section-bg-light section-py'>
                 <Experience />
             </div>
-            
-            {/* Education - Light background */}
-            <div className='section-bg-light'>
+
+            <div className='section-bg-light section-py'>
                 <Education />
             </div>
-            
-            {/* Publications - Light background */}
-            <div className='section-bg-light'>
+
+            <div className='section-bg-light section-py'>
                 <Publications />
             </div>
-            
-            {/* Projects - White background */}
-            <div className='section-bg-white'>
+
+            <div className='section-bg-white section-py'>
                 <Projects />
             </div>
-            
-            {/* Contact - Light background */}
-            <div className='section-bg-light'>
+
+            <div className='section-bg-light section-py'>
                 <Contact />
             </div>
         </main>

@@ -6,7 +6,7 @@ import { fadeInUp, fadeIn, staggerContainer, cardHoverSmall } from '@/utils/anim
 
 export default function Education() {
     return (
-        <section className='relative py-16 md:py-20 overflow-hidden'>
+        <section className='relative overflow-hidden'>
 
             <div id='education' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
                 {/* Education Section */}

@@ -8,7 +8,7 @@ import ProjectCard from '../ProjectCard';
 
 export default function Projects() {
     return (
-        <section className='relative py-20 md:py-24 overflow-hidden'>
+        <section className='relative overflow-hidden'>
             {/* Gradient Background */}
             <div className='absolute inset-0 -z-10'>
                 <div className='absolute inset-0 bg-gradient-to-br from-transparent via-white to-transparent dark:from-gray-900 dark:via-slate-900 dark:to-blue-950'></div>
@@ -29,13 +29,14 @@ export default function Projects() {
                     className='flex flex-wrap justify-center gap-6 md:gap-8 items-stretch'
                     variants={staggerContainer}
                     initial='initial'
-                    animate='animate'
+                    whileInView='animate'
+                    viewport={{ once: true, amount: 0.12, margin: '0px 0px -60px 0px' }}
                 >
                     {projects
                         .filter((project) => project.featured)
                         .map((project) => (
                             <div
-                                key={project.title}
+                                key={project.slug}
                                 className='w-full md:w-[calc((100%-32px)/2)] lg:w-[calc((100%-32px*2)/3)]'
                             >
                                 <div className='h-full flex flex-col'>
