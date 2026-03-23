@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Script from 'next/script';
 import { ClientThemeProvider } from './context/ClientThemeProvider';
+import ClarityLoader from './components/ClarityLoader';
 
 const Navbar = dynamic(() => import('./components/Navbar'), {
     loading: () => (
@@ -84,21 +84,7 @@ export default function RootLayout({
                     <main className='min-h-screen w-full'>{children}</main>
                     <Footer />
                 </ClientThemeProvider>
-                {process.env.NODE_ENV === 'production' && (
-                    <Script
-                        strategy='lazyOnload'
-                        id='clarity-script'
-                        dangerouslySetInnerHTML={{
-                            __html: `
-                            (function(c,l,a,r,i,t,y){
-                                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/${process.env.NEXT_PUBLIC_CLARITY_ID}";
-                                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-                            })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_ID}");
-                        `,
-                        }}
-                    />
-                )}
+                {process.env.NODE_ENV === 'production' && <ClarityLoader />}
             </body>
         </html>
     );

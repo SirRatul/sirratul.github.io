@@ -32,17 +32,17 @@ export default function Contact() {
     const validateField = (field: keyof FormData, value: string): string => {
         switch (field) {
             case 'name':
-                if (!value.trim()) return 'Name is required.';
+                if (!value.trim()) return 'Name is required';
                 if (!/^[a-zA-Z\s]+$/.test(value))
-                    return 'Name must contain only letters and spaces.';
+                    return 'Name must contain only letters and spaces';
                 break;
             case 'email':
-                if (!value.trim()) return 'Email is required.';
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Invalid email address.';
+                if (!value.trim()) return 'Email is required';
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Invalid email address';
                 break;
             case 'message':
-                if (!value.trim()) return 'Message is required.';
-                if (value.length < 10) return 'Message must be at least 10 characters.';
+                if (!value.trim()) return 'Message is required';
+                if (value.length < 10) return 'Message must be at least 10 characters';
                 break;
         }
         return '';

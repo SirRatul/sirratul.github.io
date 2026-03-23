@@ -68,7 +68,7 @@ export default function Experience() {
                                 >
                                     {/* Badge for current role */}
                                     {index === 0 && (
-                                        <span className='inline-block px-3 py-1 mb-3 text-xs font-semibold text-white bg-green-500 rounded-full'>
+                                        <span className='inline-block px-3 py-1 mb-3 text-xs font-semibold text-white bg-green-800 rounded-full dark:bg-green-900'>
                                             Current Role
                                         </span>
                                     )}
