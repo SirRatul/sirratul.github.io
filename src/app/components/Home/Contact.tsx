@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { HiOutlineEnvelope, HiOutlinePhone, HiOutlineMapPin } from 'react-icons/hi2';
 import { motion } from 'framer-motion';
-import { fadeInUp, fadeIn, slideInLeft, slideInRight } from '@/utils/animations';
+import { fadeInUp, fadeIn, slideInLeft, slideInRight, inView, inViewContainer } from '@/utils/animations';
 
 interface FormData {
     name: string;
@@ -33,8 +33,6 @@ export default function Contact() {
         switch (field) {
             case 'name':
                 if (!value.trim()) return 'Name is required';
-                if (!/^[a-zA-Z\s]+$/.test(value))
-                    return 'Name must contain only letters and spaces';
                 break;
             case 'email':
                 if (!value.trim()) return 'Email is required';
@@ -126,7 +124,7 @@ export default function Contact() {
 
             <div id='contact' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
                 <div className='section-head'>
-                    <motion.h2 className='section-title section-header-glow' {...fadeInUp}>
+                    <motion.h2 className='section-title section-header-glow' {...inView(fadeInUp)}>
                         Get in touch
                     </motion.h2>
                     <p className='section-lead text-muted-on-dark'>
@@ -136,8 +134,8 @@ export default function Contact() {
 
             <div className='grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 lg:gap-16'>
                 {/* Contact Information */}
-                <motion.div className='space-y-8' {...slideInLeft}>
-                    <motion.div {...fadeInUp}>
+                <motion.div className='space-y-8' {...inView(slideInLeft)}>
+                    <motion.div {...inView(fadeInUp)}>
                         <h3 className='text-xl md:text-2xl font-bold mb-3 text-gray-900 dark:text-white tracking-tight'>
                             Let&apos;s connect
                         </h3>
@@ -150,8 +148,7 @@ export default function Contact() {
                     <motion.div
                         className='space-y-4'
                         variants={fadeIn}
-                        initial='initial'
-                        animate='animate'
+                        {...inViewContainer}
                     >
                         <motion.div
                             className='flex items-center gap-4'
@@ -164,7 +161,7 @@ export default function Contact() {
                                 <h3 className='font-semibold text-gray-900 dark:text-white'>Email</h3>
                                 <a
                                     href='mailto:samsulratul98@gmail.com'
-                                    className='text-gray-800 dark:text-gray-200 hover:text-primary'
+                                    className='text-gray-700 dark:text-slate-300 hover:text-primary'
                                     aria-label='Send an email to samsulratul98@gmail.com'
                                 >
                                     samsulratul98@gmail.com
@@ -183,7 +180,7 @@ export default function Contact() {
                                 <h3 className='font-semibold text-gray-900 dark:text-white'>Phone</h3>
                                 <a
                                     href='tel:+8801521431231'
-                                    className='text-gray-800 dark:text-gray-200 hover:text-primary'
+                                    className='text-gray-700 dark:text-slate-300 hover:text-primary'
                                     aria-label='Call +8801521431231'
                                 >
                                     +8801521431231
@@ -200,7 +197,7 @@ export default function Contact() {
                             <HiOutlineMapPin className='h-6 w-6 text-primary' />
                             <div>
                                 <h3 className='font-semibold text-gray-900 dark:text-white'>Location</h3>
-                                <p className='text-gray-800 dark:text-gray-200'>Dhaka, Bangladesh</p>
+                                <p className='text-gray-700 dark:text-slate-300'>Dhaka, Bangladesh</p>
                             </div>
                         </motion.div>
                     </motion.div>
@@ -209,14 +206,13 @@ export default function Contact() {
                 {/* Contact Form */}
                 <motion.div
                     className='bg-white dark:bg-slate-900/80 border border-gray-200/90 dark:border-white/10 p-6 md:p-8 rounded-2xl shadow-md dark:card-shadow-dark'
-                    {...slideInRight}
+                    {...inView(slideInRight)}
                 >
                     <motion.form
                         onSubmit={handleSubmit}
                         className='space-y-6'
                         variants={fadeIn}
-                        initial='initial'
-                        animate='animate'
+                        {...inViewContainer}
                     >
                         {/* Name */}
                         <motion.div variants={fadeInUp}>
@@ -235,7 +231,7 @@ export default function Contact() {
                                 className='input-premium'
                             />
                             {errors.name && (
-                                <p className='text-red-500 text-sm mt-1'>{errors.name}</p>
+                                <p className='text-red-600 dark:text-red-400 text-sm mt-1'>{errors.name}</p>
                             )}
                         </motion.div>
 
@@ -256,7 +252,7 @@ export default function Contact() {
                                 className='input-premium'
                             />
                             {errors.email && (
-                                <p className='text-red-500 text-sm mt-1'>{errors.email}</p>
+                                <p className='text-red-600 dark:text-red-400 text-sm mt-1'>{errors.email}</p>
                             )}
                         </motion.div>
 
@@ -276,7 +272,7 @@ export default function Contact() {
                                 className='input-premium resize-none min-h-[140px]'
                             />
                             {errors.message && (
-                                <p className='text-red-500 text-sm mt-1'>{errors.message}</p>
+                                <p className='text-red-600 dark:text-red-400 text-sm mt-1'>{errors.message}</p>
                             )}
                         </motion.div>
 
@@ -284,7 +280,7 @@ export default function Contact() {
                         <motion.button
                             type='submit'
                             disabled={status === 'loading'}
-                            className='w-full rounded-xl bg-gradient-to-r from-primary to-blue-600 text-white font-bold text-base py-4 px-4 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:brightness-[1.02] disabled:opacity-60 disabled:pointer-events-none transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
+                            className='w-full rounded-xl bg-gradient-to-r from-primary-strong to-blue-600 text-white font-bold text-base py-4 px-4 shadow-lg shadow-primary-strong/25 hover:shadow-xl hover:shadow-primary-strong/30 hover:brightness-[1.02] disabled:opacity-60 disabled:pointer-events-none transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
                             whileHover={{ scale: status === 'loading' ? 1 : 1.01 }}
                             whileTap={{ scale: status === 'loading' ? 1 : 0.99 }}
                         >
@@ -294,7 +290,7 @@ export default function Contact() {
                         {/* Feedback Messages */}
                         {status === 'success' && (
                             <motion.p
-                                className='text-green-500 text-center'
+                                className='text-green-700 dark:text-green-400 text-center'
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                             >
@@ -304,7 +300,7 @@ export default function Contact() {
 
                         {status === 'error' && (
                             <motion.p
-                                className='text-red-500 text-center'
+                                className='text-red-600 dark:text-red-400 text-center'
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                             >

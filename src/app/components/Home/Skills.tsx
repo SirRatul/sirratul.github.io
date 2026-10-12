@@ -2,7 +2,7 @@
 
 import { FaCode, FaServer, FaTachometerAlt, FaToolbox } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import { fadeInUp, fadeIn, staggerContainer, cardHoverSmall } from '@/utils/animations';
+import { fadeInUp, fadeIn, staggerContainer, cardHoverSmall, inView, inViewContainer } from '@/utils/animations';
 
 const GROUPS = [
     {
@@ -40,9 +40,9 @@ export default function Skills() {
             </div>
 
             <div id='skills' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
-                <motion.section {...fadeIn} transition={{ delay: 0.2 }}>
+                <motion.section {...inView(fadeIn)}>
                     <div className='section-head'>
-                        <motion.h2 className='section-title section-header-glow' {...fadeInUp}>
+                        <motion.h2 className='section-title section-header-glow' {...inView(fadeInUp)}>
                             Skills &amp; Expertise
                         </motion.h2>
                         <p className='section-lead text-muted-on-dark'>
@@ -54,8 +54,7 @@ export default function Skills() {
                     <motion.div
                         className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 lg:gap-8 items-stretch'
                         variants={staggerContainer}
-                        initial='initial'
-                        animate='animate'
+                        {...inViewContainer}
                     >
                         {GROUPS.map(({ title, subtitle, Icon, chips }) => (
                             <motion.div

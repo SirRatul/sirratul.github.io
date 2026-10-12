@@ -29,6 +29,12 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+/**
+ * Inlined in <head> so the saved/system theme is on <html> before first paint.
+ * Lets the whole page render on the server without a flash of the wrong theme.
+ */
+export const themeInitScript = `(function(){try{var t=null;try{t=localStorage.getItem('theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.classList.toggle('dark',t==='dark')}catch(e){}})();`;
+
 /** Avoid Node's experimental/broken global `localStorage` when `--localstorage-file` is invalid. */
 function getBrowserStorage(): Storage | null {
     if (typeof window === 'undefined') return null;
@@ -54,7 +60,6 @@ function prefersReducedMotion(): boolean {
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [theme, setThemeState] = useState<Theme>('light');
-    const [mounted, setMounted] = useState(false);
     const [transition, setTransition] = useState<TransitionPayload | null>(
         null,
     );
@@ -98,33 +103,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         [theme, setTheme, transition],
     );
 
+    // Sync state with the theme already applied to <html> by themeInitScript
     useEffect(() => {
-        const storage = getBrowserStorage();
-        if (!storage) {
-            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-                .matches
-                ? 'dark'
-                : 'light';
-            setThemeState(systemTheme);
-            document.documentElement.classList.toggle('dark', systemTheme === 'dark');
-            setMounted(true);
-            return;
-        }
-        const savedTheme = storage.getItem('theme') as Theme | null;
-        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-            .matches
-            ? 'dark'
-            : 'light';
-        const initialTheme = savedTheme || systemTheme;
-
-        setThemeState(initialTheme);
-        document.documentElement.classList.toggle('dark', initialTheme === 'dark');
-        setMounted(true);
+        setThemeState(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
     }, []);
-
-    if (!mounted) {
-        return null;
-    }
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>

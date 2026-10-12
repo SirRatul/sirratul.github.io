@@ -2,7 +2,7 @@
 
 import { experiences } from '@/contents/experiences';
 import { motion } from 'framer-motion';
-import { fadeInUp, fadeIn, staggerContainer, cardHoverSmall } from '@/utils/animations';
+import { fadeInUp, fadeIn, staggerContainer, cardHoverSmall, inView, inViewContainer } from '@/utils/animations';
 
 // Helper function to highlight metrics in text
 const highlightMetrics = (text: string) => {
@@ -38,20 +38,19 @@ export default function Experience() {
 
             <div id='experience' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
                 {/* Experience Section */}
-                <motion.section className='mb-16' {...fadeIn} transition={{ delay: 0.4 }}>
+                <motion.section {...inView(fadeIn)}>
                     <div className='section-head'>
-                        <motion.h2 className='section-title section-header-glow' {...fadeInUp}>
+                        <motion.h2 className='section-title section-header-glow' {...inView(fadeInUp)}>
                             Work Experience
                         </motion.h2>
                     </div>
                     <motion.div
                         className='max-w-4xl mx-auto space-y-8 relative'
                         variants={staggerContainer}
-                        initial='initial'
-                        animate='animate'
+                        {...inViewContainer}
                     >
                         {/* Timeline line for dark mode - hidden on mobile */}
-                        <div className='hidden md:dark:block absolute left-8 top-8 bottom-8 w-0.5 bg-gradient-to-b from-primary via-blue-600 to-transparent'></div>
+                        <div className='hidden md:dark:block absolute left-8 top-8 bottom-8 w-0.5 bg-gradient-to-b from-primary-strong via-blue-600 to-transparent'></div>
 
                         {experiences.map((exp, index) => (
                             <motion.div
@@ -60,7 +59,7 @@ export default function Experience() {
                                 variants={fadeInUp}
                             >
                                 {/* Timeline dot for dark mode - hidden on mobile */}
-                                <div className='hidden md:dark:flex absolute left-6 top-6 w-5 h-5 rounded-full bg-primary ring-4 ring-gray-900 timeline-dot-glow z-10 transition-all duration-300 hover:scale-125 hover:shadow-lg hover:shadow-primary/50 cursor-pointer'></div>
+                                <div className='hidden md:dark:flex absolute left-6 top-6 w-5 h-5 rounded-full bg-primary-strong ring-4 ring-gray-900 timeline-dot-glow z-10 transition-all duration-300 hover:scale-125 hover:shadow-lg hover:shadow-primary-strong/50 cursor-pointer'></div>
 
                                 <motion.div
                                     className='card-surface md:dark:ml-16'
@@ -79,15 +78,16 @@ export default function Experience() {
                                     <div className='flex flex-wrap items-center gap-2 md:gap-3 mb-4'>
                                         <p className='text-primary font-semibold text-base md:text-lg'>{exp.company}</p>
                                         <span className='text-gray-500 dark:text-gray-400'>•</span>
-                                        <p className='text-gray-700 dark:text-gray-300 font-medium text-sm md:text-base'>{exp.period}</p>
+                                        <p className='text-gray-600 dark:text-slate-400 font-medium text-sm md:text-base'>{exp.period}</p>
                                     </div>
                                     <ul className='space-y-3'>
                                         {exp.responsibilities.map((item, i) => (
                                             <motion.li
                                                 key={`${exp.title}-resp-${i}`}
-                                                className='flex gap-3 text-gray-800 dark:text-gray-200 text-sm md:text-base'
+                                                className='flex gap-3 text-gray-700 dark:text-slate-300 text-sm md:text-base leading-relaxed'
                                                 initial={{ opacity: 0, x: -10 }}
-                                                animate={{ opacity: 1, x: 0 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                viewport={{ once: true }}
                                                 transition={{ delay: 0.1 * i }}
                                             >
                                                 <span className='text-primary mt-1.5 flex-shrink-0'>▹</span>

@@ -49,7 +49,7 @@ export default function ProjectCard({ project }: Props) {
                     loading='lazy'
                 />
                 {project.category && (
-                    <div className='absolute top-3 right-3 px-3 py-1 bg-primary text-white text-xs font-semibold rounded-full backdrop-blur-sm shadow-lg'>
+                    <div className='absolute top-3 right-3 px-3 py-1 bg-primary-strong text-white text-xs font-semibold rounded-full backdrop-blur-sm shadow-lg'>
                         {project.category}
                     </div>
                 )}
@@ -77,7 +77,7 @@ export default function ProjectCard({ project }: Props) {
                     {stack.map((tech) => (
                         <span
                             key={tech}
-                            className='px-2.5 py-1 bg-primary/10 dark:bg-primary/20 text-primary rounded-full text-xs font-medium'
+                            className='px-2.5 py-1 bg-primary-strong/10 dark:bg-primary-strong/20 text-primary rounded-full text-xs font-medium'
                         >
                             {tech}
                         </span>
@@ -94,7 +94,7 @@ export default function ProjectCard({ project }: Props) {
                 <div className='mt-5 pt-4 border-t border-gray-200/90 dark:border-white/10'>
                     <Link
                         href={detailHref}
-                        className='inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-primary text-white text-sm font-semibold px-4 py-2.5 shadow-md hover:bg-primary/92 hover:shadow-lg hover:-translate-y-px transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
+                        className='inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-primary-strong text-white text-sm font-semibold px-4 py-2.5 shadow-md hover:bg-primary-strong/92 hover:shadow-lg hover:-translate-y-px transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
                     >
                         View details
                         <FaArrowRight className='h-3.5 w-3.5 opacity-90' aria-hidden />

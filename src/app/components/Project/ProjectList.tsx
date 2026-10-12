@@ -23,7 +23,7 @@ export default function ProjectList() {
             {/* Gradient Background */}
             <div className='absolute inset-0 -z-10'>
                 <div className='absolute inset-0 bg-gradient-to-br from-transparent via-white to-transparent dark:from-gray-900 dark:via-slate-900 dark:to-blue-950'></div>
-                <div className='absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl'></div>
+                <div className='absolute top-1/4 left-1/4 w-96 h-96 bg-primary-strong/5 dark:bg-primary-strong/10 rounded-full blur-3xl'></div>
                 <div className='absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl'></div>
             </div>
 
@@ -38,7 +38,7 @@ export default function ProjectList() {
                     My Projects
                 </motion.h1>
                 <motion.p
-                    className='section-lead text-secondary'
+                    className='section-lead text-muted-on-dark'
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -61,14 +61,14 @@ export default function ProjectList() {
                         onClick={() => setActiveCategory(category || 'All')}
                         className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
                             activeCategory === category
-                                ? 'bg-primary text-white shadow-lg scale-105'
+                                ? 'bg-primary-strong text-white shadow-lg scale-105'
                                 : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
                         }`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
                         {category}
-                        <span className='ml-2 text-xs opacity-75'>
+                        <span className='ml-2 text-xs opacity-90'>
                             (
                             {category === 'All'
                                 ? projects.length

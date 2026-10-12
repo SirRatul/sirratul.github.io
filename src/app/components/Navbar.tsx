@@ -139,7 +139,7 @@ export default function Navbar() {
         const base =
             'block py-2.5 rounded-md px-1 -mx-1 transition-colors font-medium border-l-2 ';
         if (active) {
-            return `${base} text-primary border-primary bg-primary/5 dark:bg-primary/10 pl-3 -ml-px`;
+            return `${base} text-primary border-primary bg-primary-strong/5 dark:bg-primary-strong/10 pl-3 -ml-px`;
         }
         return `${base} border-transparent text-gray-800 dark:text-gray-200 hover:text-primary hover:bg-gray-50/80 dark:hover:bg-white/5`;
     };
@@ -147,7 +147,7 @@ export default function Navbar() {
     const desktopLinkClass = (href: string) => {
         const active = linkIsActive(href);
         if (active) {
-            return 'text-primary font-semibold relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full';
+            return 'text-sm text-primary font-semibold relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-full';
         }
         return 'hover-underline hover:text-primary transition-colors text-sm font-medium text-gray-700 dark:text-gray-300';
     };

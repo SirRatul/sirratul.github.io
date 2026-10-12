@@ -21,7 +21,7 @@ export default function ProjectDetailPage({ project }: Props) {
         <article className='relative overflow-hidden'>
             <div className='absolute inset-0 -z-10'>
                 <div className='absolute inset-0 bg-gradient-to-br from-blue-50/90 via-white to-purple-50/80 dark:from-slate-950 dark:via-slate-900 dark:to-[#0c1428]' />
-                <div className='absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl' />
+                <div className='absolute top-1/4 right-1/4 w-96 h-96 bg-primary-strong/5 dark:bg-primary-strong/10 rounded-full blur-3xl' />
             </div>
 
             <div className='container max-w-3xl mx-auto px-4 pt-24 pb-16 md:pt-28 md:pb-24'>
@@ -54,23 +54,35 @@ export default function ProjectDetailPage({ project }: Props) {
                 </Link>
 
                 <header className='mb-10'>
-                    <div className='flex flex-wrap gap-2 mb-4'>
-                        {project.category && (
-                            <span className='px-3 py-1 rounded-full text-xs font-semibold bg-primary text-white'>
-                                {project.category}
-                            </span>
-                        )}
-                        {project.role && (
-                            <span className='px-3 py-1 rounded-full text-xs font-semibold border border-gray-200 dark:border-white/15 text-gray-700 dark:text-slate-300'>
-                                {project.role}
-                            </span>
-                        )}
-                    </div>
-                    <h1 className='text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight'>
+                    <h1 className='text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight'>
                         {project.title}
                     </h1>
                     {project.impact && (
-                        <p className='mt-4 text-lg text-primary font-semibold leading-snug'>{project.impact}</p>
+                        <p className='mt-3 text-lg text-primary font-semibold leading-snug'>{project.impact}</p>
+                    )}
+                    {(project.role || project.category) && (
+                        <dl className='mt-6 flex flex-wrap gap-x-10 gap-y-4 border-y border-gray-200 dark:border-white/10 py-4'>
+                            {project.role && (
+                                <div>
+                                    <dt className='text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-slate-400'>
+                                        Role
+                                    </dt>
+                                    <dd className='mt-1 text-base font-semibold text-gray-900 dark:text-white'>
+                                        {project.role}
+                                    </dd>
+                                </div>
+                            )}
+                            {project.category && (
+                                <div>
+                                    <dt className='text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-slate-400'>
+                                        Category
+                                    </dt>
+                                    <dd className='mt-1 text-base font-semibold text-gray-900 dark:text-white'>
+                                        {project.category}
+                                    </dd>
+                                </div>
+                            )}
+                        </dl>
                     )}
                 </header>
 
@@ -92,7 +104,7 @@ export default function ProjectDetailPage({ project }: Props) {
                                 href={project.demoLink}
                                 target='_blank'
                                 rel='noopener noreferrer'
-                                className='inline-flex items-center justify-center gap-2 rounded-xl bg-primary text-white font-semibold px-5 py-3 shadow-lg shadow-primary/20 hover:brightness-[1.03] transition-all'
+                                className='inline-flex items-center justify-center gap-2 rounded-xl bg-primary-strong text-white font-semibold px-5 py-3 shadow-lg shadow-primary-strong/20 hover:brightness-[1.03] transition-all'
                             >
                                 Open live site
                                 <FaExternalLinkAlt className='h-3.5 w-3.5 opacity-90' />
@@ -147,7 +159,7 @@ export default function ProjectDetailPage({ project }: Props) {
                             {results.map((line, i) => (
                                 <li key={i} className='flex gap-3 text-gray-700 dark:text-slate-300'>
                                     <span
-                                        className='mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary'
+                                        className='mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-strong'
                                         aria-hidden
                                     />
                                     <span className='leading-relaxed'>{line}</span>
@@ -163,7 +175,7 @@ export default function ProjectDetailPage({ project }: Props) {
                         {project.technologies.map((tech) => (
                             <span
                                 key={tech}
-                                className='px-3 py-1.5 rounded-full text-sm font-medium bg-primary/10 dark:bg-primary/20 text-primary'
+                                className='px-3 py-1.5 rounded-full text-sm font-medium bg-primary-strong/10 dark:bg-primary-strong/20 text-primary'
                             >
                                 {tech}
                             </span>

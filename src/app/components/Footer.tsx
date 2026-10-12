@@ -20,7 +20,7 @@ export default function Footer() {
     ];
 
     return (
-        <footer className='bg-gray-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-950 border-t border-gray-200 dark:glow-border'>
+        <footer className='bg-gray-50 dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-950 border-t border-gray-200 dark:border-white/10'>
             <div className='container max-w-7xl mx-auto px-4 py-12'>
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-8'>
                     {/* Column 1: Brand & Description */}
@@ -31,7 +31,7 @@ export default function Footer() {
                         <p className='text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4'>
                             Senior Frontend Developer
                         </p>
-                        <p className='text-sm italic text-gray-600 dark:text-gray-400 mb-4 border-l-4 border-primary pl-3'>
+                        <p className='text-sm italic text-gray-600 dark:text-gray-400 mb-4 border-l-4 border-primary-strong pl-3'>
                             Crafting digital experiences that make a difference
                         </p>
                         <p className='text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4'>

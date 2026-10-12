@@ -8,14 +8,6 @@ const nextConfig: NextConfig = {
     ...(process.env.NODE_ENV === 'production' ? { output: 'export' as const } : {}),
     images: {
         unoptimized: true,
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'images.unsplash.com',
-                port: '',
-                pathname: '/**',
-            },
-        ],
     },
     experimental: {
         optimizePackageImports: ['react-icons', 'framer-motion'],
@@ -23,7 +15,8 @@ const nextConfig: NextConfig = {
         optimizeCss: true,
     },
     compiler: {
-        removeConsole: true,
+        // Keep console.error so misconfiguration (e.g. missing EmailJS keys) is still visible
+        removeConsole: { exclude: ['error'] },
     },
 };
 

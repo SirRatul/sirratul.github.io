@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { fadeInUp, fadeInDown } from '@/utils/animations';
+import { fadeInUp, fadeInDown, inView } from '@/utils/animations';
 
 export default function About() {
     return (
@@ -9,18 +9,18 @@ export default function About() {
             {/* Gradient Background */}
             <div className='absolute inset-0 -z-10'>
                 <div className='absolute inset-0 bg-gradient-to-br from-transparent via-gray-50/50 to-transparent dark:from-gray-900 dark:via-slate-900 dark:to-blue-950'></div>
-                <div className='absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl'></div>
+                <div className='absolute top-1/4 right-1/4 w-96 h-96 bg-primary-strong/5 dark:bg-primary-strong/10 rounded-full blur-3xl'></div>
             </div>
 
             <div id='about' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
                 <div className='section-head'>
-                    <motion.h2 className='section-title' {...fadeInDown}>
+                    <motion.h2 className='section-title' {...inView(fadeInDown)}>
                         About Me
                     </motion.h2>
                 </div>
 
                 {/* Bio Section */}
-                <motion.section className='mb-16' {...fadeInUp}>
+                <motion.section className='mb-16' {...inView(fadeInUp)}>
                     <p className='prose-body max-w-3xl mx-auto text-center'>
                         I&apos;m a Senior Frontend Developer with 4+ years of experience building
                         high-performance web applications using React.js, Next.js, JavaScript, and

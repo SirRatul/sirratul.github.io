@@ -25,7 +25,7 @@ export default function NotFoundScreen({ variant = 'global' }: Props) {
         >
             <div className='pointer-events-none absolute inset-0 -z-10'>
                 <div className='absolute inset-0 bg-gradient-to-br from-blue-50/90 via-white to-purple-50/70 dark:from-slate-950 dark:via-slate-900 dark:to-[#0c1428]' />
-                <div className='absolute top-1/4 left-1/4 h-72 w-72 rounded-full bg-primary/10 blur-3xl dark:bg-primary/15' />
+                <div className='absolute top-1/4 left-1/4 h-72 w-72 rounded-full bg-primary-strong/10 blur-3xl dark:bg-primary-strong/15' />
                 <div className='absolute bottom-1/4 right-1/4 h-72 w-72 rounded-full bg-purple-500/10 blur-3xl dark:bg-indigo-500/10' />
                 <div
                     className='absolute inset-0 opacity-[0.35] dark:opacity-[0.08]'

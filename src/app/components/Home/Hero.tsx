@@ -20,9 +20,9 @@ export default function Hero() {
             <div className='absolute inset-0 -z-10'>
                 <div className='absolute inset-0 bg-gradient-to-br from-blue-100/80 via-white to-purple-100/80 dark:from-slate-950 dark:via-slate-900 dark:to-[#0c1428]'></div>
                 <div className='absolute inset-0 dark:bg-[radial-gradient(ellipse_90%_50%_at_50%_-20%,rgba(59,130,246,0.14),transparent_50%)]' aria-hidden />
-                <div className='absolute top-0 left-1/4 w-96 h-96 bg-primary/20 dark:bg-primary/25 rounded-full blur-3xl'></div>
+                <div className='absolute top-0 left-1/4 w-96 h-96 bg-primary-strong/20 dark:bg-primary-strong/25 rounded-full blur-3xl'></div>
                 <div className='absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 dark:bg-indigo-500/15 rounded-full blur-3xl'></div>
-                <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(720px,95vw)] h-[min(420px,45vh)] rounded-full bg-primary/5 dark:bg-blue-500/10 blur-3xl pointer-events-none' aria-hidden />
+                <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(720px,95vw)] h-[min(420px,45vh)] rounded-full bg-primary-strong/5 dark:bg-blue-500/10 blur-3xl pointer-events-none' aria-hidden />
                 {/* Enhanced animated noise texture */}
                 <div className='absolute inset-0 opacity-[0.02] dark:opacity-[0.03]' style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")', animation: 'noiseTexture 8s steps(10) infinite' }}></div>
             </div>
@@ -37,25 +37,25 @@ export default function Hero() {
                         <div className='relative hero-glow'>
                             <Image
                                 src='/profile.webp'
-                                alt='Profile'
+                                alt='Samsul Islam'
                                 width={160}
                                 height={160}
                                 priority
-                                className='rounded-full w-40 h-40 object-cover ring-4 ring-primary shadow-2xl shadow-primary/30 relative z-10'
+                                className='rounded-full w-40 h-40 object-cover ring-4 ring-primary-strong shadow-2xl shadow-primary-strong/30 relative z-10'
                             />
-                            <div className='absolute inset-0 rounded-full ring-4 ring-primary/20 animate-pulse z-10'></div>
+                            <div className='absolute inset-0 rounded-full ring-4 ring-primary-strong/20 animate-pulse z-10'></div>
                         </div>
                     </motion.div>
 
                     <motion.h1
-                        className='text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6'
+                        className='text-[2.75rem] sm:text-6xl md:text-7xl font-extrabold mb-6'
                         style={{ fontWeight: 800, lineHeight: 1.05 }}
                         {...fadeInUp}
                         transition={{ delay: 0.3 }}
                     >
                         Hi, I&apos;m{' '}
                         <motion.span
-                            className='text-primary bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent'
+                            className='whitespace-nowrap text-primary bg-gradient-to-r from-primary-strong to-blue-600 dark:from-primary dark:to-blue-500 bg-clip-text text-transparent'
                             {...fadeIn}
                             transition={{ delay: 0.8 }}
                         >
@@ -72,7 +72,7 @@ export default function Hero() {
                             <p className='text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-slate-200 font-semibold mb-6'>
                                 Senior Frontend Developer | 4+ Years of Excellence
                             </p>
-                            <p className='text-sm sm:text-base md:text-lg text-gray-500 dark:text-slate-400 mb-4'>
+                            <p className='text-sm sm:text-base md:text-lg text-gray-600 dark:text-slate-400 mb-4'>
                                 React & Next.js Specialist | Shopify Expert | Performance Optimizer
                             </p>
                             <p className='text-sm sm:text-base md:text-lg text-gray-700 dark:text-slate-200 font-medium max-w-2xl mx-auto leading-relaxed'>
@@ -140,7 +140,7 @@ export default function Hero() {
                             <p className='text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-slate-200 font-semibold mb-6'>
                                 Senior Frontend Developer | 4+ Years of Excellence
                             </p>
-                            <p className='text-sm sm:text-base md:text-lg text-gray-500 dark:text-slate-400 mb-4'>
+                            <p className='text-sm sm:text-base md:text-lg text-gray-600 dark:text-slate-400 mb-4'>
                                 React & Next.js Specialist | Shopify Expert | Performance Optimizer
                             </p>
                             <p className='text-sm sm:text-base md:text-lg text-gray-700 dark:text-slate-200 font-medium max-w-2xl mx-auto leading-relaxed'>

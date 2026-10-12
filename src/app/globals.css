@@ -1,7 +1,10 @@
 @import 'tailwindcss';
 
 @theme {
+	/* Brand blue for text, links and focus rings — lightened in dark mode (see html.dark below) */
 	--color-primary: #005bb5;
+	/* Brand blue for surfaces: buttons, badges, gradients, glows — same in both themes */
+	--color-primary-strong: #005bb5;
 	--color-secondary: #6b7280;
 	--color-dark: #1f2937;
 	--color-light: #f9fafb;
@@ -23,8 +26,16 @@ a {
 }
 
 @layer base {
+	/* Lighter brand text + muted text in dark mode to meet WCAG AA contrast on dark backgrounds */
+	html.dark {
+		--color-primary: #60a5fa;
+		--color-secondary: #9ca3af;
+	}
+
+	/* Visible keyboard focus; components with their own focus-visible ring opt out via outline-none */
 	*:focus-visible {
-		outline: none !important;
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
 	}
 
 	body {
@@ -75,7 +86,7 @@ a {
 	}
 
 	.btn-primary {
-		@apply bg-primary text-white hover:bg-primary/90 hover:shadow-lg hover:scale-105;
+		@apply bg-primary-strong text-white hover:bg-primary-strong/90 hover:shadow-lg hover:scale-105;
 	}
 
 	.btn-secondary {
@@ -84,7 +95,7 @@ a {
 
 	/* Section headings: dominant title vs calmer lead */
 	.section-title {
-		@apply text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight text-center text-gray-900 dark:text-white;
+		@apply text-[1.75rem] sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold tracking-tight leading-[1.1] text-center text-gray-900 dark:text-white;
 		letter-spacing: -0.02em;
 	}
 
@@ -97,12 +108,12 @@ a {
 	}
 
 	.section-lead {
-		@apply text-center text-[15px] sm:text-base text-gray-500 dark:text-slate-500 max-w-2xl mx-auto leading-relaxed font-normal;
+		@apply text-center text-[15px] sm:text-base text-gray-600 dark:text-slate-500 max-w-2xl mx-auto leading-relaxed font-normal;
 	}
 
 	/* Body copy rhythm — mobile slightly smaller to scan */
 	.prose-body {
-		@apply text-[14px] sm:text-[15px] md:text-base leading-relaxed text-gray-600 dark:text-slate-400;
+		@apply text-[14px] sm:text-[15px] md:text-base leading-relaxed text-gray-700 dark:text-slate-300;
 	}
 
 	/* Vertical rhythm: tighter on small screens */
@@ -234,7 +245,7 @@ a {
 
 	/* Gradient button effect */
 	.btn-gradient {
-		@apply bg-gradient-to-r from-primary to-blue-600 text-white;
+		@apply bg-gradient-to-r from-primary-strong to-blue-600 text-white;
 		transition: all 0.3s ease;
 	}
 
@@ -312,14 +323,14 @@ a {
 	/* Metric badges for experience section */
 	.metric-badge {
 		@apply inline-flex items-center px-3 py-1 rounded-full text-xs font-bold;
-		@apply bg-primary/10 dark:bg-primary/20 text-primary;
-		@apply border border-primary/20 dark:border-primary/30;
+		@apply bg-primary-strong/10 dark:bg-primary-strong/20 text-primary;
+		@apply border border-primary-strong/20 dark:border-primary-strong/30;
 	}
 	
 	/* Role badges for project cards */
 	.role-badge {
 		@apply inline-block px-3 py-1 text-xs font-semibold rounded-full;
-		@apply bg-gradient-to-r from-primary/90 to-blue-600/90 text-white;
+		@apply bg-gradient-to-r from-primary-strong/90 to-blue-600/90 text-white;
 		@apply shadow-md;
 	}
 	
@@ -327,7 +338,7 @@ a {
 	/* Hero / paired CTAs: primary + secondary share the same tap target size */
 	.cta-primary {
 		@apply inline-flex items-center justify-center;
-		@apply bg-gradient-to-r from-primary to-blue-600 text-white;
+		@apply bg-gradient-to-r from-primary-strong to-blue-600 text-white;
 		@apply px-10 py-4 rounded-lg text-lg font-bold;
 		@apply shadow-lg hover:shadow-xl;
 		@apply transition-all duration-300;

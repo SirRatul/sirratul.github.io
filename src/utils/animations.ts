@@ -58,3 +58,24 @@ export const scaleIn = {
     animate: { scale: 1, opacity: 1 },
     transition: { duration: 0.5 },
 };
+
+type Preset = {
+    initial: Record<string, number>;
+    animate: Record<string, number>;
+    transition?: Record<string, unknown>;
+};
+
+// Plays a preset once when the element scrolls into view instead of on page load.
+export const inView = (preset: Preset) => ({
+    initial: preset.initial,
+    whileInView: preset.animate,
+    viewport: { once: true, amount: 0.2 },
+    transition: preset.transition,
+});
+
+// For containers whose children use `variants`: children animate when the container is in view.
+export const inViewContainer = {
+    initial: 'initial',
+    whileInView: 'animate',
+    viewport: { once: true, amount: 0.1 },
+};

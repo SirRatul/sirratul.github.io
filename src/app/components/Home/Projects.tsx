@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { projects } from '@/contents/projects';
 import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '@/utils/animations';
+import { fadeInUp, staggerContainer, inView } from '@/utils/animations';
 import ProjectCard from '../ProjectCard';
 
 export default function Projects() {
@@ -17,7 +17,7 @@ export default function Projects() {
 
             <div id='projects' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
                 <div className='section-head'>
-                    <motion.h2 className='section-title section-header-glow' {...fadeInUp}>
+                    <motion.h2 className='section-title section-header-glow' {...inView(fadeInUp)}>
                         Featured Projects
                     </motion.h2>
                     <p className='section-lead text-muted-on-dark'>
@@ -48,7 +48,7 @@ export default function Projects() {
 
                 <motion.div
                     className='flex justify-center mt-12'
-                    {...fadeInUp}
+                    {...inView(fadeInUp)}
                     transition={{ delay: 0.6 }}
                 >
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95}}>

@@ -1,24 +1,12 @@
-import dynamic from 'next/dynamic';
+import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { ClientThemeProvider } from './context/ClientThemeProvider';
+import { themeInitScript } from './context/ThemeContext';
 import ClarityLoader from './components/ClarityLoader';
-
-const Navbar = dynamic(() => import('./components/Navbar'), {
-    loading: () => (
-        <div className='flex justify-center items-center py-10'>
-            <div className='w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin'></div>
-        </div>
-    ),
-});
-const Footer = dynamic(() => import('./components/Footer'), {
-    loading: () => (
-        <div className='flex justify-center items-center py-10'>
-            <div className='w-6 h-6 border-4 border-primary border-t-transparent rounded-full animate-spin'></div>
-        </div>
-    ),
-});
-const SignatureGradientLine = dynamic(() => import('./components/SignatureGradientLine'));
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import SignatureGradientLine from './components/SignatureGradientLine';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -26,57 +14,55 @@ const inter = Inter({
     preload: true,
 });
 
+const descriptionText =
+    'Samsul Islam - Senior Frontend Developer with 4+ years of experience specializing in React, Next.js, TypeScript, and Shopify development. Building high-performance, scalable web applications with modern UI/UX practices.';
+const titleText = 'Samsul Islam | Senior Frontend Developer | React & Next.js Specialist';
+
+// Pages override `title` / `description`; everything else is inherited.
+export const metadata: Metadata = {
+    metadataBase: new URL('https://sirratul.github.io'),
+    title: titleText,
+    description: descriptionText,
+    icons: {
+        icon: [
+            { url: '/favicon.ico' },
+            { url: '/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+            { url: '/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' },
+        ],
+        apple: { url: '/apple-touch-icon.png', sizes: '180x180' },
+    },
+    manifest: '/site.webmanifest',
+    openGraph: {
+        type: 'website',
+        url: '/',
+        title: titleText,
+        description: descriptionText,
+        images: ['/meta.webp'],
+        siteName: 'sirratul.github.io',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: titleText,
+        description: descriptionText,
+        images: ['/meta.webp'],
+    },
+};
+
+export const viewport: Viewport = {
+    themeColor: '#ffffff',
+};
+
 export default function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const descriptionText =
-        'Samsul Islam - Senior Frontend Developer with 4+ years of experience specializing in React, Next.js, TypeScript, and Shopify development. Building high-performance, scalable web applications with modern UI/UX practices.';
-    const titleText = 'Samsul Islam | Senior Frontend Developer | React & Next.js Specialist';
-    const imageUrl = 'https://sirratul.github.io/meta.webp';
-    const siteUrl = 'https://sirratul.github.io/';
-
     return (
-        <html lang='en' className='scroll-smooth'>
+        <html lang='en' className='scroll-smooth' suppressHydrationWarning>
             <head>
-                <meta name='viewport' content='width=device-width, initial-scale=1' />
-
+                <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
                 {/* LCP (home hero): start fetch before CSS/layout paint — helps GTmetrix/Lighthouse chain */}
                 <link rel='preload' href='/profile.webp' as='image' type='image/webp' />
-
-                {/* Favicon */}
-                <link rel='icon' href='/favicon.ico' />
-                
-                {/* Apple Touch Icon */}
-                <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
-                
-                {/* Android Chrome Icons */}
-                <link rel='icon' type='image/png' sizes='192x192' href='/android-chrome-192x192.png' />
-                <link rel='icon' type='image/png' sizes='512x512' href='/android-chrome-512x512.png' />
-                
-                {/* Web App Manifest */}
-                <link rel='manifest' href='/site.webmanifest' />
-                
-                {/* Theme Color */}
-                <meta name='theme-color' content='#ffffff' />
-
-                <title>{titleText}</title>
-                <meta name='title' content={titleText} />
-                <meta name='description' content={descriptionText} />
-
-                <meta property='og:type' content='website' />
-                <meta property='og:url' content={siteUrl} />
-                <meta property='og:title' content={titleText} />
-                <meta property='og:description' content={descriptionText} />
-                <meta property='og:image' content={imageUrl} />
-                <meta property='og:site_name' content='sirratul.github.io' />
-
-                <meta name='twitter:card' content='summary_large_image' />
-                <meta name='twitter:url' content={siteUrl} />
-                <meta name='twitter:title' content={titleText} />
-                <meta name='twitter:description' content={descriptionText} />
-                <meta name='twitter:image' content={imageUrl} />
             </head>
             <body
                 className={`bg-white scroll-smooth transition-colors dark:bg-gray-900 dark:text-white ${inter.className}`}

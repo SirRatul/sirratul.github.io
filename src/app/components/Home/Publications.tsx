@@ -2,7 +2,7 @@
 
 import { publications } from '@/contents/publications';
 import { motion } from 'framer-motion';
-import { fadeInUp, fadeIn, staggerContainer, cardHoverSmall } from '@/utils/animations';
+import { fadeInUp, fadeIn, staggerContainer, cardHoverSmall, inView, inViewContainer } from '@/utils/animations';
 import { FaExternalLinkAlt, FaBook, FaFileAlt, FaUser } from 'react-icons/fa';
 
 const getPublicationIcon = (type: string) => {
@@ -23,7 +23,7 @@ const getPublicationIcon = (type: string) => {
 const getPublicationBadge = (type: string) => {
     const badges = {
         journal: { bg: 'bg-blue-100 dark:bg-blue-900/30', text: 'text-blue-700 dark:text-blue-300', label: 'Journal' },
-        conference: { bg: 'bg-green-100 dark:bg-green-900/30', text: 'text-green-700 dark:text-green-300', label: 'Conference' },
+        conference: { bg: 'bg-green-100 dark:bg-green-900/30', text: 'text-green-800 dark:text-green-300', label: 'Conference' },
         workshop: { bg: 'bg-purple-100 dark:bg-purple-900/30', text: 'text-purple-700 dark:text-purple-300', label: 'Workshop' },
         preprint: { bg: 'bg-orange-100 dark:bg-orange-900/30', text: 'text-orange-700 dark:text-orange-300', label: 'Preprint' },
     };
@@ -41,13 +41,13 @@ export default function Publications() {
             {/* Gradient Background */}
             <div className='absolute inset-0 -z-10'>
                 <div className='absolute inset-0 bg-gradient-to-br from-transparent via-white to-transparent dark:from-blue-950 dark:via-slate-900 dark:to-gray-900'></div>
-                <div className='absolute top-1/3 right-1/4 w-96 h-96 bg-primary/5 dark:bg-primary/10 rounded-full blur-3xl'></div>
+                <div className='absolute top-1/3 right-1/4 w-96 h-96 bg-primary-strong/5 dark:bg-primary-strong/10 rounded-full blur-3xl'></div>
             </div>
 
             <div id='publications' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
-                <motion.section {...fadeIn} transition={{ delay: 0.2 }}>
+                <motion.section {...inView(fadeIn)}>
                     <div className='section-head'>
-                        <motion.h2 className='section-title section-header-glow' {...fadeInUp}>
+                        <motion.h2 className='section-title section-header-glow' {...inView(fadeInUp)}>
                             Publications
                         </motion.h2>
                     </div>
@@ -55,8 +55,7 @@ export default function Publications() {
                     <motion.div
                         className='max-w-5xl mx-auto space-y-6'
                         variants={staggerContainer}
-                        initial='initial'
-                        animate='animate'
+                        {...inViewContainer}
                     >
                         {publications.map((pub, index) => (
                             <motion.div
@@ -83,7 +82,7 @@ export default function Publications() {
                                             <div className='flex gap-2 items-center flex-wrap'>
                                                 {getPublicationBadge(pub.type)}
                                                 {pub.role && (
-                                                    <span className='px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-primary/20 to-blue-600/20 text-primary dark:text-blue-300 border border-primary/30'>
+                                                    <span className='px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-primary-strong/20 to-blue-600/20 text-primary dark:text-blue-300 border border-primary-strong/30'>
                                                         {pub.role}
                                                     </span>
                                                 )}
