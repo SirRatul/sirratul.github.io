@@ -5,10 +5,10 @@ This is a portfolio website of Samsul Islam built using Next.js, Tailwind CSS, a
 ## Table of Contents
 
 - [Samsul Islam](#samsul-islam)
-	- [Table of Contents](#table-of-contents)
-	- [Features](#features)
-	- [Installation](#installation)
-	- [Usage](#usage)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
 
 ## Features
 
@@ -24,44 +24,44 @@ To get started with portfolio of Samsul Islam, follow these steps:
 
 1. **Clone the repository:**
 
-    ```bash
-    git clone https://github.com/SirRatul/sirratul.github.io
-    cd sirratul.github.io
-    ```
+   ```bash
+   git clone https://github.com/SirRatul/sirratul.github.io
+   cd sirratul.github.io
+   ```
 
 2. **Install the dependencies:**
 
-    Make sure you have [Node.js](https://nodejs.org/) installed. Then, run the following command to install the necessary packages:
+   Make sure you have [Node.js](https://nodejs.org/) installed. Then, run the following command to install the necessary packages:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
 3. **Run the development server:**
 
-    Start the development server to view the project locally:
+   Start the development server to view the project locally:
 
-    ```bash
-    npm run dev
-    ```
+   ```bash
+   npm run dev
+   ```
 
-    Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+   Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
 4. **Build for production:**
 
-    To create an optimized production build, run:
+   To create an optimized production build, run:
 
-    ```bash
-    npm run build
-    ```
+   ```bash
+   npm run build
+   ```
 
 5. **Start the production server:**
 
-    After building the project, you can start the production server with:
+   After building the project, you can start the production server with:
 
-    ```bash
-    npm start
-    ```
+   ```bash
+   npm start
+   ```
 
 ## Usage
 
