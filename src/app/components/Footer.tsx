@@ -1,17 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaGithub, FaFacebook, FaLinkedin } from 'react-icons/fa';
 import { HiMail, HiLocationMarker } from 'react-icons/hi';
 
 export default function Footer() {
-    const [year, setYear] = useState<number | null>(null);
-
-    useEffect(() => {
-        setYear(new Date().getFullYear());
-    }, []);
-
     const quickLinks = [
         { href: '/#about', label: 'About' },
         { href: '/#skills', label: 'Skills' },
@@ -112,11 +105,10 @@ export default function Footer() {
                 {/* Bottom Bar */}
                 <div className='pt-8 border-t border-gray-200 dark:border-gray-700'>
                     <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
-                        {year !== null && (
-                            <p className='text-sm text-gray-600 dark:text-gray-300'>
-                                © {year} Samsul Islam. All rights reserved.
-                            </p>
-                        )}
+                        {/* Static HTML holds the build year; the browser may render a newer one */}
+                        <p className='text-sm text-gray-600 dark:text-gray-300' suppressHydrationWarning>
+                            © {new Date().getFullYear()} Samsul Islam. All rights reserved.
+                        </p>
                         <p className='text-sm text-gray-600 dark:text-gray-300'>
                             Built with ❤️ using Next.js & TailwindCSS
                         </p>

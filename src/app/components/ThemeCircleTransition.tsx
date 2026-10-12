@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useEffectEvent, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
@@ -49,8 +49,8 @@ export default function ThemeCircleTransition({ x, y, from, onComplete }: Props)
 
     const mask = useTransform(r, (v) => buildMask(v, x, y));
 
-    const onCompleteRef = useRef(onComplete);
-    onCompleteRef.current = onComplete;
+    // Always calls the latest onComplete without restarting the animation when it changes
+    const handleComplete = useEffectEvent(() => onComplete());
 
     useEffect(() => {
         const controls = animate(r, maxR, {
@@ -59,7 +59,7 @@ export default function ThemeCircleTransition({ x, y, from, onComplete }: Props)
             onComplete: () => {
                 if (finished.current) return;
                 finished.current = true;
-                onCompleteRef.current();
+                handleComplete();
             },
         });
         return () => controls.stop();

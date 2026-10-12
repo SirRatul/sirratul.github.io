@@ -4,8 +4,8 @@ import {
     createContext,
     useCallback,
     useContext,
-    useEffect,
     useState,
+    useSyncExternalStore,
 } from 'react';
 import type { MouseEvent } from 'react';
 import ThemeCircleTransition from '../components/ThemeCircleTransition';
@@ -58,14 +58,26 @@ function prefersReducedMotion(): boolean {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
+/**
+ * The `dark` class on <html> is the single source of truth (set first by themeInitScript).
+ * Subscribing to it keeps React in sync and lets hydration start from the server value.
+ */
+function subscribeToHtmlClass(onChange: () => void) {
+    const observer = new MutationObserver(onChange);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+}
+const getHtmlTheme = (): Theme =>
+    document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+const getServerTheme = (): Theme => 'light';
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-    const [theme, setThemeState] = useState<Theme>('light');
+    const theme = useSyncExternalStore(subscribeToHtmlClass, getHtmlTheme, getServerTheme);
     const [transition, setTransition] = useState<TransitionPayload | null>(
         null,
     );
 
     const setTheme = useCallback((newTheme: Theme) => {
-        setThemeState(newTheme);
         const storage = getBrowserStorage();
         if (storage) {
             storage.setItem('theme', newTheme);
@@ -102,11 +114,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         },
         [theme, setTheme, transition],
     );
-
-    // Sync state with the theme already applied to <html> by themeInitScript
-    useEffect(() => {
-        setThemeState(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-    }, []);
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
