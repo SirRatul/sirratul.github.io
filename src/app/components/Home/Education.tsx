@@ -27,9 +27,8 @@ export default function Education() {
               <h3 className='text-xl md:text-2xl font-bold mb-2 text-gray-900 dark:text-white'>
                 {edu.degree}
               </h3>
-              <div className='flex flex-wrap items-center gap-2 mb-3'>
+              <div className='mb-3'>
                 <p className='text-primary font-semibold text-base md:text-lg'>{edu.institution}</p>
-                <span className='text-gray-500 dark:text-gray-400'>•</span>
                 <p className='text-gray-600 dark:text-slate-400 font-medium text-sm md:text-base'>
                   {edu.period}
                 </p>
@@ -59,7 +58,7 @@ export default function Education() {
               <p className='text-sm text-gray-700 dark:text-gray-300 mb-2'>{pub.authors}</p>
 
               <p className='text-base text-gray-700 dark:text-gray-300 mb-3'>
-                <span className='font-semibold'>{pub.venue}</span>, {pub.year}
+                <span className='font-semibold'>{pub.venue}</span>
               </p>
 
               <a

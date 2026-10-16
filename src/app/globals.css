@@ -316,13 +316,6 @@ a {
       0 0 0 1px rgba(0, 91, 181, 0.25);
   }
 
-  /* Metric badges for experience section */
-  .metric-badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-bold;
-    @apply bg-primary-strong/10 dark:bg-primary-strong/20 text-primary;
-    @apply border border-primary-strong/20 dark:border-primary-strong/30;
-  }
-
   /* Role badges for project cards */
   .role-badge {
     @apply inline-block px-3 py-1 text-xs font-semibold rounded-full;

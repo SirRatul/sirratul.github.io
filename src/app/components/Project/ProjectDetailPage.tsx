@@ -70,16 +70,18 @@ export default function ProjectDetailPage({ project }: Props) {
           )}
         </header>
 
-        <div className='relative aspect-video w-full rounded-2xl overflow-hidden border border-gray-200/80 dark:border-white/10 shadow-lg bg-gray-100 dark:bg-slate-800/50 mb-12'>
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className='object-cover'
-            sizes='(max-width: 768px) 100vw, 48rem'
-            priority
-          />
-        </div>
+        {project.image && (
+          <div className='relative aspect-video w-full rounded-2xl overflow-hidden border border-gray-200/80 dark:border-white/10 shadow-lg bg-gray-100 dark:bg-slate-800/50 mb-12'>
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className='object-cover'
+              sizes='(max-width: 768px) 100vw, 48rem'
+              priority
+            />
+          </div>
+        )}
 
         {(hasDemo || hasGithub) && (
           <div className='flex flex-col sm:flex-row flex-wrap gap-3 mb-14'>

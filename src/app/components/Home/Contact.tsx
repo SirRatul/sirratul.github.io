@@ -207,7 +207,7 @@ export default function Contact() {
               <div>
                 <label
                   htmlFor='email'
-                  className='block text-sm font-medium mb-2 text-gray-900 dark:text-gray-200'
+                  className='block text-sm font-medium mb-2 text-gray-700 dark:text-slate-300'
                 >
                   Email
                 </label>

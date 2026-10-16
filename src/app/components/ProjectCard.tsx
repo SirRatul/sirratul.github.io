@@ -16,21 +16,23 @@ export default function ProjectCard({ project }: Props) {
 
   return (
     <article className='h-full flex flex-col rounded-2xl overflow-hidden border border-gray-200/80 dark:border-white/10 bg-white dark:bg-slate-900/80 shadow-[0_2px_8px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)]'>
-      <Link
-        href={detailHref}
-        className='relative block aspect-video w-full shrink-0 overflow-hidden bg-gray-100 dark:bg-slate-800/50 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
-        aria-label={`View details — ${project.title}`}
-      >
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          className='object-cover'
-          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-          loading='lazy'
-        />
-        {project.role && <div className='absolute top-3 left-3 role-badge'>{project.role}</div>}
-      </Link>
+      {project.image && (
+        <Link
+          href={detailHref}
+          className='relative block aspect-video w-full shrink-0 overflow-hidden bg-gray-100 dark:bg-slate-800/50 outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
+          aria-label={`View details — ${project.title}`}
+        >
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className='object-cover'
+            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+            loading='lazy'
+          />
+          {project.role && <div className='absolute top-3 left-3 role-badge'>{project.role}</div>}
+        </Link>
+      )}
 
       <div className='flex flex-col flex-grow p-5 sm:p-6'>
         <h3 className='text-lg sm:text-xl font-bold text-gray-900 dark:text-white tracking-tight leading-snug'>

@@ -36,7 +36,8 @@ export interface Project {
   technologies: string[];
   githubLink: string;
   demoLink: string;
-  image: string;
+  /** Real screenshot. Projects without one are listed as text. */
+  image?: string;
   featured?: boolean;
   category?: string;
   role?: string; // e.g., "Frontend Lead", "Full-Stack Developer", "Shopify Developer"
