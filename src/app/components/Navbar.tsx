@@ -7,15 +7,7 @@ import { HiOutlineSun } from 'react-icons/hi2';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const SECTION_IDS = [
-  'about',
-  'skills',
-  'experience',
-  'education',
-  'publications',
-  'projects',
-  'contact',
-] as const;
+const SECTION_IDS = ['about', 'skills', 'experience', 'education', 'projects', 'contact'] as const;
 
 /** Anchor under the fixed nav (~h-16 + buffer). */
 const NAV_BAR_OFFSET_PX = 72;
@@ -85,12 +77,10 @@ export default function Navbar() {
   };
 
   const menuItems = [
-    { href: '/', label: 'Home' },
     { href: '/#about', label: 'About' },
     { href: '/#skills', label: 'Skills' },
     { href: '/#experience', label: 'Experience' },
-    { href: '/#education', label: 'Education' },
-    { href: '/#publications', label: 'Publications' },
+    { href: '/#education', label: 'Education & Research' },
     { href: '/#projects', label: 'Projects' },
     { href: '/#contact', label: 'Contact' },
   ];
@@ -123,11 +113,10 @@ export default function Navbar() {
 
   const isHomePath = pathname === '/';
 
-  /** Home vs sections share one `activeSectionId` from scroll-spy (`null` = hero). */
+  /** Section links share one `activeSectionId` from scroll-spy (`null` = hero). */
   const linkIsActive = useCallback(
     (href: string) => {
       if (!isHomePath) return false;
-      if (href === '/') return activeSectionId === null;
       const id = href.replace('/#', '');
       return activeSectionId === id;
     },
@@ -162,18 +151,16 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className='hidden md:flex items-center space-x-8'>
+          <div className='hidden md:flex items-center space-x-5 lg:space-x-8'>
             {menuItems.map((item) => (
               <Link key={item.href} href={item.href} className={desktopLinkClass(item.href)}>
                 {item.label}
               </Link>
             ))}
-            <motion.button
+            <button
               type='button'
               onClick={(e) => toggleTheme(e)}
               className='p-2 rounded-lg hover:bg-gray-100/80 dark:hover:bg-white/10 transition-colors'
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
               aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
             >
               {theme === 'dark' ? (
@@ -181,19 +168,18 @@ export default function Navbar() {
               ) : (
                 <HiOutlineMoon className='h-5 w-5' />
               )}
-            </motion.button>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <motion.button
+          <button
+            type='button'
             className='md:hidden p-2 rounded-lg hover:bg-gray-100/80 dark:hover:bg-white/10 transition-colors'
             onClick={toggleMobileMenu}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {isMobileMenuOpen ? <HiX className='h-6 w-6' /> : <HiMenuAlt3 className='h-6 w-6' />}
-          </motion.button>
+          </button>
         </div>
 
         {/* Mobile Menu */}

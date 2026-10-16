@@ -12,18 +12,13 @@ export default function ProjectDetailPage({ project }: Props) {
   const overview = d?.overview ?? project.description;
   const problem = d?.problem;
   const solution = d?.solution;
-  const results = d?.results?.length ? d.results : (project.impactHighlights ?? []);
+  const results = d?.results?.length ? d.results : (project.highlights ?? []);
   const screenshots = d?.screenshots ?? [];
   const hasDemo = Boolean(project.demoLink);
   const hasGithub = Boolean(project.githubLink);
 
   return (
-    <article className='relative overflow-hidden'>
-      <div className='absolute inset-0 -z-10'>
-        <div className='absolute inset-0 bg-gradient-to-br from-blue-50/90 via-white to-purple-50/80 dark:from-slate-950 dark:via-slate-900 dark:to-[#0c1428]' />
-        <div className='absolute top-1/4 right-1/4 w-96 h-96 bg-primary-strong/5 dark:bg-primary-strong/10 rounded-full blur-3xl' />
-      </div>
-
+    <article className='section-bg-white'>
       <div className='container max-w-3xl mx-auto px-4 pt-24 pb-16 md:pt-28 md:pb-24'>
         <nav className='text-sm text-gray-600 dark:text-slate-400 mb-8' aria-label='Breadcrumb'>
           <ol className='flex flex-wrap items-center gap-2'>
@@ -49,9 +44,6 @@ export default function ProjectDetailPage({ project }: Props) {
           <h1 className='text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight'>
             {project.title}
           </h1>
-          {project.impact && (
-            <p className='mt-3 text-lg text-primary font-semibold leading-snug'>{project.impact}</p>
-          )}
           {(project.role || project.category) && (
             <dl className='mt-6 flex flex-wrap gap-x-10 gap-y-4 border-y border-gray-200 dark:border-white/10 py-4'>
               {project.role && (
@@ -96,7 +88,7 @@ export default function ProjectDetailPage({ project }: Props) {
                 href={project.demoLink}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='inline-flex items-center justify-center gap-2 rounded-xl bg-primary-strong text-white font-semibold px-5 py-3 shadow-lg shadow-primary-strong/20 hover:brightness-[1.03] transition-all'
+                className='inline-flex items-center justify-center gap-2 rounded-xl bg-primary-strong text-white font-semibold px-5 py-3 hover:bg-primary-strong/90 transition-colors'
               >
                 Open live site
                 <FaExternalLinkAlt className='h-3.5 w-3.5 opacity-90' />
@@ -147,7 +139,7 @@ export default function ProjectDetailPage({ project }: Props) {
         {results.length > 0 && (
           <section className='mb-12'>
             <h2 className='text-xl font-bold text-gray-900 dark:text-white mb-4'>
-              Impact &amp; results
+              What I worked on
             </h2>
             <ul className='space-y-3'>
               {results.map((line, i) => (

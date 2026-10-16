@@ -191,7 +191,6 @@ a {
       0 8px 28px rgba(0, 0, 0, 0.5),
       0 0 0 1px rgba(0, 91, 181, 0.22);
     border-color: rgba(0, 91, 181, 0.2);
-    transform: translateY(-3px);
   }
 
   /* Shared card shell — light depth + dark depth */
@@ -276,11 +275,6 @@ a {
     @apply h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent dark:via-gray-600;
   }
 
-  /* Timeline glow effect */
-  .timeline-dot-glow {
-    box-shadow: 0 0 8px rgba(0, 128, 255, 0.6);
-  }
-
   /* Section backgrounds — light: tinted bands, not flat white */
   .section-bg-white {
     @apply bg-slate-50/90 dark:bg-[var(--color-surface-dark-base)];
@@ -320,7 +314,6 @@ a {
     box-shadow:
       0 16px 48px rgba(0, 91, 181, 0.45),
       0 0 0 1px rgba(0, 91, 181, 0.25);
-    transform: translateY(-4px);
   }
 
   /* Metric badges for experience section */
@@ -343,20 +336,8 @@ a {
     @apply inline-flex items-center justify-center;
     @apply bg-gradient-to-r from-primary-strong to-blue-600 text-white;
     @apply px-10 py-4 rounded-lg text-lg font-bold;
-    @apply shadow-lg hover:shadow-xl;
-    @apply transition-all duration-300;
-    transform: translateY(0);
-  }
-
-  .cta-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px rgba(0, 91, 181, 0.5);
-  }
-
-  html.dark .cta-primary:hover {
-    box-shadow:
-      0 12px 40px rgba(0, 91, 181, 0.6),
-      0 0 20px rgba(0, 91, 181, 0.3);
+    @apply shadow-md hover:brightness-110;
+    @apply transition-[filter] duration-200;
   }
 
   .cta-secondary {
@@ -370,31 +351,6 @@ a {
 
   html.dark .cta-secondary {
     background: rgba(107, 114, 128, 0.1);
-  }
-
-  /* Avatar glow effect */
-  .avatar-glow {
-    position: relative;
-  }
-
-  .avatar-glow::before {
-    content: '';
-    position: absolute;
-    inset: -8px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 91, 181, 0.4) 0%, transparent 70%);
-    animation: pulseGlow 4.5s ease-in-out infinite;
-    z-index: -1;
-  }
-
-  html.dark .avatar-glow::before {
-    background: radial-gradient(circle, rgba(0, 91, 181, 0.5) 0%, transparent 70%);
-  }
-
-  /* Section divider with gradient */
-  .section-divider-gradient {
-    @apply h-px my-12;
-    background: linear-gradient(90deg, transparent 0%, rgba(0, 91, 181, 0.3) 50%, transparent 100%);
   }
 
   /* Signature animated gradient line */
@@ -417,46 +373,6 @@ a {
 
   html.dark [class*='bg-gray-800'] {
     filter: brightness(1.05);
-  }
-
-  /* Hero glow effect for profile image */
-  .hero-glow::before {
-    content: '';
-    position: absolute;
-    inset: -60px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0, 91, 181, 0.25) 0%, transparent 70%);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  html.dark .hero-glow::before {
-    opacity: 1;
-  }
-
-  /* Section header glow for dark mode */
-  .section-header-glow {
-    position: relative;
-  }
-
-  .section-header-glow::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 100px;
-    background: radial-gradient(ellipse, rgba(0, 91, 181, 0.15) 0%, transparent 70%);
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-  }
-
-  html.dark .section-header-glow::before {
-    opacity: 1;
   }
 
   /* Muted chip style for light mode accent colors */
@@ -513,60 +429,5 @@ a {
 
   50% {
     transform: translateY(-10px);
-  }
-}
-
-/* Smooth icon transitions */
-.icon-transition {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.icon-transition:hover {
-  transform: translateY(-3px) scale(1.1);
-}
-
-@keyframes pulseGlow {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.05);
-  }
-}
-
-@keyframes noiseTexture {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  10% {
-    transform: translate(-5%, -5%);
-  }
-  20% {
-    transform: translate(-10%, 5%);
-  }
-  30% {
-    transform: translate(5%, -10%);
-  }
-  40% {
-    transform: translate(-5%, 15%);
-  }
-  50% {
-    transform: translate(-10%, 5%);
-  }
-  60% {
-    transform: translate(15%, 0);
-  }
-  70% {
-    transform: translate(0, 10%);
-  }
-  80% {
-    transform: translate(-15%, 0);
-  }
-  90% {
-    transform: translate(10%, 5%);
   }
 }

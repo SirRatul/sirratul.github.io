@@ -3,14 +3,7 @@
 import { useState } from 'react';
 import { HiOutlineEnvelope, HiOutlinePhone, HiOutlineMapPin } from 'react-icons/hi2';
 import { motion } from 'framer-motion';
-import {
-  fadeInUp,
-  fadeIn,
-  slideInLeft,
-  slideInRight,
-  inView,
-  inViewContainer,
-} from '@/utils/animations';
+import { sectionReveal } from '@/utils/animations';
 
 interface FormData {
   name: string;
@@ -127,37 +120,25 @@ export default function Contact() {
   };
 
   return (
-    <section className='relative overflow-hidden'>
-      <div id='contact' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
+    <section id='contact' className='container max-w-7xl mx-auto scroll-mt-16 px-4'>
+      <motion.div {...sectionReveal}>
         <div className='section-head'>
-          <motion.h2 className='section-title section-header-glow' {...inView(fadeInUp)}>
-            Get in touch
-          </motion.h2>
+          <h2 className='section-title'>Get in touch</h2>
           <p className='section-lead text-muted-on-dark'>
-            Tell me about your role or project—I&apos;ll reply as soon as I can.
+            If you&apos;re hiring or have a project in mind, send me a message and I&apos;ll get
+            back to you.
           </p>
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 lg:gap-16'>
           {/* Contact Information */}
-          <motion.div className='space-y-8' {...inView(slideInLeft)}>
-            <motion.div {...inView(fadeInUp)}>
-              <h3 className='text-xl md:text-2xl font-bold mb-3 text-gray-900 dark:text-white tracking-tight'>
-                Let&apos;s connect
-              </h3>
-              <p className='prose-body text-left max-w-lg'>
-                I&apos;m always open to discussing new projects, creative ideas, or opportunities to
-                be part of your visions.
-              </p>
-            </motion.div>
+          <div className='space-y-8'>
+            <p className='prose-body text-left max-w-lg'>
+              I&apos;m currently open to remote roles. The quickest way to reach me is email.
+            </p>
 
-            <motion.div className='space-y-4' variants={fadeIn} {...inViewContainer}>
-              <motion.div
-                className='flex items-center gap-4'
-                variants={fadeInUp}
-                whileHover={{ x: 10 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
+            <div className='space-y-4'>
+              <div className='flex items-center gap-4'>
                 <HiOutlineEnvelope className='h-6 w-6 text-primary' />
                 <div>
                   <h3 className='font-semibold text-gray-900 dark:text-white'>Email</h3>
@@ -169,14 +150,9 @@ export default function Contact() {
                     samsulratul98@gmail.com
                   </a>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className='flex items-center gap-4'
-                variants={fadeInUp}
-                whileHover={{ x: 10 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
+              <div className='flex items-center gap-4'>
                 <HiOutlinePhone className='h-6 w-6 text-primary' />
                 <div>
                   <h3 className='font-semibold text-gray-900 dark:text-white'>Phone</h3>
@@ -188,36 +164,23 @@ export default function Contact() {
                     +8801521431231
                   </a>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className='flex items-center gap-4'
-                variants={fadeInUp}
-                whileHover={{ x: 10 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
+              <div className='flex items-center gap-4'>
                 <HiOutlineMapPin className='h-6 w-6 text-primary' />
                 <div>
                   <h3 className='font-semibold text-gray-900 dark:text-white'>Location</h3>
                   <p className='text-gray-700 dark:text-slate-300'>Dhaka, Bangladesh</p>
                 </div>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+              </div>
+            </div>
+          </div>
 
           {/* Contact Form */}
-          <motion.div
-            className='bg-white dark:bg-slate-900/80 border border-gray-200/90 dark:border-white/10 p-6 md:p-8 rounded-2xl shadow-md dark:card-shadow-dark'
-            {...inView(slideInRight)}
-          >
-            <motion.form
-              onSubmit={handleSubmit}
-              className='space-y-6'
-              variants={fadeIn}
-              {...inViewContainer}
-            >
+          <div className='bg-white dark:bg-slate-900/80 border border-gray-200/90 dark:border-white/10 p-6 md:p-8 rounded-2xl shadow-md dark:card-shadow-dark'>
+            <form onSubmit={handleSubmit} className='space-y-6'>
               {/* Name */}
-              <motion.div variants={fadeInUp}>
+              <div>
                 <label
                   htmlFor='name'
                   className='block text-sm font-medium mb-2 text-gray-700 dark:text-slate-300'
@@ -238,10 +201,10 @@ export default function Contact() {
                 {errors.name && (
                   <p className='text-red-600 dark:text-red-400 text-sm mt-1'>{errors.name}</p>
                 )}
-              </motion.div>
+              </div>
 
               {/* Email */}
-              <motion.div variants={fadeInUp}>
+              <div>
                 <label
                   htmlFor='email'
                   className='block text-sm font-medium mb-2 text-gray-900 dark:text-gray-200'
@@ -262,10 +225,10 @@ export default function Contact() {
                 {errors.email && (
                   <p className='text-red-600 dark:text-red-400 text-sm mt-1'>{errors.email}</p>
                 )}
-              </motion.div>
+              </div>
 
               {/* Message */}
-              <motion.div variants={fadeInUp}>
+              <div>
                 <label
                   htmlFor='message'
                   className='block text-sm font-medium mb-2 text-gray-700 dark:text-slate-300'
@@ -285,43 +248,33 @@ export default function Contact() {
                 {errors.message && (
                   <p className='text-red-600 dark:text-red-400 text-sm mt-1'>{errors.message}</p>
                 )}
-              </motion.div>
+              </div>
 
               {/* Submit Button */}
-              <motion.button
+              <button
                 type='submit'
                 disabled={status === 'loading'}
-                className='w-full rounded-xl bg-gradient-to-r from-primary-strong to-blue-600 text-white font-bold text-base py-4 px-4 shadow-lg shadow-primary-strong/25 hover:shadow-xl hover:shadow-primary-strong/30 hover:brightness-[1.02] disabled:opacity-60 disabled:pointer-events-none transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
-                whileHover={{ scale: status === 'loading' ? 1 : 1.01 }}
-                whileTap={{ scale: status === 'loading' ? 1 : 0.99 }}
+                className='w-full rounded-xl bg-primary-strong text-white font-bold text-base py-4 px-4 hover:bg-primary-strong/90 disabled:opacity-60 disabled:pointer-events-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900'
               >
-                {status === 'loading' ? 'Sending...' : 'Send Message'}
-              </motion.button>
+                {status === 'loading' ? 'Sending...' : 'Send message'}
+              </button>
 
               {/* Feedback Messages */}
               {status === 'success' && (
-                <motion.p
-                  className='text-green-700 dark:text-green-400 text-center'
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  Message sent successfully!
-                </motion.p>
+                <p className='text-green-700 dark:text-green-400 text-center' role='status'>
+                  Thanks, your message was sent.
+                </p>
               )}
 
               {status === 'error' && (
-                <motion.p
-                  className='text-red-600 dark:text-red-400 text-center'
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  Failed to send message. Please try again.
-                </motion.p>
+                <p className='text-red-600 dark:text-red-400 text-center' role='alert'>
+                  The message didn&apos;t send. Please try again, or email me directly.
+                </p>
               )}
-            </motion.form>
-          </motion.div>
+            </form>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

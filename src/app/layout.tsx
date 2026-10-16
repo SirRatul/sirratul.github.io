@@ -15,8 +15,8 @@ const inter = Inter({
 });
 
 const descriptionText =
-  'Samsul Islam - Senior Frontend Developer with 4+ years of experience specializing in React, Next.js, TypeScript, and Shopify development. Building high-performance, scalable web applications with modern UI/UX practices.';
-const titleText = 'Samsul Islam | Senior Frontend Developer | React & Next.js Specialist';
+  'Samsul Islam is a frontend-focused software engineer in Dhaka, building web apps and Shopify stores with React, Next.js and TypeScript.';
+const titleText = 'Samsul Islam · Software Engineer (Frontend)';
 
 // Pages override `title` / `description`; everything else is inherited.
 export const metadata: Metadata = {
